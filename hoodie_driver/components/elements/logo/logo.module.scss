@@ -1,0 +1,19 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.logo{
+    display: flex;
+    color: $primary-text-color;
+    align-items: center;
+    font-size: 12px;
+
+};
+
+.image{
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+};
+
+.sec_text{
+    font-size: 9px;
+}

@@ -1,0 +1,31 @@
+
+
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(4px);
+   
+
+};
+
+.list_item{
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+
+};
+
+
+.image{
+    width: 40px;
+    height: 40px;
+};
+
+.title{
+    font-weight: 500;
+    font-size: 16px; 
+    line-height: 1.5;
+}

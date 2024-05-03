@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import s from './logo.module.scss'
-import hoodie_driver from '../../../public/hoodie_driver.svg';
+import hoodie_driver from '../../../public/hoodie_driver.svg?url';
 
 
 const Logo = ()=> {

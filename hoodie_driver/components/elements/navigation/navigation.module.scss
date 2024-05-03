@@ -3,18 +3,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-flex-direction: row;
-gap: 32px;
-    
-
+    flex-direction: row;
 };
+
+.nav_list{
+    display: flex;
+    gap: 32px;
+}
 
 .nav_item{
     position: relative;
     display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
     color: $primary-text-color;
     transition: all $cubic;
-&.active{&::after {
+&.active{
+    font-weight: 700;
+    
+    &::after {
         position: absolute;
         bottom: -5px;
         display: block;
@@ -35,12 +43,20 @@ gap: 32px;
 };
 
 
+.btn_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   gap: 12px;
+}
+
 .button{
 display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: row;
 background-color: $bglightblue;
+
 gap: 12px;
 border-radius: 50%;
 padding: 8px;
@@ -51,10 +67,9 @@ height: 40px;
 }
 &.blue{
     border: 1px solid $accent-text-color;
+    fill: $accent-text-color;
 }
 &.lang{
-    width: 32px;
-    height: 32px;
     padding: 0;
 }
 }
@@ -62,8 +77,11 @@ height: 40px;
 .icon{
     width: 24px;
     height: 24px;
+    
+   
+   
     &.lang{
-        width: 32px;
-        height: 32px;
+        width: 40px;
+        height: 40px;
     }
 };

@@ -1,0 +1,20 @@
+@import '../../../app/globalStyles/basestyles.scss';
+.header{
+    display: flex;
+    position: relative;
+    top:24px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.14);
+    background: $bglightblue;
+    z-index: 100;
+};
+
+.nav_box{
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+}

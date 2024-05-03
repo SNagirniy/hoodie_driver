@@ -1,11 +1,11 @@
-import Hero from "../modules/Hero";
-import Features from "../modules/Features";
+import Hero from "../modules/hero/Hero";
+import Bestselers from "../modules/bestselers/Bestselers";
 
 const HomePage =()=> {
     return (
         <>
         <Hero/>
-        <Features/>
+        <Bestselers/>
         </>
     )
 };

@@ -1,5 +1,5 @@
-import Header from "../modules/Header";
-import Footer from "../modules/Footer";
+import Header from "../modules/header/Header";
+import Footer from "../modules/footer/Footer";
 import PageWrapper from "./PageWrapper";
 
 const PageLayout =({children})=> {

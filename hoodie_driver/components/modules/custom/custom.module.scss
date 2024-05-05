@@ -1,0 +1,120 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.container{
+    padding-top: 75px;
+};
+
+.custom_box{
+
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap:24px;
+  
+
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 35%;
+        height: 35%;
+        right: 0;
+        bottom: 0;
+        border-radius: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(43, 150, 234) 0%, rgb(31, 34, 36) 100%);
+        filter: blur(244px);
+        z-index: -1;
+    }
+};
+
+.thumb{
+    flex-shrink: 2;
+    display: block;
+    height: auto;
+    border-radius: 16px;
+    object-fit: contain;
+    overflow: hidden;
+};
+
+.image{
+    width: 100%;
+    height: auto;
+};
+
+.content{
+    flex-shrink: 1;
+    display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+gap: 24px;
+};
+
+.subtitle{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+font-weight: 500;
+font-size: 16px;
+line-height: 1.5;
+};
+
+.icon{
+    width: 20px;
+    height: 20px;
+};
+
+.title{
+font-weight: 700;
+font-size: 40px;
+line-height: 1.2;
+};
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+font-size: 18px;
+font-weight: 400;
+line-height: 1.5;
+text-align: left;
+
+&>li{
+    padding-left: 25px;
+    background-image: url(../../../public/check_icon.svg);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: left;
+}
+
+};
+
+
+
+.acsent_text{
+    font-weight: 600;
+};
+
+.btn_group{
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   align-items: flex-end;
+   align-self: flex-end;
+
+   & > span{
+    gap: 8px;
+
+    font-weight: 700;
+font-size: 20px;
+line-height: 1.5;
+color: $secondary-text-color;
+   }
+}
+
+
+
+

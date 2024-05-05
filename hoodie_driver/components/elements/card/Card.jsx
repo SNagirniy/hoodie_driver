@@ -1,4 +1,4 @@
-'use client';
+
 
 import s from './card.module.scss';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ import default_card from '../../../public/default_card.png';
 const cardData={
     image: default_card,
 }
-const Card = ({title, price, color_map})=> {
+const Card = ({title, price, available_colors})=> {
     const {image} = cardData;
 
     const renderColors =(arr)=> {
@@ -21,7 +21,7 @@ const Card = ({title, price, color_map})=> {
         return {colorMap: displayedColors, remainingCount }
     };
 
-    const {colorMap, remainingCount} = renderColors(color_map);
+    const {colorMap, remainingCount} = renderColors(available_colors);
 
 
     return (
@@ -33,7 +33,7 @@ const Card = ({title, price, color_map})=> {
                     </div>
             <div className={s.info}>
                 <div className={s.colors_box}>
-                {color_map?.length !== 0 &&
+                {available_colors?.length !== 0 &&
                     <ul className={s.colors}>
                        { 
                        colorMap.map((color) => {return(<li key={color} className={s.color} style={{background:color,}}></li>)})}

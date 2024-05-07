@@ -32,16 +32,16 @@ z-index: -10;
     content: "";
     display: block;
     position: absolute;
-    width: 75%;
+    width: 50%;
     height: 100%;
-    right: -65%;
+    right: -50%;
     bottom: -10%;
     border-radius: 100%;
-    background: radial-gradient(50% 50% at 50% 50%, rgb(43, 150, 234) 0%, rgb(31, 34, 36) 100%);;
+    background: radial-gradient(50% 50% at 50% 50%, rgb(43 150 234) 50%, rgb(31, 34, 36) 100%);
 }
+};
 
 
-}
 
 .hero_container{
     display: flex;
@@ -64,6 +64,7 @@ gap: 32px;
     font-weight: 900;
     font-size: 40px;
     line-height: 1.1;
+    margin-bottom: 32px;
 };
 
 .description{

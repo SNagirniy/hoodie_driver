@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import MainContainer from "@/components/layouts/MainCintainer";
 import Features from "../../elements/features/Features";
 import Hoodie_Dark2x from '../../../public/Hoodie_Dark2x.png';
 import Hoodie_Yellow2x from '../../../public/Hoodie_Yellow2x.png';
@@ -10,6 +11,7 @@ import s from './hero.module.scss'
 const Hero =()=> {
     return (
         <section className={s.hero_section}>
+            <MainContainer>
             <div className={s.hero_container}>
             <div className={s.head_container}>
                 <hgroup>
@@ -28,6 +30,8 @@ const Hero =()=> {
             </div>
             <Features/>
             <div className={s.decor}></div>
+            </MainContainer>
+            
         </section>
     )
 };

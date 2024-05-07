@@ -1,20 +1,32 @@
 import s from './custom.module.scss';
 import MainButton from '@/components/elements/mainButton/Main_Button';
+import MainContainer from '@/components/layouts/MainCintainer';
 import Shopping from '../../../public/shopping.svg';
 import Fire from '../../../public/fire_icon.svg';
+import EmblaCarousel from '../embla/Embla_slider';
+
 
 
 
 const features = [['Будь-який', 'КОЛІР'],['Будь-який', 'ДИЗАЙН'],
  ['Будь-який','ШНУРОК'],['Великий вибір', 'ПРИНТІВ'],['Ідеальний', 'РОЗМІР']];
 
+ const slide ={url: '/carousel.png', alt: 'custom hoodie'};
+
+ const slides_list = new Array(8).fill(slide);
+
+
+const direction = {direction: 'rtl'}
+
 
 const Custom = ()=>{
+
+  
 
 
 return (
 <section className={s.container}>
-
+    <MainContainer>
     <div className={s.custom_box}>
         <div className={s.thumb} >
             <img className={s.image} src='/custom_image.png' alt='custom hoodie'/>
@@ -33,11 +45,15 @@ return (
            
             <MainButton path={'./store'} title={'Замовити персональний'}/> 
             </div>
-
         </div>
-
     </div>
-    <div className={s.gallery}></div>
+    </MainContainer>
+
+   
+    <div className={s.gallery}>
+        <EmblaCarousel  slides={slides_list}/>
+        <EmblaCarousel direction={direction} slides={slides_list}/>
+    </div>
 
 </section>
 )

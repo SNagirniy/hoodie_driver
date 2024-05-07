@@ -1,0 +1,41 @@
+.embla {
+    max-width: 100%;
+    margin: auto;
+    --slide-spacing: 1rem;
+    --slide-size: 33%;
+  };
+  .embla__viewport {
+    overflow: hidden;
+  };
+  .embla__container {
+    backface-visibility: hidden;
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(var(--slide-spacing) * -1);
+  };
+  .embla__slide {
+    flex: 0 0 var(--slide-size);
+    padding-left: var(--slide-spacing);
+    cursor: pointer;
+
+    
+  };
+
+.thumb{
+  display: flex;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+ object-position: top;
+  object-fit: scale-down;
+  
+
+  &>img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+}
+  
+ 

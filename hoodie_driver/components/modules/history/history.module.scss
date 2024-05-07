@@ -1,0 +1,50 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.container{
+    padding: 75px 0;
+};
+
+.article{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 0 8px 64px 0 rgba(224, 204, 27, 0.12), 0 4px 16px 0 rgba(224, 204, 27, 0.08);
+    background: $primary-bg-color;
+    overflow: hidden;
+};
+
+
+.text_content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 12px;
+    gap: 24px;
+    padding: 48px;
+
+};
+
+.title{
+font-weight: 700;
+font-size: 40px;
+
+line-height: 1.2;
+};
+
+.description{
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    gap: 24px;
+
+    &>span{
+        display: block;
+    }
+};
+
+.slider{
+    max-width: 100%;
+}

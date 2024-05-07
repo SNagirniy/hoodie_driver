@@ -1,9 +1,9 @@
-
+import MainContainer from "@/components/layouts/MainCintainer";
 
 const Footer =()=> {
 
     return (
-        <footer><div>Footer</div></footer>
+        <footer><MainContainer><div>Footer</div></MainContainer> </footer>
     )
 }
 

@@ -1,0 +1,46 @@
+@import '../../../../app/globalStyles/basestyles.scss';
+.container{
+   color: transparent;
+
+   & .custom_dot_list{
+    padding: 16px 0;
+    gap: 8px;
+    backdrop-filter: blur(30px);
+    background: rgba(0, 0, 0, 0.2);
+}
+};
+
+.thumb{
+    display: block;
+    width: 100%;
+    height: 640px;
+    overflow: hidden;
+    object-fit: cover;
+   
+};
+
+.image{
+    display: block;
+   width: 100%;
+   height: 100%;
+};
+
+
+.dot{
+    display: block;
+    width: 12px;
+    height: 12px;
+    padding: 6px;
+    background-color:transparent;;
+    border: 1px solid $primary-text-color;
+    border-radius: 100%;
+    cursor: pointer;
+    
+    transition: all $cubic;
+    
+        &.active{
+            border: 1px solid $accent-text-color;
+            background-color: $accent-text-color;
+    
+        }
+    }

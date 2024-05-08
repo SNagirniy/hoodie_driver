@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^14.2.1",
+    "@nextui-org/accordion": "^2.0.32",
     "clsx": "^2.1.0",
     "embla-carousel-auto-scroll": "^8.0.4",
     "embla-carousel-react": "^8.0.4",

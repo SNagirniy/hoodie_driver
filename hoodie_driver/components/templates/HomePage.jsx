@@ -4,6 +4,8 @@ import Custom from "../modules/custom/Custom";
 import Reviews from "../modules/reviews/Reviews";
 import Features from "../modules/features/Features";
 import History from "../modules/history/History";
+import CallToAction from "../modules/call_to-action/CallToAction";
+import Questions from "../modules/questions/Questions";
 
 const HomePage =()=> {
     return (
@@ -14,6 +16,8 @@ const HomePage =()=> {
         <Reviews/>
         <Features/>
         <History/>
+        <CallToAction/>
+        <Questions/>
         </>
     )
 };

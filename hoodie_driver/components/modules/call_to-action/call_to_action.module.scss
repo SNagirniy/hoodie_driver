@@ -1,0 +1,89 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.section{
+    position: relative;
+    padding: 75px 0;
+
+    &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        left: 0;
+        top: 0;
+
+        border-radius: 100%;
+background: radial-gradient(50% 50% at 50% 50%, rgb(48, 70, 177) 0%, rgb(48, 70, 177) 100%);
+filter: blur(244px);
+z-index: -10;
+    };
+
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 25%;
+        height: 40%;
+        right: 0;
+        top: 5%;
+        border-radius: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(254, 219, 81) 20%, rgb(31, 34, 36) 100%);
+        filter: blur(180px);
+        z-index: -10;
+
+    }
+
+}
+;
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+    align-items: center
+};
+
+.article{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+};
+
+.title{
+font-weight: 700;
+font-size: 48px;
+line-height: 1.2;
+
+};
+
+.description{
+font-weight: 400;
+font-size: 18px;
+line-height: 1.5;
+
+};
+
+
+.icon{
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    fill: $primary-text-color;
+};
+
+
+.thumb{
+    padding: 39px 32px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+};
+
+.image{
+    display: block;
+    width: 100%;
+    height: auto;
+}

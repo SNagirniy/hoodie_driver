@@ -1,5 +1,4 @@
-"use client";
-import { useState, useEffect, useCallback } from 'react';
+
 import s from './bestselers.module.scss';
 import Card from '@/components/elements/card/Card';
 import MainButton from '@/components/elements/mainButton/Main_Button';
@@ -11,26 +10,9 @@ import { getBestselers } from '@/app/lib/firebase/productapi';
 
 
 
-const Bestselers =()=>{
+const Bestselers = async()=>{
 
-    
-
-    const [products, setProducts] = useState([]);
-
-    const fetchData = useCallback(async () => {
-        const data = await getBestselers();
-      
-            setProducts(data);
-      }, [])
-
-    useEffect(()=> {
-       fetchData();
-
-    },[fetchData])
-    
-
-
-
+const products = await getBestselers();
 
     return(
         

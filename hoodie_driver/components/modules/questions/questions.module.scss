@@ -1,7 +1,24 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .section{
+    position: relative;
     padding: 75px 0;
+
+
+
+    &::after{
+content: '';
+display: block;
+width: 25%;
+height: 25%;
+position: absolute;
+right: 0;
+top: 10%;
+border-radius: 100%;
+background: radial-gradient(50% 50% at 50% 50%, rgb(43, 150, 234) 0%, rgb(31, 34, 36) 100%);
+filter: blur(144px);
+z-index: -10;
+    }
     
 };
 

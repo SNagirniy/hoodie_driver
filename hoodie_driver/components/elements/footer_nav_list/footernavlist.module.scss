@@ -1,0 +1,36 @@
+@import '../../../app/globalStyles/basestyles.scss';
+.container{
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+gap: 16px;
+};
+
+.list_title{
+    font-weight: 600;
+    font-size: 16px;
+    
+    line-height: 1.5;
+    }
+
+.list{
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+
+font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+}
+
+
+
+.link{
+    display: block;
+    padding: 8px 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $primary-text-color;
+
+}

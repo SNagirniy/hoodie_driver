@@ -1,0 +1,65 @@
+.footer{
+    position: relative;
+    padding: 75px 0;
+
+    &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 35%;
+        height: 35%;
+        left: 0;
+        bottom: 0;
+        border-radius: 100%;
+background: radial-gradient(50% 50% at 50% 50%, rgb(43, 150, 234) 0%, rgb(31, 34, 36) 100%);
+filter: blur(144px);
+z-index: -10;
+    };
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        right: 0;
+        bottom: 0;
+        border-radius: 100%;
+background: radial-gradient(50% 50% at 50% 50%, rgb(43, 150, 234) 0%, rgb(31, 34, 36) 100%);
+filter: blur(144px);
+      
+    }
+};
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 35%;
+        height: 35%;
+        bottom: 0;
+        right: 10%;
+        border-radius: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(197, 111, 180) 0%, rgb(31, 34, 36) 100%);
+        filter: blur(144px);
+        z-index: -10;
+    };
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 25%;
+        height: 25%;
+        bottom: 25%;
+        right: 0;
+        border-radius: 100%;
+        background: radial-gradient(50% 50% at 50% 50%, rgb(254, 219, 81) 0%, rgb(31, 34, 36) 100%);
+        filter: blur(144px);
+        z-index: -15;
+       
+    }
+}

@@ -4,6 +4,7 @@ import MainButton from '@/components/elements/mainButton/Main_Button';
 import CustomAccordion from '@/components/elements/accodrion/CustomAccordion';
 
 const question_list = [
+    
 {
     question: 'Як зробити замовлення?',
     answer: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'
@@ -27,6 +28,7 @@ const question_list = [
 ];
 
 const Questions = ()=> {
+
 
     return (
         <section className={s.section}>

@@ -1,0 +1,61 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+column-gap: 24px;
+};
+
+.social_links{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.list{
+    display: flex;
+align-items: center;
+justify-content: space-evenly;
+flex-direction: row;
+gap: 24px;
+
+border-radius: 30px;
+padding: 12px;
+
+box-shadow: 0 8px 64px 0 rgba(224, 204, 27, 0.12), 0 4px 16px 0 rgba(224, 204, 27, 0.08);
+background: $primary-bg-color;
+};
+
+.link{
+display: flex;
+align-items: center;
+flex-direction: column;
+gap: 16px;
+
+font-weight: 700;
+font-size: 20px;
+line-height: 1.4;
+text-align: center;
+color: $primary-text-color;
+};
+
+.icon{
+    width: 40px;
+    height: 40px;
+};
+
+
+.navigation{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 40px;
+};
+
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-right: 8px;
+}

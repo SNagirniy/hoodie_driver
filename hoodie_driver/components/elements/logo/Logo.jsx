@@ -1,15 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import s from './logo.module.scss'
-import hoodie_driver from '../../../public/hoodie_driver.svg?url';
+import Hoodie_driver from '../../../public/hoodie_driver.svg';
+import clsx from "clsx";
 
 
-const Logo = ()=> {
+const Logo = ({style})=> {
     return (
         <Link className={s.logo} href='/'>
-            <Image 
-            className={s.image}
-        src={hoodie_driver}
+            <Hoodie_driver 
+            className={clsx(s.image, style)}
         alt="Hoodie driver logo image"/>
         <div className={s.text_container}>
             <p className={s.main_text}>Hoodie Driver</p>

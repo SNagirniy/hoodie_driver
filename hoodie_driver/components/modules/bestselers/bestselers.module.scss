@@ -1,34 +1,60 @@
+@import '../../../app/globalStyles/basestyles.scss';
 .section{
-    display: flex;
+display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  padding-top: 75px;
-  gap:60px;
+    padding-top: 3.75rem;
+    gap:2.5rem;
+  @include for-size(tablet){
+    padding-top: 4.7rem;
+    gap:3.75rem;
+  }
+    
+ 
 };
 
 .head{
     display: flex;
     flex-direction: column;
    text-align: center;
-    gap:16px;
+    gap:1rem;
 };
 
 .title{
 font-weight: 700;
-font-size: 48px;
+font-size: 2.25rem;
 line-height: 1.2;
+@include for-size(tablet){
+  font-size: 3rem
+}
 };
 
 .sub_title{
 font-weight: 400;
-font-size: 20px;
-line-height: 1.4;
+font-size: 1rem;
+line-height: 1.5;
+
+@include for-size(tablet){
+  font-size: 1.25rem
+}
 };
 
 .card_list{
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+@include for-size(tablet){
+
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@include for-size(desktop){
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+}
+
+
  
 }

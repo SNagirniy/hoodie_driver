@@ -1,8 +1,8 @@
 import s from './main_button.module.scss';
 import Link from 'next/link';
 
-const MainButton =({title,path, children})=>{
- return ( <Link className={s.button} href={path}>{title}{children}</Link>)
+const MainButton =({title,path, children, target ='_self'})=>{
+ return ( <Link target={target} className={s.button} href={path}>{title}{children}</Link>)
 };
 
 

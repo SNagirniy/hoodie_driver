@@ -48,7 +48,7 @@ const Slider = ({slides})=> {
             items: 1
           }
         }}
-        rewind={false}
+        rewind={true}
         rewindWithAnimation={false}
         rtl={false}
         shouldResetAutoplay

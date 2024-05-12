@@ -25,7 +25,7 @@ const Reviews = ()=>{
                         <p>Ми пишаємося, що маємо більше 200 задоволених відгуків від наших клієнтів в Інстаграм!</p>
                     </hgroup>
 
-                    <MainButton title={'200+ в Інстаграм'} path={'https://www.instagram.com/hoodie.driver/'}>
+                    <MainButton target={'_blank'} title={'200+ в Інстаграм'} path={'https://www.instagram.com/hoodie.driver/'}>
                         <InstagramIcon className={s.icon}/>
                     </MainButton>
                 </div>

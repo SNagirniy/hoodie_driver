@@ -1,5 +1,12 @@
-
+@import './../../app/globalStyles/basestyles.scss';
 .main_container{
     width: 100%;
-    padding: 0 88px;
+    padding: 0 24px;
+    @include for-size(tablet) {
+       padding: 0 36px;
+      };
+      @include for-size(desktop) {
+        padding: 0 88px;
+       };
+
 }

@@ -1,8 +1,8 @@
 .embla {
     max-width: 100%;
     margin: auto;
-    --slide-spacing: 1rem;
-    --slide-size: 33%;
+    --slide-spacing: 14px;
+    --slide-size: 23rem;
   };
   .embla__viewport {
     overflow: hidden;
@@ -22,12 +22,11 @@
   };
 
 .thumb{
-  display: flex;
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
- object-position: top;
-  object-fit: scale-down;
+
+  object-fit: cover;
   
 
   &>img{

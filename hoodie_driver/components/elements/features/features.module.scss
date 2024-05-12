@@ -1,11 +1,25 @@
+@import '../../../app/globalStyles/basestyles.scss';
 
 
 
 .list{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     backdrop-filter: blur(4px);
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include for-size(tablet){
+        grid-area: 2 / 1 / 2 / 1;
+    }
+
+    @include for-size(desktop){
+        grid-area: 2 / 1 / 3 / 3;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+        
+    }
    
 
 };
@@ -13,19 +27,30 @@
 .list_item{
 display: flex;
 align-items: center;
-justify-content: space-between;
-gap: 16px;
+flex-direction: column;
+gap: 1.5rem;
+
+@include for-size(tablet){
+    flex-direction: row;
+justify-content: flex-start;
+gap: 1rem;
+}
+
+@include for-size(desktop){
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 };
 
 
 .image{
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
 };
 
 .title{
     font-weight: 500;
-    font-size: 16px; 
+    font-size: 1rem; 
     line-height: 1.5;
 }

@@ -1,8 +1,15 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
 .embla {
     max-width: 100%;
     margin: auto;
     --slide-spacing: 14px;
-    --slide-size: 23rem;
+    --slide-size: 10rem;
+@include for-size(tablet){
+  
+  --slide-size: 23rem;
+}
+   
   };
   .embla__viewport {
     overflow: hidden;

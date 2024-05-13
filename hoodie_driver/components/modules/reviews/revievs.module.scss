@@ -1,42 +1,65 @@
-
+@import '../../../app/globalStyles/basestyles.scss';
 
 .section{
     display: flex;
     flex-direction: column;
-    padding: 112px 0;
-    gap: 80px;
+    padding: 3.5rem 0;
+    gap: 60px;
+    @include for-size(tablet){
+        padding: 7rem 0;
+        gap: 80px;
+    }
+   
 };
 
 .head_container{
 display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+gap:1.5rem;
+
+@include for-size(desktop){
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;  
+}
 };
 
 .head{
     display: flex;
     flex-direction: column;
     align-content: flex-start;
-    gap: 24px;
-    max-width: 45%;
+    gap: 1.5rem;
+
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @include for-size(desktop){
+        max-width: 45%;
+        font-size: 18px;
+    }
+
+
 
     &>h2{
     font-weight: 700;
-    font-size: 56px;
+    font-size: 2.25rem;
     line-height: 1.2;
+    @include for-size(tablet){
+        font-size: 2.5rem
+    };
+    @include for-size(desktop){
+        font-size: 3.5rem
+    }
     };
 
-    &>p{
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 1.5;
-    }
+    
 };
 
 .icon{
-    width: 24px;
-    height: 24px;
-    margin-left: 12px;
+    width: 1.5rem;
+    height: 1.5rem;
     fill:white;
 }

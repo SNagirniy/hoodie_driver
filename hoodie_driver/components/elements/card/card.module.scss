@@ -127,13 +127,13 @@ text-align: center;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
     border: 1px solid $accent-text-color;
     border-radius: 40px;
-    padding: 8px 20px;
+    padding: 10px 25px;
 
 font-weight: 600;
-font-size: 1rem;
+font-size: 1.25rem;
 line-height: 1.5;
 color:$secondary-text-color;
     background: $bglightblue;
@@ -150,10 +150,23 @@ color:$secondary-text-color;
         fill: $primary-text-color;
     }
     }
+
+    @include for-size(desktop){
+        gap: 12px;
+        padding: 8px 20px;
+        font-size: 1rem;
+    };
 };
 
 .btn_icon{
-    width: 24px;
-    height: 24px;
+    width: 2rem;
+    height: 2rem;
     transition: all $cubic;
+
+    @include for-size(desktop){
+    width: 1.5rem;
+    height: 1.5rem;
+    }
+   
+   
 };

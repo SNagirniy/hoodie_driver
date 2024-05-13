@@ -1,20 +1,43 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
 .container{
-    padding: 75px 0;
+    padding: 60px 0;
+    @include for-size(tablet){
+        padding: 75px 0;
+    }
+  
 }
 .title{
-    max-width: 70%;
 font-weight: 700;
-font-size: 40px;
+font-size: 2rem;
 margin: 0 auto;
-margin-bottom: 60px;
+margin-bottom: 40px;
 line-height: 1.2;
 text-align: center;
+
+@include for-size(tablet){
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+};
+@include for-size(desktop){
+    max-width: 70%;
+}
 };
 
 .feature_list{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    column-gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include for-size(tablet){
+        gap: 3rem;
+    }
+
+    @include for-size(desktop){
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        column-gap: 1.5rem;
+    }
+    
 };
 
 .item{
@@ -24,25 +47,25 @@ text-align: center;
 .item_title{
     display: flex;
     flex-direction: column;
-    gap:24px;
+    gap:1.5rem;
     align-items: center;
   
 
 font-weight: 700;
-font-size: 24px;
+font-size: 1.5rem;
 
 line-height: 1.4;
 text-align: center;
 
 &>span{
 font-weight: 400;
-font-size: 16px;
+font-size: 1rem;
 line-height: 1.5;
 }
 };
 
 .icon{
     display: block;
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
 }

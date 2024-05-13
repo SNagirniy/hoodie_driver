@@ -3,7 +3,11 @@
 
 .section{
     position: relative;
-    padding: 75px 0;
+    padding: 60px 0;
+
+    @include for-size(tablet){
+        padding: 75px 0;
+    }
 
 
     &::before{
@@ -39,31 +43,56 @@ z-index: -10;
 }
 ;
 
-.container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 80px;
-    align-items: center
-};
-
 .article{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    @include for-size(tablet){
+        gap: 3.75rem
+    }
+
+    @include for-size(desktop){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 80px;
+    }
+
+
+};
+
+.container{
+    display: flex;
+    flex-direction: column;
     gap: 24px;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+
+    @include for-size(desktop){
+        align-items: flex-start;
+        text-align: unset
+    }
 };
 
 .title{
 font-weight: 700;
-font-size: 48px;
+font-size: 2rem;
 line-height: 1.2;
+
+@include for-size(tablet){
+    font-size: 3rem
+}
 
 };
 
 .description{
 font-weight: 400;
-font-size: 18px;
+font-size: 1rem;
 line-height: 1.5;
+
+@include for-size(tablet){
+    font-size: 1.25rem
+}
 
 };
 
@@ -71,16 +100,16 @@ line-height: 1.5;
 .icon{
     width: 24px;
     height: 24px;
-    margin-left: 12px;
     fill: $primary-text-color;
 };
 
 
 .thumb{
-    padding: 39px 32px;
     width: 100%;
+    max-width: 456px;
     overflow: hidden;
     object-fit: cover;
+    margin: auto;
 };
 
 .image{

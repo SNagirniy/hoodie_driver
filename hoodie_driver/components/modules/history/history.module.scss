@@ -1,17 +1,25 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .container{
-    padding: 75px 0;
+padding: 60px 0;
+    @include for-size(tablet){
+        padding: 75px 0;
+    }
+   
 };
 
 .article{
-    display: grid;
-    grid-template-columns: 50% 50%;
+   
     align-items: center;
     border-radius: 30px;
     box-shadow: 0 8px 64px 0 rgba(224, 204, 27, 0.12), 0 4px 16px 0 rgba(224, 204, 27, 0.08);
     background: $primary-bg-color;
     overflow: hidden;
+
+    @include for-size(desktop){
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
 };
 
 
@@ -19,26 +27,39 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 1.25rem 1.25rem 2.5rem 1.25rem;
     margin-right: 12px;
     gap: 24px;
-    padding: 48px;
+
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+   
+
+    @include for-size(tablet){
+        padding: 3rem;
+    }
 
 };
 
 .title{
 font-weight: 700;
-font-size: 40px;
-
+font-size: 2rem;
 line-height: 1.2;
+
+@include for-size(tablet){
+    font-size: 2.5rem
+}
 };
 
 .description{
-    display: flex;
-    flex-direction: column;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    gap: 24px;
+    display: block;
+    @include for-size(desktop){
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
 
     &>span{
         display: block;

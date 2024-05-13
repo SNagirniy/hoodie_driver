@@ -4,9 +4,16 @@
 .btn_container{
     grid-area: 2 / 2 / 3 / 3;
     display: flex;
-    padding-right: 88px;
+    padding-right: 24px;
     justify-content: flex-end;
     gap: 15px;
+
+    @include for-size(tablet){
+        padding-right: 36px;
+    }
+    @include for-size(desktop){
+        padding-right: 88px;
+    }
 }
 .button{
     display: block;

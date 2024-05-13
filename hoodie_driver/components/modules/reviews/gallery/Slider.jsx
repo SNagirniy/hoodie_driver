@@ -47,16 +47,16 @@ const Slider = ({slides})=> {
     },
     mobile: {
       breakpoint: {
-        max: 464,
+        max: 767,
         min: 0
       },
-      items: 1,
-      partialVisibilityGutter: 30
+      items: 2,
+      partialVisibilityGutter: 10
     },
     tablet: {
       breakpoint: {
         max: 1279,
-        min: 464
+        min: 768
       },
       items: 2,
       partialVisibilityGutter: 10

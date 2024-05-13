@@ -43,7 +43,7 @@ return (
 
             <div className={s.btn_group} >
                
-            <span> <Shopping/> 470 грн</span>
+            <span> <Shopping className={s.icon}/> 470 грн</span>
            
             <MainButton path={'./store'} title={'Замовити персональний'}/> 
             </div>

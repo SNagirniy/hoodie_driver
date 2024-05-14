@@ -1,0 +1,20 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.btn{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+};
+
+.icon{
+    width: 40px;
+    height: 28px;
+    transition: fill $cubic;
+
+    fill: $accent-text-color;
+    &:hover{
+        fill: $secondary-text-color;
+    }
+}

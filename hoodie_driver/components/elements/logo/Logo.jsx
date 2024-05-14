@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import s from './logo.module.scss'
 import Hoodie_driver from '../../../public/hoodie_driver.svg';
 import clsx from "clsx";

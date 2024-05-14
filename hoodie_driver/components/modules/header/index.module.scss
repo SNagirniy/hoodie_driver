@@ -1,19 +1,34 @@
 @import '../../../app/globalStyles/basestyles.scss';
+
 .header{
     display: flex;
-    margin-top:24px;
+    position: relative;
+    margin-top:1rem;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 12px;
-    border-radius: 16px;
+    border-radius: 0.5rem;
     box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.14);
     background: $bglightblue;
-    z-index: 100;
+
+    @include for-size(tablet){
+        border-radius: 1rem;
+        margin-top:1.5rem;
+    };
+
 };
 
 .nav_box{
     display: flex;
     flex-direction: row;
-    gap: 48px;
+    gap: 8px;
+    @include for-size(tablet){
+        gap: 24px;
+    };
+
+    @include for-size(desktop){
+        gap: 48px;
+    }
+   
 }

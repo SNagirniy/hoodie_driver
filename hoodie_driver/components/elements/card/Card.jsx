@@ -2,7 +2,7 @@
 
 import s from './card.module.scss';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import Shopping from '../../../public/shopping.svg';
 import default_card from '../../../public/default_card.png';
 

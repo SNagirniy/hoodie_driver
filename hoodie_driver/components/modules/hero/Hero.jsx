@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import MainContainer from "@/components/layouts/MainCintainer";
 import Features from "../../elements/features/Features";
@@ -10,17 +10,19 @@ import clsx from "clsx";
 import s from './hero.module.scss'
 
 const Hero =()=> {
+    const t = useTranslations('Hero');
+
     return (
         <section className={s.hero_section}>
             <MainContainer>
             <div className={s.hero_container}>
                 <div className={s.head_container}>
                     <hgroup>
-                        <h1 className={s.title}>Худі на КПП - найкращий подарунок!</h1>
-                        <p className={s.description}><strong >Худі-бро</strong> у твоє авто! Такого ти точно ще не бачив, бо ми зробили це перші. <strong >Готові колекції</strong> або кастом. <strong >Даруємо
-                    емоції</strong> та стиль</p>
+                        <h1 className={s.title}>{t('title')}</h1>
+                        <p className={s.description}>{t.rich("descr", {
+                         strong: (chunk) => <strong>{chunk}</strong>})}</p>
                     </hgroup>
-                    <Button title={'Швидке замовлення'} />
+                    <Button title={t('btn_title')} />
 
                 </div>
                 <div className={s.image_container}>

@@ -45,7 +45,7 @@ return (
                
             <span> <Shopping className={s.icon}/> 470 грн</span>
            
-            <MainButton path={'./store'} title={'Замовити персональний'}/> 
+            <MainButton path={'/store'} title={'Замовити персональний'}/> 
             </div>
         </div>
     </div>

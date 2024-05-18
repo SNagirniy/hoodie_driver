@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from '@/navigation';
 import s from './navigation.module.scss';
 import clsx from "clsx";
 

@@ -1,6 +1,6 @@
 'use client';
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link } from "@/navigation";
+import { usePathname } from "@/navigation";
 import { v4 } from "uuid";
 import Image from "next/image";
 import clsx from "clsx";
@@ -12,6 +12,7 @@ const links = [{name: 'Магазин', href: '/store'}, {name:'Кастом', h
 
 const Navigation =({onCloseMenu})=> {
 const pathname = usePathname();
+
 
     return (
         <nav className={s.nav_container}>

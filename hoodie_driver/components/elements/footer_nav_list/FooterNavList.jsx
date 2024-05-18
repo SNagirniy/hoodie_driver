@@ -1,5 +1,5 @@
 import s from './footernavlist.module.scss';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { v4 } from 'uuid';
 
 const FooterNavList = ({links, title})=> {

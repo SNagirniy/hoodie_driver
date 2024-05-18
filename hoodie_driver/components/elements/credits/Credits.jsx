@@ -1,5 +1,5 @@
 import s from './credits.module.scss';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 
 const Credits= ()=> {
 

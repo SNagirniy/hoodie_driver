@@ -32,3 +32,36 @@
     }
    
 }
+
+
+
+
+
+.list{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+gap: 2rem;
+padding: 12px;
+
+
+
+
+};
+
+.link{
+display: flex;
+align-items: center;
+flex-direction: column;
+gap: 0.5rem;
+};
+
+.icon{
+    fill: $accent-text-color;
+    width: 2rem;
+    height: 2rem;
+    @include for-size(tablet){
+    width: 3rem;
+    height: 3rem;}
+    
+};

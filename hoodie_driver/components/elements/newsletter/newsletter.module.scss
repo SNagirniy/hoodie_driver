@@ -2,20 +2,23 @@
 
 .newsletter{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
     gap: 24px;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
+    @include for-size(desktop){
+        align-items: stretch;
+        text-align: left;
+        justify-content: start;
+    }
 
 };
 
-.head{
-    max-width: 50%;
-}
+
 
 .title{
     font-weight: 600;
@@ -24,15 +27,17 @@
 
 .form{
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 8px;
+    gap: 1rem;
 
-border: 1px solid $accent-text-color;
-border-radius: 48px;
-padding: 0 0 0 0;
-background: rgba(43, 150, 234, 0.1);
+    @include for-size(tablet){
+    flex-direction: row;
+    border: 1px solid $accent-text-color;
+    border-radius: 48px;
+    padding: 0 0 0 0;
+    background: rgba(43, 150, 234, 0.1);
+    }
 };
 
 .email_input{
@@ -47,27 +52,45 @@ background: rgba(43, 150, 234, 0.1);
 font-size: 16px;
 line-height: 1.5;
 color: $primary-text-color;
+padding: 12px;
+
+ @include for-size(tablet-only){
+border: 1px solid $accent-text-color;
+border-radius: 48px;
+background: rgba(43, 150, 234, 0.1);
+ }
+
+
+
 };
 
 
 .form_container{
-    display: flex;
-align-items: center;
-justify-content: flex-start;
+display: flex;
+justify-content: center;
 flex-direction: column;
+align-items: center;
 gap: 16px;
+@include for-size(desktop){
+    align-items: normal;
+}
 };
 
 
 
 .label{
+    display: flex;
     font-weight: 400;
     font-size: 12px;
+ 
 };
 
 .base{
     display: flex;
     gap:12px;
+    @include for-size(desktop){
+        justify-content: flex-end;
+    }
 };
 
 .icon{

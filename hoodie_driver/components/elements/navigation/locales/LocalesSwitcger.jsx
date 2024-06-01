@@ -8,10 +8,8 @@ import {useParams} from 'next/navigation';
 import {useRouter,usePathname} from '@/navigation';
 import { useState,useEffect,useRef,useTransition } from 'react';
 
-import Ukr from '../../../../public/ukr.svg';
-import Rus from '../../../../public/rus.svg';
 
-const Flags ={ uk: <Ukr className={s.icon}/>, ru: <Rus className={s.icon}/>}
+
 
 const LocalesSwitcher = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +58,7 @@ const LocalesSwitcher = () => {
     return (
       <div onClick={toggleDropdown} className={s.container}>
         <div ref={rootRef} className={s.item}>
-          {Flags[locale]}
+          <p className={s.loc_title}>{locale?.toLocaleUpperCase()}</p>
         </div>
         {(
           <ul className={clsx(s.dropdown, {[s.open]: isOpen})}>
@@ -71,7 +69,7 @@ const LocalesSwitcher = () => {
                 className={s.item}
                 onClick={handleChangeLang}
               >
-                {Flags[loc]}
+                <p className={s.loc_title}>{loc?.toLocaleUpperCase()}</p>
               </li>
             ))}
           </ul>

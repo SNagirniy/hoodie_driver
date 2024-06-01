@@ -145,4 +145,10 @@ gap: 2rem;
     display: block;
     height: 100%;
   width: 100%;
+};
+
+.btn_container{
+position: absolute;
+bottom: 0;
+z-index: 100;
 }

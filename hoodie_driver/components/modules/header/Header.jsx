@@ -4,14 +4,19 @@ import Navigation from "../../elements/navigation/Navigation";
 import BtnSet from "../../elements/navigation/BtnSet";
 import MainContainer from "@/components/layouts/MainCintainer";
 import BurgerBtn from "@/components/elements/burger_btn/BurgerBtn";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import useWindowSize from "@/hooks/useWindowSize";
 import MobileMenu from "../mobile_menu/MobileMenu";
+import Newsletter from "@/components/elements/newsletter/Newsletter";
+import Credits from "@/components/elements/credits/Credits";
+import Social from "./Social";
 import s from './index.module.scss';
+
 
 import { useState, useEffect } from "react";
 
+
 const Header =()=> {
-    const isMedia1280 = useMediaQuery(1279);
+    const {width}= useWindowSize();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToggleMenu = ()=> {
@@ -23,8 +28,13 @@ const Header =()=> {
     };
 
     useEffect(()=> {
-        if(!isMedia1280) { setIsOpen(false)}
-    }, [isMedia1280]);
+        if(width >=1280) { setIsOpen(false)}
+    }, [width]);
+
+    const device ={
+        desktop: 1280,
+        tablet: 768,
+    }
    
 
     return (
@@ -34,14 +44,18 @@ const Header =()=> {
                     <Logo/>
             
                     <div className={s.nav_box}>
-                       {!isMedia1280 && (<Navigation/>)} 
+                       {width >= device.desktop && (<Navigation/>)} 
                         <BtnSet/>
-                        {isMedia1280 && (<BurgerBtn onToggleMenu={handleToggleMenu}/>)} 
+                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu}/>)} 
                         
                     </div>
-                    {isMedia1280 && 
+                    {width < device.desktop && 
                     <MobileMenu isOpen={isOpen}>
                         <Navigation onCloseMenu={onCloseMenu}/>
+                        <Social/>
+                        {width >= device.tablet &&  <Newsletter/>}
+                        <Credits/>
+                        
                     </MobileMenu>}
                 
                 </div>

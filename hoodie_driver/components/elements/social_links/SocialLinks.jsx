@@ -1,6 +1,4 @@
-import s from './footerlinks.module.scss';
-import Logo from '../logo/Logo';
-import FooterNavList from '../footer_nav_list/FooterNavList';
+import s from './social_links.module.scss'
 import { v4 } from 'uuid';
 import Instagram from '../../../public/Instagram.svg';
 import Viber from '../../../public/Viber.svg';
@@ -29,44 +27,10 @@ const sociallinks = [
 ];
 
 
-const catalogue = [
-    {title: 'Усі',
-    url: '/store'
-    },
-    {title: 'Ароматизатори',
-    url: '/store'
-    },
-    {title: 'Брелоки',
-    url: '/store'
-    },
-    {title: 'Підвіски',
-    url: '/store'
-    },
-    {title: 'Набори',
-    url: '/store'
-    },
-    {title: 'Худі',
-    url: '/store'
-    },
-];
-
-const info =[
-    {title: 'Про нас',
-    url: '/about'
-    },
-    {title: 'Блог',
-    url: '/blog'
-    },
-    {title: 'Контакти',
-    url: '/contacts'
-    },
-]
-
-const Footerlinks =()=> {
+const SocialLinks =()=> {
     return (
-        <div className={s.container}>
-            <div className={s.social_links} >
-            <Logo style={s.logo}/>
+       
+            
             <ul className={s.list}>
             {sociallinks.map(({icon, alt, url})=> {return (
                 <li key={v4()}>
@@ -77,14 +41,10 @@ const Footerlinks =()=> {
                 </li>
             )})}
             </ul>
-            </div>
-            <nav className={s.navigation}>
-                <FooterNavList links={catalogue} title={'Наш каталог'}/>
-                <FooterNavList links={info} title={'Інформація'}/>
-            </nav>
+          
+          
             
-        </div>
     )
 };
 
-export default Footerlinks;
+export default SocialLinks;

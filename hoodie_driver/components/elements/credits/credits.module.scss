@@ -3,17 +3,21 @@
 
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    width: 100%;
     padding-top: 2rem;
     gap: 24px;
-
+    text-align: center;
     font-weight: 400;
-font-size: 14px;
-line-height: 1.5;
-color: $primary-text-color;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $primary-text-color;
 
-border-top: 1px solid $accent-text-color;
+    @include for-size(tablet){
+       flex-direction: row;
+    }
+
 };
 
 

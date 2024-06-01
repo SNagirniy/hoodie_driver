@@ -2,15 +2,18 @@
 
 .overlay{
     display: flex;
+    flex-direction: column;
     position: absolute;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
     top: calc(100% + 0.5rem);
     right: 0;
     flex-direction: column;
     width: 100%;
-    max-height: calc(100vh - (100% + 0.5rem));
-    padding: 1.25rem 0;
+    padding: 1.25rem;
     background-color: $bglightblue;
-    border-radius: 16px;
+    border-radius: 1rem;
     box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.14);
     z-index: 100;
     opacity: 1;
@@ -28,8 +31,7 @@
 
     @include for-size(tablet) {
         top: calc(100% + 1rem);
-        max-height: calc(100vh - (100% + 1rem));
-        padding: 3rem 0;
+        padding: 3rem 6vw;
     }
 
 };

@@ -4,15 +4,15 @@ import Hoodie_driver from '../../../public/hoodie_driver.svg';
 import clsx from "clsx";
 
 
-const Logo = ({style})=> {
+const Logo = ({is_footer})=> {
     return (
-        <Link className={s.logo} href='/'>
+        <Link className={clsx(s.logo,{[s.footer] : is_footer})} href='/'>
             <Hoodie_driver 
-            className={clsx(s.image, style)}
+            className={clsx(s.image, {[s.footer] : is_footer})}
         alt="Hoodie driver logo image"/>
         <div className={s.text_container}>
-            <p className={s.main_text}>Hoodie Driver</p>
-            <span className={s.sec_text}>Перші в Україні</span>
+            <p className={clsx(s.main_text,{[s.footer] : is_footer})}>Hoodie Driver</p>
+            <span className={clsx(s.sec_text,{[s.footer] : is_footer})}>Перші в Україні</span>
         </div>
         </Link>
     )

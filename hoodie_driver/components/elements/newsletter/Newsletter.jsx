@@ -40,7 +40,10 @@ const Newsletter = ()=>{
                 <form  onSubmit={handleSubmit} className={s.form}>
                     <input
                     className={s.email_input}
-                     placeholder='Твій email' onChange={handleChange} type="email"  value={email}/>
+                     placeholder='Твій email' onChange={handleChange} 
+                     name='email'
+                     autoComplete='false'
+                     type="email"  value={email}/>
 
                     <Button 
                     disabled={!isChecked}
@@ -55,7 +58,8 @@ const Newsletter = ()=>{
                     icon: s.icon,
                    }
                 }
-                 isSelected={isChecked} onValueChange={onHandleCheck}>
+                 isSelected={isChecked} onValueChange={onHandleCheck}
+                 name='privacy'>
                     Так, я погоджуюся з Політикою приватності
                 </Checkbox>
                
@@ -67,12 +71,3 @@ const Newsletter = ()=>{
 
 
 export default Newsletter;
-
-
-
-/* <div className={s.check_box_cont}>
-<input className={s.checkbox} onChange={onHandleCheck} checked={isChecked} name='privacy' id='check' type="checkbox" />
-<label  className={s.label}htmlFor="check">
-Так, я погоджуюся з Політикою приватності
-</label>
-</div>*/

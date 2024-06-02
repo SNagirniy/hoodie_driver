@@ -22,6 +22,23 @@ export const getBestselers = async ()=> {
    
 };
 
+export const getCategories = async()=> {
+const ref = collection(db, "categories");
+const q = query(ref);
+try {
+    let categories = []
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        const item = { id: doc.id ,title: doc.data().title}
+        categories.push(item)
+    });
+ return categories;
+} catch (e){
+    console.log(e)  
+}
+
+}
+
 
 
 /*

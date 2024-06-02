@@ -46,7 +46,7 @@ const Header =()=> {
                     <div className={s.nav_box}>
                        {width >= device.desktop && (<Navigation/>)} 
                         <BtnSet/>
-                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu}/>)} 
+                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isOpen}/>)} 
                         
                     </div>
                     {width < device.desktop && 

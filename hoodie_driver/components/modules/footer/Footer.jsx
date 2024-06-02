@@ -5,28 +5,10 @@ import Credits from "@/components/elements/credits/Credits";
 import Logo from "@/components/elements/logo/Logo";
 import FooterNavList from "@/components/elements/footer_nav_list/FooterNavList";
 import s from './footer.module.scss';
+import { getLocale } from "next-intl/server";
 
+import { getCategories } from "@/app/lib/firebase/productapi";
 
-const catalogue = [
-    {title: 'Усі',
-    url: '/store'
-    },
-    {title: 'Ароматизатори',
-    url: '/store'
-    },
-    {title: 'Брелоки',
-    url: '/store'
-    },
-    {title: 'Підвіски',
-    url: '/store'
-    },
-    {title: 'Набори',
-    url: '/store'
-    },
-    {title: 'Худі',
-    url: '/store'
-    },
-];
 
 const info =[
     {title: 'Про нас',
@@ -40,7 +22,16 @@ const info =[
     },
 ]
 
-const Footer =()=> {
+const Footer = async ()=> {
+
+    const locale = await getLocale();
+    const data = await getCategories();
+
+    const categories = data?.map(({id, title})=> {return { url: '/store', title: title[locale]}});
+    categories.unshift({title: 'Усі',
+    url: '/store'
+    })
+
 
     return (
         <footer className={s.footer}>
@@ -50,7 +41,7 @@ const Footer =()=> {
                     <SocialLinks/>
                     <Newsletter/>
                     <div className={s.nav_list}>
-                        <FooterNavList links={catalogue} title={'Наш каталог'}/>
+                        <FooterNavList  links={categories} title={'Наш каталог'}/>
                         <FooterNavList links={info} title={'Інформація'}/>
                     </div>
                 </div>

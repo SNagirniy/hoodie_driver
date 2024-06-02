@@ -14,8 +14,7 @@
     fill: $secondary-text-color;
     transition: fill $cubic;
 
-    
-    &:hover{
+    &.active{
         fill: $primary-text-color;
     }
 }

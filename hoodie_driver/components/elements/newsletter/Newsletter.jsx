@@ -43,7 +43,10 @@ const Newsletter = ()=>{
                      placeholder='Твій email' onChange={handleChange} 
                      name='email'
                      autoComplete='false'
-                     type="email"  value={email}/>
+                     type="email"  value={email}
+                     pattern='[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}'
+                     />
+                     
 
                     <Button 
                     disabled={!isChecked}

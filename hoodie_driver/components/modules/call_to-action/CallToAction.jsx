@@ -11,7 +11,7 @@ const CallToAction = ()=> {
         <div className={s.container}>
             <h2 className={s.title}>Підпишись на нас в Інстаграм</h2>
             <p className={s.description}>Відповідаємо  на запитання майже 24/7, консультуємо  та допомагаємо з дизайнами.  А  також публікуємо акції, розіграші та  новинки</p>
-            <MainButton target={'_blank'} title={'Долучайся до нас в Instagram '} path={'https://www.instagram.com/hoodie.driver/'}>
+            <MainButton target={'_blank'} title={'Долучайся до нас'} path={'https://www.instagram.com/hoodie.driver/'}>
                 <Instagram className={s.icon}/>
             </MainButton>
         </div>

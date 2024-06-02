@@ -24,6 +24,7 @@ const messages = await getMessages();
         <NextIntlClientProvider messages={messages}>
           <PageLayout>
             {children}
+            <div id='modal-root'></div>
           </PageLayout>
         </NextIntlClientProvider>
       </body>

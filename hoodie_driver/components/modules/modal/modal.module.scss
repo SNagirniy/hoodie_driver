@@ -12,6 +12,11 @@
     backdrop-filter: blur(8px);
     background: rgba(32, 46, 56, 0.3);
     z-index: 1000;
+    @include for-size(desktop){
+        backdrop-filter: blur(0);
+        background: transparent;
+        align-items:self-start;
+    }
   }
   
   .modal_content {
@@ -22,34 +27,18 @@
     background-color: $primary-text-color;
     padding: 40px 20px;
     border-radius: 2rem;
-    max-width: 90%;}
-    
-  .modal_btn {
-      position: absolute;
-      top:1rem;
-      right:1rem;
-      padding: 1rem;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 100;
-      transition: scale 250ms linear;
-     
-  }
-  
-  .modal_btn:hover{
-          scale: 1.1;
-      }
-  
-  .hide_modal_btn_icon{
-  
-      width:15px;
-      height: 15px;
-      fill: rgb(255, 253, 253);
-      filter: drop-shadow(2px 2px 1px #1e1f1e);
-     
-  
-  }
+    max-width: 90%;
+    @include for-size(tablet){
+        padding: 40px;
+        max-width: 100%;
+    }
+
+    @include for-size(desktop){
+        border-radius: 32px 32px 32px 4px;
+        bottom: -6rem;
+        right: 4rem;
+    }
+}
   
   
   

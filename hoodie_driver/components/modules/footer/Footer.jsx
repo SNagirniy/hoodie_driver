@@ -1,3 +1,4 @@
+
 import MainContainer from "@/components/layouts/MainCintainer";
 import Newsletter from "@/components/elements/newsletter/Newsletter";
 import SocialLinks from "@/components/elements/social_links/SocialLinks";
@@ -6,7 +7,6 @@ import Logo from "@/components/elements/logo/Logo";
 import FooterNavList from "@/components/elements/footer_nav_list/FooterNavList";
 import s from './footer.module.scss';
 import { getLocale } from "next-intl/server";
-
 import { getCategories } from "@/app/lib/firebase/productapi";
 
 

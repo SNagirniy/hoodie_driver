@@ -3,16 +3,18 @@ import s from './bestselers.module.scss';
 import Card from '@/components/elements/card/Card';
 import MainButton from '@/components/elements/mainButton/Main_Button';
 import MainContainer from '@/components/layouts/MainCintainer';
-
-import { getBestselers } from '@/app/lib/firebase/productapi';
+import { getBestselers, getColors } from '@/app/lib/firebase/productapi';
 
 
 
 
 
 const Bestselers = async()=>{
-
+const color_map = await getColors()
 const products = await getBestselers();
+
+
+
 
     return(
         
@@ -23,7 +25,7 @@ const products = await getBestselers();
             <p className={s.sub_title}>Худі на КПП та аксесуари, які ви купуєте найчастіше</p>
             </hgroup>
             <ul className={s.card_list}>
-                {products?.map(({id, title, price, available_colors})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors}/></li>})}
+                {products?.map(({id, title, price, available_colors})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors} color_map={color_map}/></li>})}
             </ul>
             <MainButton path={'/store'} title={'Хочу побачити всі'}/>
             </div>

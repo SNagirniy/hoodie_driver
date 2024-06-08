@@ -35,9 +35,22 @@ try {
  return categories;
 } catch (e){
     console.log(e)  
-}
+}};
 
-}
+
+export const getColors = async()=>{
+    const ref = collection(db, "color_map");
+    const q = query(ref);
+    let colors={}
+    try {
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) =>{ colors = {...doc.data().colors} })
+      return colors;
+     
+    } catch (e){
+        console.log(e)  
+    }};
+
 
 
 

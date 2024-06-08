@@ -9,7 +9,7 @@ import default_card from '../../../public/default_card.png';
 const cardData={
     image: default_card,
 }
-const Card = ({title, price, available_colors})=> {
+const Card = ({title, price, available_colors, color_map})=> {
     const {image} = cardData;
 
     const renderColors =(arr)=> {
@@ -36,7 +36,7 @@ const Card = ({title, price, available_colors})=> {
                 {available_colors?.length !== 0 &&
                     <ul className={s.colors}>
                        { 
-                       colorMap.map((color) => {return(<li key={color} className={s.color} style={{background:color,}}></li>)})}
+                       colorMap.map((color) => {return(<li key={color} className={s.color} style={{background:color_map[color].value,}}></li>)})}
                     </ul>}
                     {remainingCount &&< span>{remainingCount}+</span>}
                 

@@ -3,7 +3,6 @@ import s from './modal_form.module.scss';
 import Button from '@/components/elements/mainButton/Button';
 import Check from '../../../public/check_icon.svg';
 import { useState } from 'react';
-import { sendMessage } from '@/app/lib/telegram/telegramAPI';
 
 
 const chanels = {Inst: 'instagram',
@@ -16,15 +15,26 @@ const ModalForm = ({onClose})=> {
     const [phone, setPhone] = useState('+380');
     const [chanell, setChanel] = useState(chanels.Inst);
 
-    const onSubmit = async (e)=>{
+    const onSubmit = async(e)=>{
         e.preventDefault();
 
         const data = {phone: phone, chanell: chanell};
-        const res = await sendMessage(data);
-        if(res?.ok) {
-            resetFields();
-            onClose()}
-        
+            const res = await fetch('/lib/sendMessage', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              });
+
+        const result = await res.json();
+    if (res.ok) {
+        console.log(result.message)
+        resetFields()
+      onClose()
+    } else {
+     console.log(result.message);
+    }
     }
 
     const handleChange=(e)=>{

@@ -1,16 +1,11 @@
 
 
 import s from './card.module.scss';
-import Image from 'next/image';
 import { Link } from '@/navigation';
 import Shopping from '../../../public/shopping.svg';
-import default_card from '../../../public/default_card.png';
 
-const cardData={
-    image: default_card,
-}
-const Card = ({title, price, available_colors, color_map})=> {
-    const {image} = cardData;
+
+const Card = ({title, price, available_colors, color_map, url})=> {
 
     const renderColors =(arr)=> {
         const maxEl =3;
@@ -29,7 +24,7 @@ const Card = ({title, price, available_colors, color_map})=> {
         
                 <Link  className={s.card_link} href={'/product'}>
                     <div className={s.thumb}> 
-                        <Image className={s.image} src={image} alt={title}/>
+                        <img className={s.image} src={url} alt={title}/>
                     </div>
             <div className={s.info}>
                 <div className={s.colors_box}>

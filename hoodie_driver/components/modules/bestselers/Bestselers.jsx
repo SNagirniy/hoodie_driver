@@ -25,7 +25,7 @@ const products = await getBestselers();
             <p className={s.sub_title}>Худі на КПП та аксесуари, які ви купуєте найчастіше</p>
             </hgroup>
             <ul className={s.card_list}>
-                {products?.map(({id, title, price, available_colors})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors} color_map={color_map}/></li>})}
+                {products?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
             </ul>
             <MainButton path={'/store'} title={'Хочу побачити всі'}/>
             </div>

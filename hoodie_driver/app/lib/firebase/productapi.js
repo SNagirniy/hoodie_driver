@@ -1,5 +1,6 @@
 import { db } from "./firebase";
 import { collection, getDocs, addDoc , query, orderBy, limit} from "firebase/firestore";
+import getImageRef from "./imageapi";
 
 
 export const getBestselers = async ()=> {
@@ -7,6 +8,7 @@ export const getBestselers = async ()=> {
     const ref = collection(db, "categories", "hoodies", "hoodie");
     const q = query(ref, orderBy("raiting"), limit(8));
     try {
+     
          let products =[];
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -14,7 +16,7 @@ export const getBestselers = async ()=> {
     ...doc.data()};
     products.push(product)
     });
-
+    await getImageRef()
     return products
     } catch (e) {
         console.log(e)

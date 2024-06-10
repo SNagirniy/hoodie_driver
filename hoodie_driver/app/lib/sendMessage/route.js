@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import sendEmail from '../emailservice/emailservice';
+
 
 export async function POST(req) {
   const { phone, chanell } = await req.json();
@@ -14,7 +16,8 @@ const telegramMessage =
 <b>Вдалих продажів!</b>`;
 
   try {
-    const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+
+   const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,12 +29,17 @@ const telegramMessage =
       }),
     });
 
-    const data = await response.json();
+
     if (response.ok) {
       return NextResponse.json({ok: response.ok, message: 'Message sent successfully' }, { status: 200 });
     } else {
-      console.error('Telegram API error:', data);
-      return NextResponse.json({ message: data.description }, { status: response.status });
+      const result =  await sendEmail(telegramMessage);
+
+      if(result.accepted[0]){ 
+        return NextResponse.json({ok: true, message: 'Message sent successfully' }, { status: 200 });} else{
+
+          return NextResponse.json({ message: result.response}, { status: result.responseCode });
+        }
     }
   } catch (error) {
     console.error('Fetch error:', error);

@@ -1,19 +1,16 @@
 import { NextResponse } from 'next/server';
 import sendEmail from '../emailservice/emailservice';
+import createMessage from '@/utils/createMessage';
 
 
 export async function POST(req) {
-  const { phone, chanell } = await req.json();
+  const data = await req.json();
 
 const telegramToken = '7078854432:AAFgk6WocoU7oSXuKWdxnHUFod4oCZeR7f8';
 const telegramChatId= 1088271930;
 
-const telegramMessage =
-`<b>Швидке замовлення!!!</b>
-Звяжіться з клієнтом.
-Номер телефону: <b><i>${phone}</i>
-</b>Бажаний спосіб з'язку: <b><i>${chanell}</i></b>.
-<b>Вдалих продажів!</b>`;
+const message = createMessage(data)
+
 
   try {
 
@@ -24,7 +21,7 @@ const telegramMessage =
       },
       body: JSON.stringify({
         chat_id: telegramChatId,
-        text: telegramMessage,
+        text: message,
         parse_mode: 'HTML'
       }),
     });
@@ -33,7 +30,7 @@ const telegramMessage =
     if (response.ok) {
       return NextResponse.json({ok: response.ok, message: 'Message sent successfully' }, { status: 200 });
     } else {
-      const result =  await sendEmail(telegramMessage);
+      const result =  await sendEmail(message);
 
       if(result.accepted[0]){ 
         return NextResponse.json({ok: true, message: 'Message sent successfully' }, { status: 200 });} else{

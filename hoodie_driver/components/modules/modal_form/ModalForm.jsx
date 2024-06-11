@@ -18,7 +18,7 @@ const ModalForm = ({onClose})=> {
     const onSubmit = async(e)=>{
         e.preventDefault();
 
-        const data = {phone: phone, chanell: chanell};
+        const data = {type: 'fast_order',msg:{ phone: phone, chanell: chanell}};
             const res = await fetch('/lib/sendMessage', {
                 method: 'POST',
                 headers: {

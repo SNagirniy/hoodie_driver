@@ -1,11 +1,8 @@
-import Link from "next/link";
+import ContactsPage from "@/components/templates/ContactsPage";
 
 export default async function Contacts() {
 
     return (
-       <><h1>Contacts</h1>
-        <Link href={'/'}>Home</Link>
-        </> 
-    
+       <ContactsPage/>
     );
   }

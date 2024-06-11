@@ -1,0 +1,77 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+
+.container{
+    padding: 60px 0;
+        @include for-size(tablet){
+            padding: 75px 0;
+        }
+       
+    };
+
+    .article{
+   
+        align-items: flex-start;
+        border-radius: 30px;
+        background: $primary-bg-color;
+        overflow: hidden;
+    
+        @include for-size(desktop){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: flex-start;
+        }
+    };
+
+
+
+    .text_content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 12px;
+        gap: 24px;
+    
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5;
+       
+    
+    };
+    
+    .title{
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.2;
+    
+    @include for-size(tablet){
+        font-size: 2.5rem
+    }
+    };
+    
+    .description{
+        display: block;
+        
+    
+        &>span{
+            display: block;
+            margin-bottom: 1rem;
+        }
+    };
+
+
+    .thumb{
+    
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    };
+    
+        .image{
+            display: block;
+            max-width: 100%;
+           max-height: 40rem;
+        };
+    

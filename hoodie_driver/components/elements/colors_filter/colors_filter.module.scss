@@ -1,0 +1,27 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 0;
+   gap:12px;
+
+}
+
+.color{
+    display: block;
+    border: 1px solid $primary-text-color;
+    border-radius: 20px;
+    width: 18px;
+    height: 18px;
+}
+
+.title{
+font-weight: 400;
+font-size: 16px;
+line-height: 1.5;
+text-transform: capitalize;
+
+}

@@ -1,0 +1,41 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.section{
+    padding: 60px 0;
+        @include for-size(tablet){
+            padding: 75px 0;
+        }
+       
+    };
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+
+
+    .title_box{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 24px;
+
+font-weight: 400;
+font-size: 20px;
+line-height: 1.4;
+
+&>h1{
+font-weight: 700;
+font-size: 56px;
+line-height: 1.2;
+}
+    };
+
+
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        column-gap: 3rem;
+    }

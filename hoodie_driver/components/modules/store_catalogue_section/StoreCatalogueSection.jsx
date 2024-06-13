@@ -3,7 +3,7 @@ import s from './store_catalogue_section.module.scss';
 import StoreAside from "../store_aside/StoreAside";
 
 
-const StoreCataloqueSection = ()=> {
+const StoreCataloqueSection = ({children})=> {
 
     return (
         <section className={s.section}>
@@ -16,7 +16,7 @@ const StoreCataloqueSection = ()=> {
 
             <div className={s.wrapper}>
                 <StoreAside/>
-
+                {children}
             </div>
 
         </div>

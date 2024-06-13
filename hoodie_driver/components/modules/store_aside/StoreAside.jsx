@@ -12,9 +12,9 @@ const data = await getCategories();
 const colors = await getColors();
 
 
-const categories = data?.map(({id, title})=> {return { url: '/store', title: title[locale]}});
+const categories = data?.map(({id, title})=> {return { url: id, title: title[locale]}});
 categories.unshift({title: 'Усі',
-url: '/store'
+url: '/store/all'
 })
 
 console

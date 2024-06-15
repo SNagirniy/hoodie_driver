@@ -7,34 +7,49 @@ import MainContainer from "@/components/layouts/MainCintainer";
 import Button from '@/components/elements/mainButton/Button';
 import Check from '../../../public/check_icon.svg';
 import { Checkbox } from '@nextui-org/checkbox';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 
 const chanels = {
-    Inst: 'instagram',
-    Tlgrm: 'telegram',
-    Vib: 'viber',
-    Email: 'email',
-}
-
-
+    instagram: {title:'instagram',
+        type: 'text',
+        defaultVal: '@',
+    },
+    telegram: {title:'telegram',
+        type: 'tel',
+        defaultVal: '+380',
+    },
+    viber: {title:'viber',
+        type: 'tel',
+        defaultVal: '+380',
+    },
+    email: {title:'email',
+        type: 'email',
+        defaultVal: '',
+    }
+};
 
 
 const ContactsForm = ()=> {
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [chanell, setChanel] = useState(chanels.Inst);
+    const [chanell, setChanel] = useState(chanels.instagram.title);
+    const [contactData, setContactData] = useState('');
     const [message, setMessage]=useState('');
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(false);
+
 
 
     const handleChange=(e)=>{
         const {value, name} = e.currentTarget;
         if(name === 'chanell') {setChanel(value)} 
         else if(name === 'name') { setName(value.trim())} 
-        else if(name === 'email'){setEmail(value.trim())}
+        else if(name === 'contact_data'){setContactData(value.trim())}
         else if(name === 'message'){setMessage(value)}
     };
+
+
+    useEffect(()=> setContactData(chanels[chanell].defaultVal), [chanell])
+
 
 
     const onHandleCheck = (e)=> {
@@ -46,7 +61,7 @@ const ContactsForm = ()=> {
         e.preventDefault();
 
 
-        const data = {type: 'question',msg:{ name: name, email: email, chanell: chanell, message: message}};
+        const data = {type: 'question',msg:{ name: name, contactData: contactData, chanell: chanell, message: message}};
             const res = await fetch('/lib/sendMessage', {
                 method: 'POST',
                 headers: {
@@ -66,9 +81,9 @@ const ContactsForm = ()=> {
 
     const resetFields =()=>{
         setName('');
-        setEmail('');
+        setContactData(chanels.instagram.defaultVal);
         setMessage('');
-        setChanel(chanels.Inst);
+        setChanel(chanels.instagram.title);
         setIsChecked(false);
 
     }
@@ -87,17 +102,21 @@ return (
 
     <form onSubmit={onSubmit} className={s.form}> 
         <div className={s.box}>
-            <label className={s.label}>Ім'я<input onChange={handleChange} value={name} className={s.input} name='name' type="text"  required/></label>
-            <label className={s.label}>Email<input onChange={handleChange} value={email} className={s.input} name='email' type="email" pattern='[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}' required/></label>
+            <label className={s.label}>Ім'я
+                <input  onChange={handleChange} value={name} className={s.input} name='name' type="text" utoComplete='false' required/>
+                </label>
+            <label className={s.label}>{chanell}
+                <input onChange={handleChange} value={contactData} className={s.input} name='contact_data' type={chanels[chanell].type} autoComplete='false' aria-autocomplete='false' required/>
+                </label>
         </div>
         <div className={clsx(s.box, s.radio_group)} role="radiogroup">
                     
-                    <label><input onChange={handleChange}  type="radio" name="chanell" value={chanels.Inst} checked={chanels.Inst=== chanell}/><span><Check className={s.icon}/></span>{chanels.Inst}</label>
-                    <label ><input onChange={handleChange}  type="radio" name="chanell" value={chanels.Vib} checked={chanels.Vib=== chanell}/><span><Check className={s.icon}/></span>{chanels.Vib}</label>
+                    <label><input onChange={handleChange}  type="radio" name="chanell" value={chanels.instagram.title} checked={chanels.instagram.title=== chanell}/><span><Check className={s.icon}/></span>{chanels.instagram.title}</label>
+                    <label ><input onChange={handleChange}  type="radio" name="chanell" value={chanels.viber.title} checked={chanels.viber.title=== chanell}/><span><Check className={s.icon}/></span>{chanels.viber.title}</label>
                     
-                    <label><input onChange={handleChange} type="radio"  name="chanell" value={chanels.Tlgrm} checked={chanels.Tlgrm=== chanell}/><span><Check className={s.icon}/></span>{chanels.Tlgrm}</label>
+                    <label><input onChange={handleChange} type="radio"  name="chanell" value={chanels.telegram.title} checked={chanels.telegram.title=== chanell}/><span><Check className={s.icon}/></span>{chanels.telegram.title}</label>
                     
-                    <label ><input onChange={handleChange}  type="radio" name="chanell" value={chanels.Email} checked={chanels.Email=== chanell}/><span><Check className={s.icon}/></span>{chanels.Email}</label>
+                    <label ><input onChange={handleChange}  type="radio" name="chanell" value={chanels.email.title} checked={chanels.email.title === chanell}/><span><Check className={s.icon}/></span>{chanels.email.title}</label>
                 </div>
 
                 <div className={s.msg_box}>

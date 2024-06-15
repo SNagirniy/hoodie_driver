@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import s from './contacts_form.module.scss';
 import clsx from 'clsx';
@@ -45,7 +45,6 @@ const ContactsForm = ()=> {
       const onSubmit = async(e)=>{
         e.preventDefault();
 
-        console.log('submit')
 
         const data = {type: 'question',msg:{ name: name, email: email, chanell: chanell, message: message}};
             const res = await fetch('/lib/sendMessage', {

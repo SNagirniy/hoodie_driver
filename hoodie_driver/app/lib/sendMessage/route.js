@@ -6,8 +6,8 @@ import createMessage from '@/utils/createMessage';
 export async function POST(req) {
   const data = await req.json();
 
-const telegramToken = '7078854432:AAFgk6WocoU7oSXuKWdxnHUFod4oCZeR7f8';
-const telegramChatId= 1088271930;
+const telegramToken = process.env.TELEGRAM_TOKEN;
+const telegramChatId= process.env.TELEGRAM_CHAT_ID;
 
 const message = createMessage(data)
 

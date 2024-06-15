@@ -1,8 +1,8 @@
  import nodemailer from 'nodemailer';
 
-const PASS = '5ML7tPYCsGSrQkLt';
-const EMAIL = 'hoodie_driver@ukr.net';
-const resEmail = 'hoodiedriver24@gmail.com';
+const PASS = process.env.EMAIL_SERVICE_PASS;
+const EMAIL = process.env.EMAIL_SERVICE;
+const recipient = process.env.RECIPIENT_EMAIL;
 
 
 
@@ -20,7 +20,7 @@ const resEmail = 'hoodiedriver24@gmail.com';
 
       const mailData = {
         from: EMAIL,
-        to: resEmail,
+        to: recipient,
         subject: `Message From ${EMAIL}`,
         text: message,
         html: `<div>${message}</div><p>Sent from:

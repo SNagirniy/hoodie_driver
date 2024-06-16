@@ -3,50 +3,50 @@ import s from './modal_form.module.scss';
 import Button from '@/components/elements/mainButton/Button';
 import Check from '../../../public/check_icon.svg';
 import { useState, useEffect } from 'react';
+import chanels from '@/utils/contactChanels';
+import useContactDataValidator from '@/hooks/useContactDataValidator';
+import clsx from 'clsx';
 
-
-const chanels = {
-    instagram: {title:'instagram',
-        type: 'text',
-        defaultVal: '@',
-    },
-    telegram: {title:'telegram',
-        type: 'tel',
-        defaultVal: '+380',
-    },
-    viber: {title:'viber',
-        type: 'tel',
-        defaultVal: '+380',
-    },
-};
 
 const ModalForm = ({onClose})=> {
 
     const [contactData, setContactData] = useState(chanels.instagram.defaultVal);
     const [chanell, setChanel] = useState(chanels.instagram.title);
+    const isDataValid = useContactDataValidator(contactData, chanels[chanell].regEx)
 
     useEffect(()=> setContactData(chanels[chanell].defaultVal),[chanell]);
 
     const onSubmit = async(e)=>{
         e.preventDefault();
 
-        const data = {type: 'fast_order',msg:{ contactData: contactData, chanell: chanell}};
-            const res = await fetch('/lib/sendMessage', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-              });
 
-        const result = await res.json();
-    if (res.ok) {
-        console.log(result.message)
-        resetFields()
-      onClose()
-    } else {
-     console.log(result.message);
-    }
+        if(isDataValid) {
+
+            try {
+                const data = {type: 'fast_order',msg:{ contactData: contactData, chanell: chanell}};
+                const res = await fetch('/lib/sendMessage', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                  });
+    
+            const result = await res.json();
+        if (res.ok) {
+            console.log(result.message)
+            resetFields()
+          onClose()
+        } else {
+         console.log(result.message);
+        }
+                
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+   
     };
 
     const handleChange=(e)=>{
@@ -64,8 +64,8 @@ const ModalForm = ({onClose})=> {
         <div className={s.container}>
             <h2 className={s.title}>Швидке замовлення</h2>
             <form onSubmit={onSubmit} className={s.form}>
-                <label className={s.tel_label}>Номер телефону
-                <input onChange={handleChange} name='contact_data'  type={chanels[chanell].type} value = {contactData} required />
+                <label className={s.tel_label}>{chanels[chanell].title}
+                <input className={clsx({[s.not_valid] : !isDataValid})} onChange={handleChange} name='contact_data'  type={chanels[chanell].type} value = {contactData} required />
                 </label>
                 <p id="question">Як краще з Вами зв‘язатися?</p>
                 <div className={s.radio_group} role="radiogroup"  aria-labelledby="question">

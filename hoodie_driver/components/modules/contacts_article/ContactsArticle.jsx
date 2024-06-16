@@ -20,7 +20,7 @@ const ContactsArticle = ()=> {
                     <NovaPost className={s.icon}/>
                 </div>
                 <div className={s.thumb}>
-                    <img  className={s.image} src='/story_image.png' alt='story image'/>
+                    <img  className={s.image} src='/story_image.webp' alt='story image'/>
                 </div>
                 </article>
 

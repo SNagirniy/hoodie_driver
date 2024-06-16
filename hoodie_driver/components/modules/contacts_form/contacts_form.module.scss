@@ -80,7 +80,9 @@ text-transform: capitalize;
           -webkit-box-shadow: 0 0 0px 40rem #1F2224 inset !important;
          
         }
-        
+         &.not_valid{
+            border: 1px solid red;
+         }
    
     };
 

@@ -6,7 +6,7 @@ import Slider from './slider/Slider';
 
 
 
-const slide ={url: '/story_image.png', alt: 'story image'};
+const slide ={url: '/story_image.webp', alt: 'story image'};
 
 const slides_list = new Array(6).fill(slide);
 

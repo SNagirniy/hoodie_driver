@@ -17,7 +17,7 @@ const CallToAction = ()=> {
         </div>
        
             <div className={s.thumb}>
-                <img className={s.image} src='/smartphone.png' alt="Instagram page image" />
+                <img className={s.image} src='/smartphone.webp' alt="Instagram page image" />
             </div>
         
         </article>

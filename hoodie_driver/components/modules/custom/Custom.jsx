@@ -14,7 +14,7 @@ import { v4 } from 'uuid';
 const features = [['Будь-який', 'КОЛІР'],['Будь-який', 'ДИЗАЙН'],
  ['Будь-який','ШНУРОК'],['Великий вибір', 'ПРИНТІВ'],['Ідеальний', 'РОЗМІР']];
 
- const slide ={url: '/carousel.png', alt: 'custom hoodie'};
+ const slide ={url: '/carousel.webp', alt: 'custom hoodie'};
 
  const slides_list = new Array(8).fill(slide);
 
@@ -32,7 +32,7 @@ return (
     <MainContainer>
     <div className={s.custom_box}>
         <div className={s.thumb} >
-            <img className={s.image} src='/custom_image.png' alt='custom hoodie'/>
+            <img className={s.image} src='/custom_image.webp' alt='custom hoodie'/>
            
         </div>
         <div className={s.content}>

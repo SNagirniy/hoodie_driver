@@ -1,13 +1,13 @@
 import Link from "next/link";
 import s from './logo.module.scss'
-import Hoodie_driver from '../../../public/hoodie_driver.svg';
 import clsx from "clsx";
+import LogoIcon from '../../../public/logo.svg';
 
 
 const Logo = ({is_footer})=> {
     return (
         <Link className={clsx(s.logo,{[s.footer] : is_footer})} href='/'>
-            <Hoodie_driver 
+            <LogoIcon
             className={clsx(s.image, {[s.footer] : is_footer})}
         alt="Hoodie driver logo image"/>
         <div className={s.text_container}>

@@ -17,7 +17,7 @@ const pathname = usePathname();
     return (
         <nav className={s.nav_container}>
             <ul className={s.nav_list}>
-            {links.map(l => <li onClick={onCloseMenu} key={v4()}><Link  href={l.href} className={clsx(s.nav_item,{ [s.active]: pathname === l.href})}> 
+            {links.map(l => <li onClick={onCloseMenu} key={v4()}><Link  href={l.href} className={clsx(s.nav_item,{ [s.active]: pathname.includes(l.href) })}> 
             {l.image && <Image className={s.image}
         src={l.image}
         alt='l.name'/>}

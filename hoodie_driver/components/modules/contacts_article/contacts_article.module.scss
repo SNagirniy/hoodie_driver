@@ -13,7 +13,8 @@
     .article{
    
         align-items: flex-start;
-        border-radius: 30px;
+        border-radius: 0 30px 30px 0;
+        
         background: $primary-bg-color;
         overflow: hidden;
     

@@ -3,10 +3,14 @@ import s from './newsletter.module.scss';
 import { useState } from 'react';
 import Button from '../mainButton/Button';
 import { Checkbox } from '@nextui-org/checkbox';
+import useContactDataValidator from '@/hooks/useContactDataValidator';
+import chanels from '@/utils/contactChanels';
+import clsx from 'clsx';
 
 const Newsletter = ()=>{
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(chanels.email.defaultVal);
     const[isChecked, setIsChecked] = useState(false);
+    const isValid = useContactDataValidator(email, chanels.email.regEx)
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -15,10 +19,14 @@ const Newsletter = ()=>{
 
       const handleSubmit = (e)=> {
             e.preventDefault();
+
+            if(isValid){
             console.log(email);
 
             setEmail('');
             setIsChecked(false)
+            }
+            
 
       };
 
@@ -37,14 +45,14 @@ const Newsletter = ()=>{
                 <p className={s.description}>Не пропустіть свіжі новини та унікальні акції — підпишіться на наш newsletter зараз.</p>
             </hgroup>
             <div className={s.form_container}>
-                <form  onSubmit={handleSubmit} className={s.form}>
+                <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid})}>
                     <input
-                    className={s.email_input}
+                    className={clsx(s.email_input, {[s.not_valid]: !isValid}) }
                      placeholder='Твій email' onChange={handleChange} 
                      name='email'
                      autoComplete='false'
                      type="email"  value={email}
-                     pattern='[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}'
+                    
                      />
                      
 

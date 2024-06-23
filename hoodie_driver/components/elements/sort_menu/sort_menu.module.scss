@@ -1,0 +1,83 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+ 
+  }
+  
+  .item{
+    display: flex;
+  cursor: pointer;  
+
+  }
+
+  
+  
+  .dropdown{
+      position: absolute;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      gap: 10px;
+      background-color: $primary-text-color;
+      border: 1px solid $accent-text-color;
+      border-radius: 16px 4px 16px 16px;
+      padding: 20px;
+        color: $dark;
+      visibility: hidden;
+      transition: all $cubic;
+
+
+
+      &.open{
+        top: 240%;
+        opacity: 1;
+        visibility: visible;
+        
+
+        @include for-size(tablet){
+          top: 220%;
+          }
+      }
+  }
+  
+
+.title{
+  display: flex;
+align-items: center;
+justify-content: space-between;
+gap:12px;
+
+font-weight: 400;
+font-size: 16px;
+gap:0.5rem;
+line-height: 1.5;
+text-align: center;
+text-transform: capitalize;
+color: $accent-text-color;
+cursor: pointer;
+
+
+}
+
+
+.icon{
+  width: 24px;
+  height: 24px;
+  fill: $accent-text-color;
+}
+
+.item_title{
+display: flex;
+flex-direction: row;
+gap: 12px;
+align-items: center;
+text-transform: capitalize;
+}
+

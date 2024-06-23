@@ -1,21 +1,33 @@
+'use client';
 import s from './catalogue.module.scss';
 import Card from '@/components/elements/card/Card';
+import SortMenu from '@/components/elements/sort_menu/SortMenu';
+import { useState } from 'react';
+import { useSortedProducts } from '@/hooks/useSortedProducts';
 
-import { getColors, getProducts} from '@/app/lib/firebase/productapi';
 
-const Catalogue = async({slug, color})=> {
+const Catalogue =({color_map, products})=> {
+const [sortId, setSortId]= useState(null);
+const sortedProducts = useSortedProducts(products, sortId);
 
-const color_map = await getColors();
 
-const products = await getProducts(slug, color);
+const changeSortValue = (id)=> {
+    setSortId(id)
+}
+
 
 
 
 
     return (
-        <ul className={s.card_list}>
-                {products?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
+        <div className={s.catalogue_container}>
+            <div className={s.menu_box}>
+               <SortMenu sortValue={sortId} changeSortValue={changeSortValue}/>
+            </div>
+            <ul className={s.card_list}>
+                {sortedProducts?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card title={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
             </ul>
+        </div>
     )
 };
 

@@ -1,12 +1,15 @@
 
 import Catalogue from "@/components/modules/catalogue/Catalogue";
-import { Suspense } from "react";
+import { getColors, getProducts } from "@/app/lib/firebase/productapi";
 
-const CataloguePage = ({params:{catalogue},searchParams})=>{
 
-return <Suspense fallback={<div>Loading...</div>}>
-    <Catalogue slug={catalogue} color={searchParams?.color} />
-      </Suspense>
+const CataloguePage = async({params:{catalogue},searchParams})=>{
+
+  const color_map = await getColors();
+ const products = await getProducts(catalogue, searchParams?.color);
+
+return (<Catalogue  color_map={color_map} products={products} />)
+    
 };
 
 export default CataloguePage;

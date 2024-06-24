@@ -27,9 +27,9 @@ const Footer = async ()=> {
     const locale = await getLocale();
     const data = await getCategories();
 
-    const categories = data?.map(({id, title})=> {return { url: `/store/${id}`, title: title[locale]}});
-    categories.unshift({title: 'Усі',
-    url: '/store'
+    const categories = data?.map(({id, title})=> {return {id: id, url: `/store/catalogue`, title: title[locale]}});
+    categories.unshift({id: 'all' ,title: 'Усі',
+    url: '/store/catalogue'
     })
 
 

@@ -1,16 +1,24 @@
 'use client'
-import { Link } from '@/navigation';
+
 import s from './reset_link.module.scss';
-import { usePathname } from '@/navigation';
 
-const ResetLink = ({path})=> {
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
+const ResetLink = ({param})=> {
+
+    const searchParams = useSearchParams();
     const pathname = usePathname();
-    const curentPath = path? path : pathname;
+    const router = useRouter();
+
+    const handleClick = ()=>{
+        const params = new URLSearchParams(searchParams);
+          params.delete(param);
+        router.replace(`${pathname}?${params.toString()}`);
+      }
 
 
     return (
-        <Link className={s.reset}  href={curentPath}>скинути</Link>
+        <button type='button' onClick={handleClick} className={s.reset} >скинути</button>
     )
 
 }

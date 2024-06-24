@@ -1,10 +1,11 @@
 import StoreCataloqueSection from "../modules/store_catalogue_section/StoreCatalogueSection";
 
+
 const StorePage = ({children})=>{
 return (
    <>
    <StoreCataloqueSection>
-      {children}
+    {children}
    </StoreCataloqueSection>
 
    </>

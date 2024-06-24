@@ -116,6 +116,8 @@ font-weight: 700;
 font-size: 1.43rem;
 line-height: 1.4;
 text-align: center;
+height: 3rem;
+overflow: hidden;
 
 @include for-size(desktop){
     font-size: 1.12rem

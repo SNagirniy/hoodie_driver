@@ -1,11 +1,16 @@
-
+'use client'
 
 import s from './card.module.scss';
 import { Link } from '@/navigation';
 import Shopping from '../../../public/shopping.svg';
+import { useLocale } from 'next-intl';
+import truncate from '@/utils/truncate';
 
 
-const Card = ({title, price, available_colors, color_map, url})=> {
+const Card = ({titles, price, available_colors, color_map, url,slug})=> {
+
+    const locale = useLocale();
+    const title = titles[locale];
 
     const renderColors =(arr)=> {
         const maxEl =3;
@@ -22,7 +27,7 @@ const Card = ({title, price, available_colors, color_map, url})=> {
     return (
         <article className={s.card}> 
         
-                <Link  className={s.card_link} href={'/product'}>
+                <Link className={s.card_link} href={`/store/${slug}`}>
                     <div className={s.thumb}> 
                         <img className={s.image} src={url} alt={title}/>
                     </div>
@@ -38,7 +43,7 @@ const Card = ({title, price, available_colors, color_map, url})=> {
                 </div>
                 <span className={s.price}>{price}грн</span>
             </div>
-            <h3 className={s.title}>{title}</h3>
+            <h3 className={s.title}>{truncate(title,33)}</h3>
             </Link>
             <button className={s.button}><span>Додати в кошик</span>
             <Shopping className={s.btn_icon}/>

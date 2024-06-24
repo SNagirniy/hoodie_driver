@@ -58,7 +58,7 @@ const LocalesSwitcher = () => {
     return (
       <div onClick={toggleDropdown} className={s.container}>
         <div ref={rootRef} className={s.item}>
-          <p className={s.loc_title}>{locale?.toLocaleUpperCase()}</p>
+          <p className={s.loc_title}>{locale === 'uk'? "UA" : locale?.toLocaleUpperCase()}</p>
         </div>
         {(
           <ul className={clsx(s.dropdown, {[s.open]: isOpen})}>
@@ -69,7 +69,7 @@ const LocalesSwitcher = () => {
                 className={s.item}
                 onClick={handleChangeLang}
               >
-                <p className={s.loc_title}>{loc?.toLocaleUpperCase()}</p>
+                <p className={s.loc_title}>{loc === 'uk'? "UA" : loc?.toLocaleUpperCase()}</p>
               </li>
             ))}
           </ul>

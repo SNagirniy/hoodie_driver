@@ -15,9 +15,9 @@ const colors = await getColors();
 
 
 
-const categories = data?.map(({id, title})=> {return { url: id, title: title[locale]}});
+const categories = data?.map(({id, title})=> {return { slug: id, title: title[locale]}});
 categories.unshift({title: 'Усі',
-url: '/store/all'
+slug: 'all'
 })
 
 
@@ -30,7 +30,7 @@ return {title: title[locale], color: value, id: key}});
             <div className={s.item_box}>
                 <div className={s.aside_head}>
                 <h3>Фільтри</h3>
-                <ResetLink path={'/store/all'}/>
+                <ResetLink param={'category'}/>
                 </div>
                 
             </div>
@@ -40,7 +40,7 @@ return {title: title[locale], color: value, id: key}});
             <div className={s.item_box}>
             <div className={s.aside_head}>
                 <h4>Кольори</h4>
-                <ResetLink/>
+                <ResetLink param ={'color'}/>
                 </div>
                 <ColorsFilter color_map={color_map}/>
             </div>

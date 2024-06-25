@@ -4,12 +4,10 @@ import Card from '@/components/elements/card/Card';
 import { getColors, getProducts } from '@/app/lib/firebase/productapi';
 
 
-const Catalogue = async({searchParams})=> {
-
-    const category = searchParams?.category ? searchParams?.category : 'all';
+const Catalogue = async({category, color, cursor})=> {
 
   const color_map = await getColors();
-  const products = await getProducts(category, searchParams?.color);
+  const products = await getProducts(category, color,cursor);
 
 
 

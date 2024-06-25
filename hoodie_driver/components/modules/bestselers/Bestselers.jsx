@@ -30,7 +30,7 @@ const products = await getBestselers();
             <ul className={s.card_list}>
                 {products?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card slug={id} titles={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
             </ul>
-            <MainButton path={'/store/hoodie'} title={'Хочу побачити всі'}/>
+            <MainButton path={'/store//catalogue?category=hoodie&page=1'} title={'Хочу побачити всі'}/>
             </div>
             </MainContainer>
             

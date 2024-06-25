@@ -15,8 +15,10 @@ const ColorsFilter = ({color_map})=> {
         const params = new URLSearchParams(searchParams);
         if (id) {
           params.set('color', id);
+          params.set('page', 1)
         } else {
           params.delete('color');
+          params.delete('page');
         }
         router.replace(`${pathname}?${params.toString()}`);
       }

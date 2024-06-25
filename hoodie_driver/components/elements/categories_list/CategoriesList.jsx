@@ -15,8 +15,10 @@ const CategoriesList = ({links})=> {
         const params = new URLSearchParams(searchParams);
         if (id) {
           params.set('category', id);
+          params.set('page', 1);
         } else {
           params.delete('category');
+          params.delete('page');
         }
         router.replace(`${pathname}?${params.toString()}`);
       }

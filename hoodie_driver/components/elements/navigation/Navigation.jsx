@@ -7,7 +7,7 @@ import clsx from "clsx";
 import fire_icon from '../../../public/fire_icon.svg?url';
 import s from './navigation.module.scss';
 
-const links = [{name: 'Магазин', href: '/store'}, {name:'Кастом', href: '/product', image: fire_icon},{name:'Про нас', href: '/about'},{name:'Блог', href: '/blog'},{name:'Контакти', href: '/contacts'}]
+const links = [{name: 'Магазин', href: '/store/'}, {name:'Кастом', href: '/product', image: fire_icon},{name:'Про нас', href: '/about'},{name:'Блог', href: '/blog'},{name:'Контакти', href: '/contacts'}]
 
 
 const Navigation =({onCloseMenu})=> {

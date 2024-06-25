@@ -16,7 +16,8 @@ const StoreCataloqueSection = ({children})=> {
 
             <div className={s.wrapper}>
                 <StoreAside/>
-                {children}
+                <div className={s.catalogue_list_container}>{children}</div>
+                
             </div>
 
         </div>

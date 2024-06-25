@@ -1,7 +1,41 @@
 import { db } from "./firebase";
-import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc} from "firebase/firestore";
+import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt} from "firebase/firestore";
 import getImageRef from "./imageapi";
-import { unstable_noStore as noStore } from "next/cache";
+
+const prodPerPage = 3;
+
+
+export const getCursors = async(slug, color)=>{
+    const catalogue = slug === 'all'? null : slug;
+    const cursors = [];
+    const offset = (page)=>(page - 1) * prodPerPage;
+    try {
+          const ref = collection(db, "categories", 'catalogue_list', 'products');
+    let q='';
+if(catalogue && color){
+    q =query(ref,where('category','==',catalogue), where("color", "==", color),orderBy("raiting"))}
+else if(!catalogue && color) {
+    q =query(ref,where("color", "==", color),orderBy("raiting"))}
+else if(catalogue && !color){
+    q =query(ref,where('category','==',catalogue),orderBy("raiting"))}
+else{
+    q = query(ref,orderBy("raiting"))}
+
+    const productsSnapshot = await getDocs(q);
+    const pageNumber = Math.ceil(productsSnapshot.docs.length / prodPerPage);
+    for (let i = 1; i <= pageNumber; i++) {
+      const cursorIndex = offset(i);
+      const cursor = productsSnapshot.docs[cursorIndex] || null
+      cursors.push(cursor)
+        
+    }
+    return cursors
+
+    } catch (error) {
+        
+    }
+
+}
 
 
 export const getBestselers = async ()=> {
@@ -26,26 +60,27 @@ export const getBestselers = async ()=> {
 };
 
 
-export const getProducts = async(catalogue,color)=>{
-    noStore();
-
+export const getProducts = async(catalogue,color, cursorEl)=>{
+    const cursor = cursorEl? cursorEl : 0;
+  
     if (catalogue === 'all'){
        
-      const products = await getAllProducts(color);
+      const products = await getAllProducts(color,cursor);
       return products;
     } else {
-        const products = await getProductsByCategory(catalogue,color)
+        const products = await getProductsByCategory(catalogue,color, cursor)
         return products;
     }
 }
 
 
 
-export const getProductsByCategory = async (slug, color)=> {
-    noStore();
+export const getProductsByCategory = async (slug, color, cursor)=> {
+  
+    
    
     const ref = collection(db, "categories", 'catalogue_list', 'products');
-    const q =color? query(ref,where('category','==',slug), where("color", "==", color), limit(12)) : query(ref,where('category','==',slug), limit(12));
+    const q =color? query(ref,where('category','==',slug), where("color", "==", color),orderBy("raiting"), limit( prodPerPage),startAt(cursor)) : query(ref,where('category','==',slug),orderBy("raiting"), limit(prodPerPage),startAt(cursor));
     try {
      
          let products =[];
@@ -64,10 +99,11 @@ export const getProductsByCategory = async (slug, color)=> {
 };
 
 
-export const getAllProducts = async (color)=> {
-    noStore();
+export const getAllProducts = async (color,cursor)=> {
+   
+   
     const ref = collection(db, "categories", 'catalogue_list', 'products');
-    const q = color? query(ref, where('color', "==", color),limit(12)) : query(ref, limit(12));
+    const q = color? query(ref, where('color', "==", color),orderBy("raiting"),limit(prodPerPage), startAt(cursor)) : query(ref,orderBy("raiting"), limit(prodPerPage),startAt(cursor));
     try {
      
          let products =[];

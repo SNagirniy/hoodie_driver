@@ -1,9 +1,9 @@
-import Catalogue from "@/components/modules/catalogue/Catalogue"
+import CataloguePage from "@/components/templates/CataloguePage";
 
 
 
-const CataloguePage = async ({searchParams})=> {
-    return <Catalogue searchParams={searchParams}/>
+const Catalogue = async ({searchParams})=> {
+    return <CataloguePage searchParams={searchParams}/>
 }
 
-export default CataloguePage;
+export default Catalogue;

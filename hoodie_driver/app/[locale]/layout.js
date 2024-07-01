@@ -3,7 +3,7 @@ import '../globalStyles/main.scss';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import PageLayout from '@/components/layouts/PageLayout';
-import { Suspense } from 'react';
+
 
 
 
@@ -17,6 +17,8 @@ export const metadata = {
 
 export default async function RootLayout({ children, params:{locale} }) {
 const messages = await getMessages();
+
+
 
  
   return (

@@ -2,7 +2,7 @@ import CataloguePage from "@/components/templates/CataloguePage";
 
 
 
-const Catalogue = async ({searchParams})=> {
+const Catalogue = ({searchParams})=> {
     return <CataloguePage searchParams={searchParams}/>
 }
 

@@ -6,12 +6,15 @@ import Image from "next/image";
 import clsx from "clsx";
 import fire_icon from '../../../public/fire_icon.svg?url';
 import s from './navigation.module.scss';
+import { useTranslations } from "next-intl";
 
-const links = [{name: 'Магазин', href: '/store/'}, {name:'Кастом', href: '/product', image: fire_icon},{name:'Про нас', href: '/about'},{name:'Блог', href: '/blog'},{name:'Контакти', href: '/contacts'}]
+
+const links = [{name: 'shop', href: '/store/'}, {name:'custom', href: '/product', image: fire_icon},{name:'about', href: '/about'},{name:'blog', href: '/blog'},{name:'contacts', href: '/contacts'}]
 
 
 const Navigation =({onCloseMenu})=> {
 const pathname = usePathname();
+const t = useTranslations("Home")
 
 
     return (
@@ -20,8 +23,8 @@ const pathname = usePathname();
             {links.map(l => <li onClick={onCloseMenu} key={v4()}><Link  href={l.href} className={clsx(s.nav_item,{ [s.active]: pathname.includes(l.href) })}> 
             {l.image && <Image className={s.image}
         src={l.image}
-        alt='l.name'/>}
-            {l.name}</Link></li>)}</ul>
+        alt={t(`Navigation.${l.name}`)}/>}
+            {t(`Navigation.${l.name}`)}</Link></li>)}</ul>
         </nav>
     )
 }

@@ -24,11 +24,12 @@
    cursor: pointer;
    transition: all $cubic;
 
-   &.active,
-   &:hover,
-   &:focus{
+   &.active{
     border: 1px solid $secondary-text-color;
     color: $secondary-text-color;
+   };
+   &:hover{
+   background-color: $primary-text-color;
    }
 
 }

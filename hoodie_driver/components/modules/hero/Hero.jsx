@@ -17,7 +17,7 @@ import clsx from "clsx";
 import s from './hero.module.scss'
 
 const Hero =()=> {
-    const t = useTranslations('Hero');
+    const t = useTranslations('Home');
     const {width} = useWindowSize();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,11 +37,11 @@ const Hero =()=> {
             <div className={s.hero_container}>
                 <div className={s.head_container}>
                     <hgroup>
-                        <h1 className={s.title}>{t('title')}</h1>
-                        <p className={s.description}>{t.rich("descr", {
+                        <h1 className={s.title}>{t('Hero.title')}</h1>
+                        <p className={s.description}>{t.rich("Hero.descr", {
                          strong: (chunk) => <strong>{chunk}</strong>})}</p>
                     </hgroup>
-                    {width >=768 && <Button action={toggleModal} title={t('btn_title')} />}
+                    {width >=768 && <Button action={toggleModal} title={t('Hero.btn_title')} />}
                    
                     
 
@@ -49,7 +49,7 @@ const Hero =()=> {
                 <div className={s.image_container}>
                     <div className={clsx(s.thumb, s.yellow)}><Image className={s.image} src={Hoodie_Yellow2x} alt="Yellow hoodie image"/></div>
                     <div className={s.thumb}> <Image className={s.image}src={Hoodie_Dark2x} alt="Dark hoodie image"/></div>
-                    {width <768 && <div className={s.btn_container} ><Button action={toggleModal} title={t('btn_title')}/></div>}
+                    {width <768 && <div className={s.btn_container} ><Button action={toggleModal} title={t('Hero.btn_title')}/></div>}
                 </div>
             
             <Features/>

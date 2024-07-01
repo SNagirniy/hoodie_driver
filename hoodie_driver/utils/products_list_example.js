@@ -3,6 +3,7 @@
 const example =  {
     id:'AK1001',
     data:{
+        code:'AK1001',
         title: {
             uk:'',
             ru:''
@@ -22,8 +23,29 @@ const example =  {
 
 const products=[
     {
+        id:'HD1001',
+        priority: 1000,
+        data:{
+            title: {
+                uk:'Худі на КПП з принтом MILF',
+                ru:'Худи на КПП з принтом MILF'
+            },
+            description: {
+                uk: 'худі для коробки передач у кольорі фуксія зі сміливим принтом. Чудова ідея на подарунок дівчині',
+                ru: 'худи для коробки передач в цвете фуксия со смелым принтом. Прекрасная идея на подарок девушке'
+            },
+            price: 100,
+            category: 'hoodie',
+            color:"фуксія",
+            available_colors:["фуксія",'чорний',"білий"],
+            raiting:5,
+            imageURL: ' https://firebasestorage.googleapis.com/v0/b/hoodie-driver-96728.appspot.com/o/hoodie%2Fhoodie.jpg?alt=media&token=53a40413-38b5-4592-8476-82d9f9889c02'
+        }
+    },
+    {
         id:'AK1001',
         data:{
+            priority: 600,
             title: {
                 uk:'Ланцюжок Gold Light',
                 ru:'Цепочка Gold Light'
@@ -43,6 +65,7 @@ const products=[
     {
         id:'SE1001',
         data:{
+            priority: 800,
             title: {
                 uk:'Подарунковий набір для водія.Худі на КПП + ароматизатор + брелок.',
                 ru:'Подарочный набор для водителя.Худи на КПП + ароматизатор + брелок.'
@@ -62,6 +85,7 @@ const products=[
     {
         id:'AM1001',
         data:{
+            priority: 400,
             title: {
                 uk:'Парфумований ароматизатор для авто "Зебра"',
                 ru:'Парфюмированный ароматизатор для авто "Зебра"'
@@ -81,6 +105,7 @@ const products=[
     {
         id:'BR1001',
         data:{
+            priority: 200,
             title: {
                 uk:'Брелок на ключі з лого БМВ',
                 ru:'Брелок на ключи из лого БМВ'

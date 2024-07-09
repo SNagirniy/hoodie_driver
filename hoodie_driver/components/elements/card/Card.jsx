@@ -4,14 +4,32 @@ import s from './card.module.scss';
 import { Link } from '@/navigation';
 import Shopping from '../../../public/shopping.svg';
 import { useLocale } from 'next-intl';
+import clsx from 'clsx';
 import truncate from '@/utils/truncate';
+import { useCart } from '@/contexts/cartContext';
+import { useState, useEffect } from 'react';
 
 
-const Card = ({titles, price, available_colors, color_map, url,slug})=> {
 
+const Card = ({product,color_map})=> {
+    
+    const [hydrated, setHydrated] = useState(false);
+    const { addToCart, isExist } = useCart(); 
+    const inCart = isExist(product.id);
     const locale = useLocale();
-    const title = titles[locale];
 
+    useEffect(() => {
+      setHydrated(true);
+    }, []);
+  
+    if (!hydrated) {
+      return <p>Завантаження...</p>;
+    }
+   
+    const {title, price, available_colors, imageURL, id} = product;
+
+    
+   
     const renderColors =(arr)=> {
         const maxEl =3;
         if(arr.length <= maxEl) {return {colorMap: arr}};
@@ -21,15 +39,21 @@ const Card = ({titles, price, available_colors, color_map, url,slug})=> {
         return {colorMap: displayedColors, remainingCount }
     };
 
+    const handleClick = ()=> {
+        const data = {title: title.uk, price, imageURL, id}
+        addToCart(data)
+       
+    }
+
     const {colorMap, remainingCount} = renderColors(available_colors);
 
 
     return (
         <article className={s.card}> 
         
-                <Link className={s.card_link} href={`/store/${slug}`}>
+                <Link className={s.card_link} href={`/store/${id}`}>
                     <div className={s.thumb}> 
-                        <img className={s.image} src={url} alt={title}/>
+                        <img className={s.image} src={imageURL} alt={title[locale]}/>
                     </div>
             <div className={s.info}>
                 <div className={s.colors_box}>
@@ -43,9 +67,9 @@ const Card = ({titles, price, available_colors, color_map, url,slug})=> {
                 </div>
                 <span className={s.price}>{price}грн</span>
             </div>
-            <h3 className={s.title}>{truncate(title,33)}</h3>
+            <h3 className={s.title}>{truncate(title[locale],33)}</h3>
             </Link>
-            <button className={s.button}><span>Додати в кошик</span>
+            <button disabled={inCart} onClick={handleClick} className={clsx(s.button, {[s.added]: inCart})}><span>{inCart ?"В кошику" : "Додати в кошик"}</span>
             <Shopping className={s.btn_icon}/>
             </button>
 

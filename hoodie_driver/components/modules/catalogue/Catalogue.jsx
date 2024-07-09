@@ -19,7 +19,7 @@ const Catalogue = async({category, color, cursor, sort_by, ascending})=> {
     return (
         <div className={s.catalogue_container}>
             <ul className={s.card_list}>
-                {products?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card slug={id} titles={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
+                {products?.map((prod)=> {return <li key={prod.id}><Card product={prod} color_map={color_map}/></li>})}
             </ul>
         </div>
     )

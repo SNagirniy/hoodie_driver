@@ -1,5 +1,5 @@
 import { db } from "./firebase";
-import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp} from "firebase/firestore";
+import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp,getDoc} from "firebase/firestore";
 import getImageRef from "./imageapi";
 import { unstable_noStore as noStore } from "next/cache";
 
@@ -59,8 +59,10 @@ export const getBestselers = async ()=> {
          let products =[];
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        const date = new Date(data.date * 1000).toLocaleString();
      const product = { id: doc.id,
-    ...doc.data()};
+    ...doc.data(), date};
     products.push(product)
     });
     await getImageRef()
@@ -84,8 +86,10 @@ export const getProducts = async(catalogue,color, cursor, sort_by, ascending)=>{
              let products =[];
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
+            const data = doc.data()
+            const date = new Date(data.date * 1000).toLocaleString();
          const product = { id: doc.id,
-        ...doc.data()};
+        ...doc.data(), date};
         products.push(product)
         });
         return products
@@ -125,6 +129,21 @@ export const getColors = async()=>{
     } catch (e){
         console.log(e)  
     }};
+
+
+    export const getSingleProduct = async(slug)=>{
+
+        try {
+    const docRef = doc(db, "categories", 'catalogue_list', 'products',slug);
+    const docSnap = await getDoc(docRef);
+    const product = docSnap.data();
+    return product;
+        } catch (e) {
+            console.log(e) 
+        }
+
+
+    }
 
 
 

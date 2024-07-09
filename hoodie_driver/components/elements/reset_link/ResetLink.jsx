@@ -12,8 +12,16 @@ const ResetLink = ({param})=> {
 
     const handleClick = ()=>{
         const params = new URLSearchParams(searchParams);
+          if(param === 'category'){
+              for (const key of searchParams.keys()) {
+              params.delete(key);
+        }
+        } else{
           params.delete(param);
-          params.set('page', 1)
+          params.delete('sort_by');
+          params.delete('ascending');}
+       
+        params.set('page', 1);
         router.replace(`${pathname}?${params.toString()}`);
       }
 

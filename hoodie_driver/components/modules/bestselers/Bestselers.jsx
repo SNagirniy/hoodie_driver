@@ -31,7 +31,7 @@ const products = await getBestselers();
             <p className={s.sub_title}>{t(`Bestsellers.descr`)}</p>
             </hgroup>
             <ul className={s.card_list}>
-                {products?.map(({id, title, price, available_colors, imageURL})=> {return <li key={id}><Card slug={id} titles={title} price={price} available_colors={available_colors} url = {imageURL} color_map={color_map}/></li>})}
+                {products?.map((prod)=> {return <li key={prod.id}><Card product = {prod} color_map={color_map}/></li>})}
             </ul>
             <MainButton path={'/store//catalogue?category=hoodie&page=1'} title={t(`Bestsellers.btn_title`)}/>
             </div>

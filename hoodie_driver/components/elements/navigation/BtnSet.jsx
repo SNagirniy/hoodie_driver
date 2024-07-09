@@ -1,9 +1,9 @@
-import { Link } from '@/navigation';
+
 import s from './navigation.module.scss';
 import clsx from "clsx";
 import LocalesSwitcger from './locales/LocalesSwitcger';
  import Instagram from '../../../public/Instagram.svg';
- import Shopping from '../../../public/shopping.svg';
+import CartButton from './CartButton/CartButton';
 
 
 
@@ -18,9 +18,7 @@ const BtnSet = ()=> {
             <Instagram 
             className={clsx(s.icon, s.instagram)}/>
             </a>
-            <Link href={'/store'} className={clsx(s.button)}>
-                <Shopping className={s.icon}/>
-            </Link>
+           <CartButton/>
             
         </div>
 

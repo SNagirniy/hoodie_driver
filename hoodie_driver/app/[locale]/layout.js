@@ -3,6 +3,8 @@ import '../globalStyles/main.scss';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import PageLayout from '@/components/layouts/PageLayout';
+import { CartProvider } from '@/contexts/cartContext';
+
 
 
 
@@ -24,11 +26,14 @@ const messages = await getMessages();
   return (
     <html lang={locale}>
       <body className={`${montserrat.className}`}>
+        
         <NextIntlClientProvider messages={messages}>
-          <PageLayout>
-            {children}
-            <div id='modal-root'></div>
-          </PageLayout>
+          <CartProvider>
+            <PageLayout>
+              {children}
+              <div id='modal-root'></div>
+            </PageLayout>
+          </CartProvider>
         </NextIntlClientProvider>
       </body>
     </html>

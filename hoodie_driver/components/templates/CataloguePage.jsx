@@ -4,6 +4,7 @@ import SortMenu from "../elements/sort_menu/SortMenu";
 import { getCursors } from "@/app/lib/firebase/productapi";
 
 
+
 const CataloguePage = async ({searchParams})=>{
     const category = searchParams?.category ? searchParams?.category : 'all';
     const page = searchParams?.page;

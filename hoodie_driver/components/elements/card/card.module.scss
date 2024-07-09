@@ -116,11 +116,12 @@ font-weight: 700;
 font-size: 1.43rem;
 line-height: 1.4;
 text-align: center;
-height: 3rem;
 overflow: hidden;
+height: 4rem;
 
 @include for-size(desktop){
-    font-size: 1.12rem
+    font-size: 1.12rem;
+    height: 3.125rem;
 }
 };
 
@@ -142,6 +143,17 @@ color:$secondary-text-color;
     cursor: pointer;
 
     transition: all $cubic;
+
+    &.added{
+        color:$primary-text-color;
+        background: $accent-text-color;
+        opacity: 0.8;
+        & .btn_icon{
+            fill: $primary-text-color;
+        };
+
+
+    }
 
     &:hover,
     &:focus{

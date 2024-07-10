@@ -9,13 +9,6 @@ const Catalogue = async({category, color, cursor, sort_by, ascending})=> {
   const color_map = await getColors();
   const products = await getProducts(category, color,cursor,sort_by, ascending);
 
-
-
-
-
-
-
-
     return (
         <div className={s.catalogue_container}>
             <ul className={s.card_list}>

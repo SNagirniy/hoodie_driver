@@ -7,20 +7,10 @@ import { getBestselers, getColors } from '@/app/lib/firebase/productapi';
 import { getTranslations } from 'next-intl/server';
 
 
-
-
-
-
 const Bestselers = async()=>{
 const t = await getTranslations("Home");
 const color_map = await getColors()
 const products = await getBestselers();
-
-
-
-
-
-
 
     return(
         

@@ -2,34 +2,26 @@
 
 import s from './card.module.scss';
 import { Link } from '@/navigation';
+import dynamic from 'next/dynamic';
 import Shopping from '../../../public/shopping.svg';
 import { useLocale } from 'next-intl';
 import clsx from 'clsx';
 import truncate from '@/utils/truncate';
 import { useCart } from '@/contexts/cartContext';
-import { useState, useEffect } from 'react';
 
 
 
 const Card = ({product,color_map})=> {
     
-    const [hydrated, setHydrated] = useState(false);
-    const { addToCart, isExist } = useCart(); 
+   
+    const { addToCart, isExist, hydrated } = useCart(); 
     const inCart = isExist(product.id);
     const locale = useLocale();
 
-    useEffect(() => {
-      setHydrated(true);
-    }, []);
-  
-    if (!hydrated) {
-      return <p>Завантаження...</p>;
-    }
-   
-    const {title, price, available_colors, imageURL, id} = product;
 
-    
-   
+   if(!hydrated) {return null}; 
+
+    const {title, price, available_colors, imageURL, id} = product;
     const renderColors =(arr)=> {
         const maxEl =3;
         if(arr.length <= maxEl) {return {colorMap: arr}};

@@ -8,6 +8,7 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
+  const [hydrated, setHydrated] = useState(false);
   const [cart, setCart] = useState(() => {
   
     if(typeof window !== 'undefined'){
@@ -18,6 +19,10 @@ export const CartProvider = ({ children }) => {
       console.log(error)
     }
   }});
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   // Збереження кошика в localStorage при кожній зміні
   useEffect(() => {
@@ -47,7 +52,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart, hydrated }}>
       {children}
     </CartContext.Provider>
   );

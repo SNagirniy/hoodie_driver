@@ -12,9 +12,10 @@ const ModalForm = ({onClose})=> {
 
     const [contactData, setContactData] = useState(chanels.instagram.defaultVal);
     const [chanell, setChanel] = useState(chanels.instagram.title);
-    const isDataValid = useContactDataValidator(contactData, chanels[chanell].regEx)
+    const [isDataValid,isFocus,handleFocus] = useContactDataValidator(contactData, chanels[chanell].regEx)
 
     useEffect(()=> setContactData(chanels[chanell].defaultVal),[chanell]);
+
 
     const onSubmit = async(e)=>{
         e.preventDefault();
@@ -65,7 +66,7 @@ const ModalForm = ({onClose})=> {
             <h2 className={s.title}>Швидке замовлення</h2>
             <form onSubmit={onSubmit} className={s.form}>
                 <label className={s.tel_label}>{chanels[chanell].title}
-                <input className={clsx({[s.not_valid] : !isDataValid})} onChange={handleChange} name='contact_data'  type={chanels[chanell].type} value = {contactData} required />
+                <input className={clsx({[s.not_valid] : !isDataValid & isFocus}, {[s.valid] : isDataValid})} onChange={handleChange} name='contact_data'  type={chanels[chanell].type} value = {contactData} onFocus={handleFocus} onBlur={handleFocus} required />
                 </label>
                 <p id="question">Як краще з Вами зв‘язатися?</p>
                 <div className={s.radio_group} role="radiogroup"  aria-labelledby="question">

@@ -19,7 +19,7 @@ function ContactsForm() {
     const [contactData, setContactData] = useState('');
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(false);
-    const isDataValid = useContactDataValidator(contactData, chanels[chanell].regEx)
+    const [isDataValid,isFocus, handleFocus] = useContactDataValidator(contactData, chanels[chanell].regEx)
 
 
 
@@ -99,7 +99,7 @@ function ContactsForm() {
                                 <input minLength={2} onChange={handleChange} value={name} className={s.input} name='name' type="text" autoComplete='false' required />
                             </label>
                             <label className={s.label}>{chanell}
-                                <input onChange={handleChange} value={contactData} className={ clsx(s.input,{[s.not_valid]: !isDataValid})} name='contact_data' type={chanels[chanell].type} autoComplete='false' aria-autocomplete='false' required />
+                                <input onChange={handleChange} value={contactData} className={ clsx(s.input,{[s.not_valid]: !isDataValid & isFocus}, {[s.valid]: isDataValid})} name='contact_data' type={chanels[chanell].type} autoComplete='false' aria-autocomplete='false' onFocus={handleFocus} onBlur={handleFocus} required />
                             </label>
                         </div>
                         <div className={clsx(s.box, s.radio_group)} role="radiogroup">

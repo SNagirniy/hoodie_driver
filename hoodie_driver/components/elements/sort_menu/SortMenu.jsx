@@ -61,9 +61,9 @@ const SortMenu = ({sortValue})=> {
       if (value) {
         const [sort_by,ascending] = value.split(',')
        
-
         params.set('sort_by', sort_by);
         params.set('ascending', ascending)
+        params.set('page', 1)
       } else {
         params.delete('sort_by');
         params.delete('ascending');

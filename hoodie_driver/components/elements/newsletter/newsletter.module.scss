@@ -34,12 +34,15 @@
     @include for-size(tablet){
     flex-direction: row;
     border: 1px solid $accent-text-color;
-    border-radius: 48px;
+    border-radius: 3rem;
     padding: 0 0 0 0;
     background: rgba(43, 150, 234, 0.1);
 
     &.not_valid{
         border: 1px solid red;
+    }
+    &.valid{
+        border: 1px solid rgb(41, 231, 41);
     }
     }
 };
@@ -50,26 +53,36 @@
     outline: none;
     width: 100%;
     border: none;
-    padding-left: 16px;
+    padding-left: 1rem;
 
     font-weight: 400;
-font-size: 16px;
+font-size: 1rem;
 line-height: 1.5;
 color: $primary-text-color;
 padding: 12px;
+border-radius: 3rem 0 0 3rem;
+
+&:-webkit-autofill,
+&:-webkit-autofill:hover, 
+&:-webkit-autofill:focus {
+  -webkit-text-fill-color: $primary-text-color !important;
+  -webkit-box-shadow: 0 0 0px 40rem #1f2224dd inset !important;
+ 
+  
+}
 
  @include for-size(tablet-only){
 border: 1px solid $accent-text-color;
-border-radius: 48px;
+border-radius: 3rem;
 background: rgba(43, 150, 234, 0.1);
 &.not_valid{
     border: 1px solid red;
 }
 
- }
-
-
-
+&.valid{
+    border: 1px solid rgb(41, 231, 41);
+}
+}
 };
 
 

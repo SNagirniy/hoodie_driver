@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 
 const useContactDataValidator =(data, pattern)=>{
 const [isDataValid, setIsDataValid]=useState(false);
+const [isFocus, setIsFocus]=useState(false)
 
 const dataValidator = () => {
     const isValid = pattern.test(data);
@@ -13,7 +14,12 @@ const dataValidator = () => {
 
   useEffect(()=> dataValidator(), [data,pattern])
 
-return isDataValid
+  const handleFocus =()=> {
+   setIsFocus(!isFocus)
+    
+  }
+
+return [isDataValid, isFocus, handleFocus]
 };
 
 export default useContactDataValidator

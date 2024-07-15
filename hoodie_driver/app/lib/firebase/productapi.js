@@ -14,7 +14,7 @@ const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending})
     const constraints = [];
 
           if(slug){constraints.push(where('category','==',slug))};
-          if(color){constraints.push(where("color", "==", color))};
+          if(color){constraints.push(where("color", "array-contains", color))};
           constraints.push(orderBy(sort_val, sort_type));
           if(isLimit){ constraints.push(limit(prodPerPage))};
           if(cursor){ constraints.push(startAt(cursor))};
@@ -23,7 +23,7 @@ const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending})
 }
 
 export const getCursors = async(slug, color, sort_by, ascending)=>{
- noStore()
+
     const cursors = [];
     const offset = (page)=>(page - 1) * prodPerPage;
     try {

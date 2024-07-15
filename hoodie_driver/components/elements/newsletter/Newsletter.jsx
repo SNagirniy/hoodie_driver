@@ -10,7 +10,8 @@ import clsx from 'clsx';
 const Newsletter = ()=>{
     const [email, setEmail] = useState(chanels.email.defaultVal);
     const[isChecked, setIsChecked] = useState(false);
-    const isValid = useContactDataValidator(email, chanels.email.regEx)
+    const [isValid, isFocus, handleFocus] = useContactDataValidator(email, chanels.email.regEx);
+   
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -33,8 +34,11 @@ const Newsletter = ()=>{
       const onHandleCheck = (e)=> {
 
         setIsChecked(!isChecked)
+       
 
       };
+
+     
 
 
 
@@ -45,13 +49,17 @@ const Newsletter = ()=>{
                 <p className={s.description}>Не пропустіть свіжі новини та унікальні акції — підпишіться на наш newsletter зараз.</p>
             </hgroup>
             <div className={s.form_container}>
-                <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid})}>
+                <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid & isFocus}, {[s.valid] : isValid})}>
                     <input
-                    className={clsx(s.email_input, {[s.not_valid]: !isValid}) }
+                    className={clsx(s.email_input, {[s.not_valid]: !isValid & isFocus}, {[s.valid] : isValid}) }
                      placeholder='Твій email' onChange={handleChange} 
                      name='email'
                      autoComplete='false'
                      type="email"  value={email}
+                     onFocus={handleFocus}
+                     onBlur={handleFocus}
+                     
+                   
                     
                      />
                      

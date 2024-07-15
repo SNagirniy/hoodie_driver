@@ -37,8 +37,20 @@ gap: 1.5rem};
         border-radius: 3rem;
         padding: 12px;
 
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover, 
+        &:-webkit-autofill:focus {
+          -webkit-text-fill-color: $primary-text-color !important;
+          -webkit-box-shadow: 0 0 0px 40rem #1F2224 inset !important;
+         
+        }
+
         &.not_valid{
             border: 1px solid red;
+        }
+
+        &.valid{
+            border: 1px solid rgb(41, 231, 41);
         }
 
        
@@ -59,6 +71,7 @@ justify-content: space-between;
     text-transform: capitalize;
 
     & input{
+       
         position: absolute;
         width: 1px;
         height: 1px;

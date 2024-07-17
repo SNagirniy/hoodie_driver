@@ -15,7 +15,6 @@
     @include for-size(desktop){
         backdrop-filter: blur(0);
         background: transparent;
-        align-items:self-start;
     }
   }
   
@@ -34,9 +33,7 @@
     }
 
     @include for-size(desktop){
-        border-radius: 32px 32px 32px 4px;
-        bottom: -6rem;
-        right: 4rem;
+        border-radius: 2rem;
     }
 }
   

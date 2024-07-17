@@ -1,0 +1,40 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.section{
+   
+    padding: 112px 64px;
+    background:url('../../../public/story_image.webp'),rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode:overlay;
+
+  
+
+    & >article{
+       margin: 0 auto;
+        display: flex;
+        width: 60%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap:1.5rem;
+    }
+
+   
+};
+
+.title{
+font-weight: 700;
+font-size: 48px;
+line-height: 1.2;
+color: $primary-text-color;
+};
+
+.description{
+font-weight: 400;
+font-size: 18px;
+line-height: 1.5;
+color: $primary-text-color;
+};

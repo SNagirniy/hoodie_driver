@@ -2,7 +2,6 @@ import MainContainer from "@/components/layouts/MainCintainer";
 import s from './store_catalogue_section.module.scss';
 import StoreAside from "../store_aside/StoreAside";
 
-
 const StoreCataloqueSection = ({children})=> {
 
     return (
@@ -17,7 +16,6 @@ const StoreCataloqueSection = ({children})=> {
             <div className={s.wrapper}>
                 <StoreAside/>
                 <div className={s.catalogue_list_container}>{children}</div>
-                
             </div>
 
         </div>

@@ -4,15 +4,27 @@ import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 import s from './slider.module.scss';
 import { v4 } from "uuid";
+import { usePathname } from "@/navigation";
 import ButtonGroup from "./controlers/ButtonGroup";
 import CustomDot from "./controlers/CustomDot";
+import Card from "@/components/elements/card/Card";
 
+const Slider = ({slides, colors})=> {
+  const pathname = usePathname();
 
+  const pathnameToArray =(pathname) =>{
 
-
-
-
-const Slider = ({slides})=> {
+    if (pathname.startsWith('/')) {
+      pathname = pathname.slice(1);
+    }
+    if (pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1);
+    }
+    const pathArray = pathname.split('/');
+    return pathArray;
+  }
+  const isSlideItemCard = pathnameToArray(pathname).some((el)=> el === 'store')
+ 
 
   return (
     <div className={s.container}>
@@ -72,8 +84,10 @@ const Slider = ({slides})=> {
   slidesToSlide={1}
   swipeable
   >
+  
+  {isSlideItemCard && slides?.map((el)=> {return <Card key={el.id} color_map={colors} product={el} />})}
 
-  {slides.map(({url, alt})=> {return <div className={s.thumb} key={v4()} ><img className={s.image} src={url} alt={alt} /></div>})}
+  {!isSlideItemCard && slides?.map(({url, alt})=> {return <div className={s.thumb} key={v4()} ><img className={s.image} src={url} alt={alt} /></div>})}
     </Carousel>
     </div>
   )

@@ -65,7 +65,6 @@ export const getBestselers = async ()=> {
     ...doc.data(), date};
     products.push(product)
     });
-    await getImageRef()
     return products
     } catch (e) {
         console.log(e)
@@ -142,6 +141,29 @@ export const getColors = async()=>{
             console.log(e) 
         }
 
+
+    }
+
+
+    export const getAllProductsByCategory = async(category_name)=> {
+        const ref = collection(db, "categories", 'catalogue_list', 'products');
+        const q = query(ref, where("category", "==", category_name));
+        try {
+         
+             let products =[];
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            const data = doc.data()
+            const date = new Date(data.date * 1000).toLocaleString();
+         const product = { id: doc.id,
+        ...doc.data(), date};
+        products.push(product)
+        });
+        return products
+        } catch (e) {
+            console.log(e)
+        }
+       
 
     }
 

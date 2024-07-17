@@ -2,7 +2,6 @@
 
 import s from './card.module.scss';
 import { Link } from '@/navigation';
-import dynamic from 'next/dynamic';
 import Shopping from '../../../public/shopping.svg';
 import { useLocale } from 'next-intl';
 import clsx from 'clsx';

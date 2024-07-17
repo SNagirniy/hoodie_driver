@@ -15,9 +15,9 @@ const BtnSet = ()=> {
     return (
     <div className={s.btn_container}>
         <LocalesSwitcger/>
-        <a className={clsx(s.button, s.link)} href="https://www.instagram.com/hoodie.driver/" target="_blank"      rel="noopener noreferrer">
+        <a className={s.button} href="https://www.instagram.com/hoodie.driver/" target="_blank"      rel="noopener noreferrer">
             <Instagram 
-            className={clsx(s.icon, s.instagram)}/>
+            className={s.icon}/>
         </a>
         <CartButton>
             <CartIndicator/>

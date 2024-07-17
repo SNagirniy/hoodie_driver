@@ -1,21 +1,19 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
+.menu_box{
+  display: flex;
+  width: 100%;
+align-items: center;
+justify-content: space-between;
+}
+
 .container{
     display: flex;
     flex-direction: column;
     position: relative;
     align-items: center;
- 
-  }
-  
-  .item{
-    display: flex;
-  cursor: pointer;  
-
   }
 
-  
-  
   .dropdown{
       position: absolute;
       top: 0;
@@ -29,7 +27,7 @@
       border: 1px solid $accent-text-color;
       border-radius: 16px 4px 16px 16px;
       padding: 20px;
-        color: $dark;
+      color: $dark;
       visibility: hidden;
       transition: all $cubic;
 
@@ -39,8 +37,6 @@
         top: 240%;
         opacity: 1;
         visibility: visible;
-        
-
         @include for-size(tablet){
           top: 220%;
           }
@@ -52,8 +48,8 @@
   display: flex;
 align-items: center;
 justify-content: space-between;
+padding: 0.55rem 1rem;
 gap:12px;
-
 font-weight: 400;
 font-size: 16px;
 gap:0.5rem;
@@ -63,21 +59,44 @@ text-transform: capitalize;
 color: $accent-text-color;
 cursor: pointer;
 
+}
+.indicator_icon{
+  fill: $accent-text-color;
+  width: 24px;
+  height: 24px;
+  transform: rotate(90deg);
+  transition: all $cubic;
 
+  &.open{
+      transform: rotate(0deg);
+  }
 }
 
+.item{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  background-color: transparent;
+  border: none;
+  text-transform: capitalize;
+  color: $bglightblue;
+  cursor: pointer;  
+
+}
 
 .icon{
   width: 24px;
   height: 24px;
-  fill: $accent-text-color;
+  fill: $bglightblue;
 }
 
-.item_title{
+
+.current_filter_box{
 display: flex;
-flex-direction: row;
-gap: 12px;
 align-items: center;
-text-transform: capitalize;
+justify-content: center;
+gap: 1rem;
 }
+
 

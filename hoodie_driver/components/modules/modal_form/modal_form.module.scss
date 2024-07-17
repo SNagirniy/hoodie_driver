@@ -40,8 +40,8 @@ gap: 1.5rem};
         &:-webkit-autofill,
         &:-webkit-autofill:hover, 
         &:-webkit-autofill:focus {
-          -webkit-text-fill-color: $primary-text-color !important;
-          -webkit-box-shadow: 0 0 0px 40rem #1F2224 inset !important;
+          -webkit-text-fill-color: $primary-bg-color !important;
+          -webkit-box-shadow: 0 0 0px 40rem #fbfdff inset !important;
          
         }
 

@@ -1,13 +1,10 @@
-import s from './social_links.module.scss'
+import s from './contact_social_links.module.scss';
 import { v4 } from 'uuid';
-
 import socialLinks from '@/utils/socialLinkList';
 
 
-const SocialLinks =()=> {
+const ContactSocialLinks =()=> {
     return (
-       
-            
             <ul className={s.list}>
             {socialLinks.map(({icon, alt, url})=> {return (
                 <li key={v4()}>
@@ -24,4 +21,4 @@ const SocialLinks =()=> {
     )
 };
 
-export default SocialLinks;
+export default ContactSocialLinks;

@@ -58,11 +58,13 @@ text-align: center;
 color: $accent-text-color;
 cursor: pointer;
 
-transition:  background-color $cubic;
+transition: all $cubic;
 
 &:hover,
 &:focus{
-  background-color: $primary-text-color;
+  background-color: $secondary-text-color;
+  border: 1px solid $secondary-text-color;
+  color: $primary-bg-color;
 }
 
 

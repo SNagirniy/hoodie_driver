@@ -1,6 +1,7 @@
 import s from './contacts_article.module.scss';
 import MainContainer from '@/components/layouts/MainCintainer';
 import NovaPost from '../../../public/novapost.svg';
+import ContactSocialLinks from '@/components/elements/contactSocialLinks/contactSocialLinks';
 
 
 const ContactsArticle = ()=> {
@@ -23,7 +24,7 @@ const ContactsArticle = ()=> {
                     <img  className={s.image} src='/story_image.webp' alt='story image'/>
                 </div>
                 </article>
-
+                <ContactSocialLinks/>
             </MainContainer>
         </section>
     )

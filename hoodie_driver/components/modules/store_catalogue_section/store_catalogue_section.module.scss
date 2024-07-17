@@ -6,7 +6,6 @@
         @include for-size(tablet){
             padding: 75px 0;
         }
-       
     };
 
     .container{
@@ -45,5 +44,5 @@ line-height: 1.2;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 3rem;
+        gap: 1.5rem;
     }

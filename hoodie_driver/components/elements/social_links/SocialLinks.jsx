@@ -9,7 +9,7 @@ const SocialLinks =()=> {
        
             
             <ul className={s.list}>
-            {socialLinks.map(({icon, alt, url})=> {return (
+            {socialLinks?.map(({icon, alt, url})=> {return (
                 <li key={v4()}>
                     <a className={s.link} href={url} target="_blank" >
                     {icon(s.icon)}

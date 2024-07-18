@@ -15,9 +15,7 @@ const ContactSocialLinks =()=> {
                 </li>
             )})}
             </ul>
-          
-          
-            
+              
     )
 };
 

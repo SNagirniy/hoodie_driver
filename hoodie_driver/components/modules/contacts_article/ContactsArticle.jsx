@@ -1,7 +1,7 @@
 import s from './contacts_article.module.scss';
 import MainContainer from '@/components/layouts/MainCintainer';
 import NovaPost from '../../../public/novapost.svg';
-import ContactSocialLinks from '@/components/elements/contactSocialLinks/contactSocialLinks';
+import ContactSocialLinks from '@/components/elements/contactSocialLinks/ContactSocialLinks';
 
 
 const ContactsArticle = ()=> {

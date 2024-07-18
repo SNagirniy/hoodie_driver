@@ -10,7 +10,7 @@ import { Checkbox } from '@nextui-org/checkbox';
 import { useState,useEffect } from 'react';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
 import chanels from '@/utils/contactChanels';
-import ContactSocialLinks from '@/components/elements/contactSocialLinks/contactSocialLinks';
+
 
 
 

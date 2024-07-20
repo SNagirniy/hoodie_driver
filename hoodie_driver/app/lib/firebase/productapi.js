@@ -6,6 +6,16 @@ import { unstable_noStore as noStore } from "next/cache";
 const prodPerPage = 3;
 
 
+const sortObjectByField = (obj, field) => {
+    // Перетворюємо об'єкт у масив
+    const sortedArray = Object.entries(obj)
+      .sort(([, a], [, b]) => a[field] - b[field]); // Сортуємо за полем field
+  
+    // Перетворюємо масив назад у об'єкт
+    return Object.fromEntries(sortedArray);
+  };
+
+
 const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending})=>{
     const slug = catalogue === 'all'? null : catalogue;
     const sort_val = sort_by? sort_by : 'priority';
@@ -122,8 +132,10 @@ export const getColors = async()=>{
     let colors={}
     try {
         const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) =>{ colors = {...doc.data().colors} })
-      return colors;
+        querySnapshot.forEach((doc) =>{ colors = {...doc.data().colors} });
+        const sorted_colors = sortObjectByField(colors, 'priority');
+
+      return sorted_colors;
      
     } catch (e){
         console.log(e)  
@@ -135,7 +147,7 @@ export const getColors = async()=>{
         try {
     const docRef = doc(db, "categories", 'catalogue_list', 'products',slug);
     const docSnap = await getDoc(docRef);
-    const product = docSnap.data();
+    const product = {...docSnap.data(),id: docSnap.id};
     return product;
         } catch (e) {
             console.log(e) 

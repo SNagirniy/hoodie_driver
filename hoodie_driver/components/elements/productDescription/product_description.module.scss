@@ -1,0 +1,42 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: $primary-text-color;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+};
+
+
+.title{
+font-weight: 700;
+font-size: 3rem;
+line-height: 1.2;
+&::first-letter{
+    text-transform: capitalize;
+}
+
+};
+
+.product_code{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+};
+
+.price{
+font-weight: 700;
+font-size: 3.5rem;
+line-height: 1.2;
+color: $secondary-text-color;
+}
+
+.description{
+    margin-top: 16px;
+    &::first-letter{
+        text-transform: capitalize;
+    }
+}

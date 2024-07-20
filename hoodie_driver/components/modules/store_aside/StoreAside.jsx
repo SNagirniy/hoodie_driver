@@ -18,13 +18,10 @@ const colors = await getColors();
 
 const categories = data?.map(({id, title})=> {return { slug: id, title: title[locale]}});
 categories.unshift({title: 'Усі',
-slug: 'all'
-})
+slug: 'all'});
 
-
-const color_map = Object.keys(colors)?.map((key)=> { const {title, value} = colors[key]; 
-return {title: title[locale], color: value, id: key}});
-
+const color_map = Object.keys(colors)?.map((key)=> {
+return {title: colors[key].title[locale], color: colors[key].value, id: key, icon: colors[key].icon}});
 
     return (
         <aside className={s.aside}>

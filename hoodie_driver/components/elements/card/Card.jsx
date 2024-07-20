@@ -7,7 +7,8 @@ import { useLocale } from 'next-intl';
 import clsx from 'clsx';
 import truncate from '@/utils/truncate';
 import { useCart } from '@/contexts/cartContext';
-
+import IconItem from './IconItem';
+import ColorItem from './ColorItem';
 
 
 const Card = ({product,color_map})=> {
@@ -51,7 +52,7 @@ const Card = ({product,color_map})=> {
                 {available_colors?.length !== 0 &&
                     <ul className={s.colors}>
                        { 
-                       colorMap.map((color) => {return(<li key={color} className={s.color} style={{background:color_map[color].value,}}></li>)})}
+                       colorMap?.map((color) => {return color_map[color].value? <ColorItem key={color} color_value={color_map[color].value}/> : <IconItem key={color} icon={color_map[color].icon} icon_title={color_map[color].title[locale]}/>})}
                     </ul>}
                     {remainingCount &&< span>{remainingCount}+</span>}
                 

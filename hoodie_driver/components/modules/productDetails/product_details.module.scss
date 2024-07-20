@@ -1,0 +1,22 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.section{
+        padding: 60px 0;
+            @include for-size(tablet){
+                padding: 75px 0;
+            }
+        };
+
+
+.article{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+    };
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }

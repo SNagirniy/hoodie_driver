@@ -30,7 +30,7 @@ const ColorsFilter = ({color_map})=> {
           params.delete('color');
           params.delete('page');
         }
-        router.replace(`${pathname}?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`,{scroll: false});
       }
 
        const renderedColors = isColorFilterOpen? color_map : color_map.slice(0,11);

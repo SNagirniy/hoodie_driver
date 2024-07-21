@@ -20,7 +20,7 @@ const handleClick = (e)=>{
     } else {
       params.delete('page');
     }
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`,{scroll: false});
   }
 
 

@@ -22,7 +22,7 @@ const ResetLink = ({param})=> {
           params.delete('ascending');}
        
         params.set('page', 1);
-        router.replace(`${pathname}?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`,{scroll: false});
       }
 
 

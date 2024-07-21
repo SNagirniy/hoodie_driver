@@ -1,6 +1,5 @@
 
 import s from './navigation.module.scss';
-import clsx from "clsx";
 import LocalesSwitcger from './locales/LocalesSwitcger';
 import Instagram from '../../../public/Instagram.svg';
 import CartButton from './CartButton/CartButton';
@@ -10,7 +9,7 @@ import CartIndicator from './CartButton/CartIndicator';
 
 
 
-const BtnSet = ()=> {
+const BtnSet = ({toggleModal})=> {
 
     return (
     <div className={s.btn_container}>
@@ -19,7 +18,7 @@ const BtnSet = ()=> {
             <Instagram 
             className={s.icon}/>
         </a>
-        <CartButton>
+        <CartButton toggleModal={toggleModal}>
             <CartIndicator/>
         </CartButton>
     </div>

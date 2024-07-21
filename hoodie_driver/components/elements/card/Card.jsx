@@ -13,7 +13,6 @@ import ColorItem from './ColorItem';
 
 const Card = ({product,color_map})=> {
     
-   
     const { addToCart, isExist, hydrated } = useCart(); 
     const inCart = isExist(product.id);
     const locale = useLocale();
@@ -21,7 +20,7 @@ const Card = ({product,color_map})=> {
 
    if(!hydrated) {return null}; 
 
-    const {title, price, available_colors, imageURL, id} = product;
+    const {title, price, available_colors, imageURL, id, color} = product;
     const renderColors =(arr)=> {
         const maxEl =3;
         if(arr.length <= maxEl) {return {colorMap: arr}};
@@ -32,7 +31,7 @@ const Card = ({product,color_map})=> {
     };
 
     const handleClick = ()=> {
-        const data = {title: title.uk, price, imageURL, id}
+        const data = {title: title.uk, price, image: imageURL, id, ammount: 1, color}
         addToCart(data)
        
     }

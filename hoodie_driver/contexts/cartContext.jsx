@@ -36,12 +36,20 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    const filteredCart = cart.filter(el => el.id !== product.id);
+    setCart([...filteredCart, product]);
   };
 
   const removeFromCart = (productId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
+
+  const changeCartItem =(prodId, changedValueObj)=> {
+    setCart(prevArray => {
+      return prevArray.map(item => 
+          item.id === prodId ? { ...item, ...changedValueObj } : item
+      );
+  });}
 
   const isExist = (productId)=> {
     return cart?.some((item) => item.id === productId);
@@ -52,7 +60,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart, hydrated }}>
+    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart,changeCartItem, hydrated }}>
       {children}
     </CartContext.Provider>
   );

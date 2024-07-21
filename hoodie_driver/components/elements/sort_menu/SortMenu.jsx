@@ -103,7 +103,7 @@ const SortMenu = ()=> {
         params.delete('sort_by');
         params.delete('ascending');
       }
-      router.replace(`${pathname}?${params.toString()}`);
+      router.replace(`${pathname}?${params.toString()}`, {scroll: false});
       toggleDropdown();
       
     };

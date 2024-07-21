@@ -12,7 +12,6 @@ export default function Modal({ onClose, children }) {
 
   useEffect(() => {
     setIsMounted(true);
-
     return () => setIsMounted(false);
   }, []);
 

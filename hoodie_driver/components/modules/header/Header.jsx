@@ -9,6 +9,8 @@ import MobileMenu from "../mobile_menu/MobileMenu";
 import Newsletter from "@/components/elements/newsletter/Newsletter";
 import Credits from "@/components/elements/credits/Credits";
 import Social from "./Social";
+import Modal from "../modal/Modal";
+import Cart from "../cart/Cart";
 import s from './index.module.scss';
 
 
@@ -17,18 +19,21 @@ import { useState, useEffect } from "react";
 
 const Header =()=> {
     const {width}= useWindowSize();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] =useState(false);
+
+    const toggleModal = ()=> {setIsModalOpen(!isModalOpen)}
 
     const handleToggleMenu = ()=> {
-        setIsOpen(!isOpen)
+        setIsMenuOpen(!isModalOpen)
     };
 
     const onCloseMenu = ()=> {
-        setIsOpen(false)
+        setIsMenuOpen(false)
     };
 
     useEffect(()=> {
-        if(width >=1280) { setIsOpen(false)}
+        if(width >=1280) { setIsMenuOpen(false)}
     }, [width]);
 
     const device ={
@@ -45,12 +50,12 @@ const Header =()=> {
             
                     <div className={s.nav_box}>
                        {width >= device.desktop && (<Navigation/>)} 
-                        <BtnSet/>
-                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isOpen}/>)} 
+                        <BtnSet toggleModal={toggleModal}/>
+                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isMenuOpen}/>)} 
                         
                     </div>
                     {width < device.desktop && 
-                    <MobileMenu isOpen={isOpen}>
+                    <MobileMenu isOpen={isMenuOpen}>
                         <Navigation onCloseMenu={onCloseMenu}/>
                         <Social/>
                         {width >= device.tablet &&  <Newsletter/>}
@@ -61,7 +66,10 @@ const Header =()=> {
                 </div>
            
             </MainContainer>
-           
+            { isModalOpen && 
+            <Modal onClose={toggleModal}>
+                <Cart/>
+            </Modal>}
         </header>
     )
 };

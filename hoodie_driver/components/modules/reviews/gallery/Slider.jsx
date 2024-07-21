@@ -62,7 +62,7 @@ const Slider = ({slides, colors})=> {
         max: 767,
         min: 0
       },
-      items: 2,
+      items: isSlideItemCard? 1 : 2,
       partialVisibilityGutter: 10
     },
     tablet: {

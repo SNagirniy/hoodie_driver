@@ -147,7 +147,9 @@ export const getColors = async()=>{
         try {
     const docRef = doc(db, "categories", 'catalogue_list', 'products',slug);
     const docSnap = await getDoc(docRef);
-    const product = {...docSnap.data(),id: docSnap.id};
+    const data = docSnap.data();
+    const date = new Date(data.date * 1000).toLocaleString();
+    const product = {...data,id: docSnap.id, date};
     return product;
         } catch (e) {
             console.log(e) 

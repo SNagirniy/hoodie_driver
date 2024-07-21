@@ -20,7 +20,7 @@ const CategoriesList = ({links})=> {
           params.delete('category');
           params.delete('page');
         }
-        router.replace(`${pathname}?${params.toString()}`);
+        router.replace(`${pathname}?${params.toString()}`,{scroll: false});
       }
 
     return (

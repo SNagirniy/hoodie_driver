@@ -12,10 +12,7 @@
     backdrop-filter: blur(8px);
     background: rgba(32, 46, 56, 0.3);
     z-index: 1000;
-    @include for-size(desktop){
-        backdrop-filter: blur(0);
-        background: transparent;
-    }
+   
   }
   
   .modal_content {

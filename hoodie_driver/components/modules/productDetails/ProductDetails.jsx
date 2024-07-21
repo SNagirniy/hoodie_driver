@@ -21,7 +21,7 @@ const ProductDetails = ({product, colors})=> {
                     <ProductSlider image={product?.imageURL} title={product?.title.uk}/>
                     <div className={s.container}>
                         <ProductDescription title={title} slug={product?.id} description={description} price={product?.price}/>
-                        <ProductForm colors={available_colors}/>
+                        <ProductForm product={product} colors={available_colors}/>
                     </div>
                    
                 </article>

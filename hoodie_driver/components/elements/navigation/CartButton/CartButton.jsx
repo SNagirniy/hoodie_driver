@@ -4,11 +4,11 @@ import Shopping from '../../../../public/shopping.svg';
 
 
 
+const CartButton=({children, toggleModal})=>{
 
-const CartButton=({children})=>{
 
     return (
-        <button  className={s.cart_btn} type="button">
+        <button onClick={toggleModal}  className={s.cart_btn} type="button">
             <Shopping className={s.icon}/>
               {children}
         </button>

@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import MainContainer from "@/components/layouts/MainCintainer";
 import Button from '@/components/elements/mainButton/Button';
 import Check from '../../../public/check_icon.svg';
+import { toast } from 'react-toastify';
 import { Checkbox } from '@nextui-org/checkbox';
 import { useState,useEffect } from 'react';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
@@ -59,14 +60,14 @@ function ContactsForm() {
         
                     const result = await res.json();
                         if (res.ok) {
-                        console.log(result.message)
+                        toast.success(`Дякуємо за Ваш відгук. Очікуйте відповіді на ваш ${chanell}`);
                         resetFields()
                         } else {
-                        console.log(result.message);
+                            toast.error('Вибачте, сетвіс тимчасово недоступний. Спробуте пізніше.');
                         }
                     
                 } catch (error) {
-                    console.log(error)
+                    toast.error(error);
                 }
             }
         

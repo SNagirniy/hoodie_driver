@@ -5,6 +5,7 @@ import Check from '../../../public/check_icon.svg';
 import { useState, useEffect } from 'react';
 import chanels from '@/utils/contactChanels';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
+import { toast } from 'react-toastify';
 import clsx from 'clsx';
 
 
@@ -36,14 +37,16 @@ const ModalForm = ({onClose})=> {
             const result = await res.json();
         if (res.ok) {
             console.log(result.message)
+            toast.success('Дякуємо! Ваша заявка прийнята. Очікуйте звязку з менеджером.')
             resetFields()
-          onClose()
+            onClose()
         } else {
          console.log(result.message);
+         toast.error('Вибачте сервіс тимчасово недоступний. Спробуйте пізніше')
         }
                 
             } catch (error) {
-                console.log(error)
+                toast.error(error)
             }
         }
 

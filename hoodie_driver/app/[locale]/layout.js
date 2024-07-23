@@ -1,9 +1,11 @@
 import { montserrat } from '../globalStyles/fonts';
 import '../globalStyles/main.scss';
+import "react-toastify/dist/ReactToastify.css";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import PageLayout from '@/components/layouts/PageLayout';
 import { CartProvider } from '@/contexts/cartContext';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -30,6 +32,18 @@ const messages = await getMessages();
         <NextIntlClientProvider messages={messages}>
           <CartProvider>
             <PageLayout>
+              <ToastContainer
+              position="top-right"
+              autoClose={4000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable
+              pauseOnHover={false}
+              theme="light"
+              />
               {children}
               <div id='modal-root'></div>
             </PageLayout>

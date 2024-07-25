@@ -18,7 +18,7 @@ const ProductDetails = ({product, colors})=> {
         <section className={s.section}>
             <MainContainer>
                 <article className={s.article}>
-                    <ProductSlider image={product?.imageURL} title={product?.title.uk}/>
+                    <ProductSlider image={product?.imageURL} images_set={product?.images_set} title={product?.title.uk}/>
                     <div className={s.container}>
                         <ProductDescription title={title} slug={product?.id} description={description} price={product?.price}/>
                         <ProductForm product={product} colors={available_colors}/>

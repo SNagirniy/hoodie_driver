@@ -5,6 +5,7 @@ import Button from '../mainButton/Button';
 import { Checkbox } from '@nextui-org/checkbox';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
 import chanels from '@/utils/contactChanels';
+import { toast } from 'react-toastify';
 import clsx from 'clsx';
 
 const Newsletter = ()=>{
@@ -23,7 +24,7 @@ const Newsletter = ()=>{
 
             if(isValid){
             console.log(email);
-
+            toast.success('Дякуємо, що підписалися на нас!!!')
             setEmail('');
             setIsChecked(false)
             }

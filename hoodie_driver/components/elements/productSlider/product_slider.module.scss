@@ -1,17 +1,51 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
+
 .thumb{
     display: block;
     width: 100%;
     height: 533px;
 
-    border-radius: 20px;
-    object-fit:cover;
-    overflow: hidden;
 };
 
-.image{
-    display: block;
-    width: 100%;
+.gallery{
     height: 100%;
+
+    & > div{
+        height: 100%;
+        & >div{height: 100%;
+        & >div{height: 100%;
+        & >div{
+            height: 100%;
+        }}}
+    }
+
+    & >div >div > button{
+        padding: 50px 0;
+        & >svg{
+            width: 25px !important;
+        }};
+
+        & >div>div:first-child{
+        margin: 0 16px 0 0 !important;}
+        & >div>div:last-child{
+            width: auto;}
+};
+
+.thumbnail{
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+   
+};
+
+.original{
+    border-radius: 1.25rem;
+    height: 100%;
+    width: 400px;
+    overflow: hidden;
+    & img{
+        object-fit: cover !important;
+        height: 100%;
+    }
 }

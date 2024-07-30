@@ -5,6 +5,7 @@ import { getCategories } from '@/app/lib/firebase/productapi';
 import { getLocale } from 'next-intl/server';
 import { getColors } from '@/app/lib/firebase/productapi';
 import ResetLink from '@/components/elements/reset_link/ResetLink';
+import ProductSearch from '@/components/elements/productSearch/ProductSearch';
 import clsx from 'clsx';
 
 
@@ -29,8 +30,11 @@ return {title: colors[key].title[locale], color: colors[key].value, id: key, ico
                 <h3>Фільтри</h3>
                 <ResetLink param={'category'}/>
             </div>
-           
             <div className={s.item_box}>
+            <div className={s.aside_head}>
+            <h4>Швидкий пошук</h4>
+            </div>
+            <ProductSearch/>
                 <CategoriesList links={categories}/>
             </div>
             <div className={s.item_box}>

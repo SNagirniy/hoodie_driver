@@ -1,0 +1,38 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+
+.input_box{
+    position: relative;
+    width: 100%;
+};
+
+.input{
+    width: 100%;
+    border: 1px solid $accent-text-color;
+    border-radius: 3rem;
+    background: rgba(43, 150, 234, 0.1);
+    padding: 12px 12px 12px 44px;
+    outline: none;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 1rem;    
+    line-height: 1.5;
+    color: $accent-text-color;
+    &::placeholder{
+        color: $accent-text-color;
+        text-transform: capitalize;
+       &::first-letter{
+        text-transform: capitalize;
+       }
+    }
+};
+
+
+.search_icon{
+    position: absolute;
+    left: 0.75rem;
+    top: 25%;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+

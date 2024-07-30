@@ -39,7 +39,6 @@ const message = createMessage(data)
         }
     }
   } catch (error) {
-    console.error('Fetch error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

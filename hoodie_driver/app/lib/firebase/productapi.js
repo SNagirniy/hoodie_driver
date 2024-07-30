@@ -1,7 +1,6 @@
 import { db } from "./firebase";
 import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp,getDoc} from "firebase/firestore";
 import getImageRef from "./imageapi";
-import { unstable_noStore as noStore } from "next/cache";
 
 const prodPerPage = 3;
 
@@ -16,7 +15,7 @@ const sortObjectByField = (obj, field) => {
   };
 
 
-const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending})=>{
+const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending, query_string})=>{
     const slug = catalogue === 'all'? null : catalogue;
     const sort_val = sort_by? sort_by : 'priority';
     const sort_type = ascending? ascending : 'desc';
@@ -32,13 +31,13 @@ const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending})
 
 }
 
-export const getCursors = async(slug, color, sort_by, ascending)=>{
+export const getCursors = async(slug, color, sort_by, ascending, query_string)=>{
 
     const cursors = [];
     const offset = (page)=>(page - 1) * prodPerPage;
     try {
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending});
+        const constr = constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending, query_string: query_string});
 
         const q = query(ref,...constr);
        
@@ -83,12 +82,12 @@ export const getBestselers = async ()=> {
 };
 
 
-export const getProducts = async(catalogue,color, cursor, sort_by, ascending)=>{
+export const getProducts = async(catalogue,color, cursor, sort_by, ascending, query_string)=>{
 
     try {
    
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending})
+        const constr = constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending, query_string: query_string})
         const q=query(ref,...constr)
         
          

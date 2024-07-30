@@ -18,29 +18,34 @@ const Newsletter = ()=>{
         const { value } = e.target;
         setEmail(value.trim())
       };
-
-      const handleSubmit = (e)=> {
-            e.preventDefault();
-
-            if(isValid){
-            console.log(email);
-            toast.success('Дякуємо, що підписалися на нас!!!')
-            setEmail('');
-            setIsChecked(false)
-            }
-            
-
-      };
-
-      const onHandleCheck = (e)=> {
-
+      const onHandleCheck = ()=> {
         setIsChecked(!isChecked)
-       
-
       };
 
-     
+      const reset = ()=> {
+        setEmail(chanels.email.defaultVal);
+        setIsChecked(false)
+      };
 
+
+      const handleSubmit = async(e)=>{
+        e.preventDefault();
+
+            try {
+                const res = await fetch('/lib/sendpulse', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({email: email}),
+                  });
+                    const result = await res.json();
+                if (result.ok) {
+                    toast.success('Дякуємо! Підписка оформлена!')
+                }} catch (error) {
+                  toast.error('Вибачте, сервіс тимчасово недоступний. Спробуйте пізніше.')
+                } finally{ reset()}
+        };
 
 
     return (

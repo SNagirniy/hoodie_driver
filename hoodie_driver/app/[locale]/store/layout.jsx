@@ -1,5 +1,4 @@
 import Reviews from "@/components/modules/reviews/Reviews";
-import Button from "@/components/elements/mainButton/Button";
 import MainButton from "@/components/elements/mainButton/Main_Button";
 import CataloquePromoCta from "@/components/modules/cataloquePromoCTA/CataloquePromoCta";
 import { getAllProductsByCategory } from "@/app/lib/firebase/productapi";

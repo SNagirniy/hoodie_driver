@@ -6,10 +6,11 @@ import { useLocale } from 'next-intl';
 
 const Cart = ()=> {
 const {cart}=useCart();
+const locale = useLocale();
 
 if(cart.length === 0 ) {return (<div className={s.empty}>Cart is empty</div>)};
 
-const locale = useLocale();
+
 const total = cart.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0);
 
 

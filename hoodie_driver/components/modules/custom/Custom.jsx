@@ -6,6 +6,7 @@ import Fire from '../../../public/fire_icon.svg';
 import EmblaCarousel from '../embla/Embla_slider';
 import { v4 } from 'uuid';
 import { useTranslations } from 'next-intl';
+import { getCustomImages } from '@/app/lib/firebase/customImageApi';
 
 
 
@@ -15,15 +16,16 @@ import { useTranslations } from 'next-intl';
 const features = ['color',"design",
     'lace','print','size'];
 
- const slide ={url: '/carousel.webp', alt: 'custom hoodie'};
- const slides_list = new Array(8).fill(slide);
+
+ const slid= new Array(8).fill(1);
 const direction = {direction: 'rtl'}
 
 
-const Custom = ()=>{
+const Custom = async()=>{
 const t = useTranslations("Home");
-  
-
+ const customImagesSet = await getCustomImages();
+ const slides_list = customImagesSet.map((src)=> {return {url: src, alt: 'custom hoodie'}});
+ const renderedList = customImagesSet.length < 6? [...slides_list,...slides_list,...slides_list] : slides_list;
 
 return (
 <section className={s.container}>
@@ -52,8 +54,8 @@ return (
 
    
     <div className={s.gallery}>
-        <EmblaCarousel  slides={slides_list}/>
-        <EmblaCarousel direction={direction} slides={slides_list}/>
+        <EmblaCarousel  slides={renderedList}/>
+        <EmblaCarousel direction={direction} slides={renderedList}/>
     </div>
 
 </section>

@@ -12,8 +12,6 @@ const ProductDetails = ({product, colors})=> {
     const title = product?.title[locale];
     const description = product?.description[locale];
     const available_colors = product?.available_colors?.map((color) => { const {value, icon}= colors[color]; return {title: color,value,icon}});
-
-
     return (
         <section className={s.section}>
             <MainContainer>
@@ -21,7 +19,7 @@ const ProductDetails = ({product, colors})=> {
                     <ProductSlider image={product?.imageURL} images_set={product?.images_set} title={product?.title.uk}/>
                     <div className={s.container}>
                         <ProductDescription title={title} slug={product?.id} description={description} price={product?.price}/>
-                        <ProductForm product={product} colors={available_colors}/>
+                        <ProductForm product={product} colors={colors}/>
                     </div>
                    
                 </article>

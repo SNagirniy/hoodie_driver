@@ -20,10 +20,7 @@
     color: $accent-text-color;
     &::placeholder{
         color: $accent-text-color;
-        text-transform: capitalize;
-       &::first-letter{
-        text-transform: capitalize;
-       }
+        
     }
 };
 

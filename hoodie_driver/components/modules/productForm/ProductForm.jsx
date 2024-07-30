@@ -7,16 +7,23 @@ import Button from '@/components/elements/mainButton/Button';
 import { useState } from 'react';
 import { useCart } from '@/contexts/cartContext';
 import AmmountInput from '@/components/elements/ammountInput/AmmountInput';
+import clsx from 'clsx';
 
 const ProductForm =({colors, product})=>{
     const { addToCart} = useCart(); 
-    const [selectedColor, setSelectedColor]=useState(product?.color? product?.color : []);
+    const [selectedColor, setSelectedColor]=useState(()=> {
+        if(product?.color){return product?.color?.map((color)=> colors[color])}
+        else{ return []}});
     const [message, setMessage]= useState('');
-    const [ammount, setAmmount]=useState(1)
+    const [ammount, setAmmount]=useState(1);
+
+
+    const available_colors = product?.available_colors?.map((color) => { const {value, icon}= colors[color]; return {title: color,value,icon}});
 
     const handleSelectColor =(e)=>{
         const value = e.currentTarget?.value;
-        value ?? setSelectedColor([value]);
+        const currentColor = colors[value];
+        setSelectedColor([currentColor]);
     };
 
    const handleChangeMessage = (e)=> {
@@ -37,7 +44,7 @@ const ProductForm =({colors, product})=>{
     e.preventDefault();
 
     const productData = {
-        title: product?.title?.uk, 
+        title: product?.title, 
         price: product?.price, 
         image: product?.imageURL, 
         id: product?.id, 
@@ -48,13 +55,16 @@ const ProductForm =({colors, product})=>{
         addToCart(productData)
   }
 
-   
+  const isChecked = (color)=> selectedColor[0]?.title?.uk === color;
+ 
 
     return (
         <form  onSubmit={handleSubmit} className={s.form} >
             <p className={s.radio_capture} id="colors">Доступні кольори для худі:</p>
             <div className={s.radiogroup} role="radiogroup" aria-labelledby="colors" >
-                {colors?.map((color) => { return(<label className={s.radio_label}  key={color.title}>
+                {available_colors?.map((color) => { return(
+                    <label className={clsx(s.radio_label, {[s.checked] : isChecked(color.title)})} 
+                    key={color.title}>
                 <input 
                     onChange={handleSelectColor} 
                     type="radio" 
@@ -69,7 +79,7 @@ const ProductForm =({colors, product})=>{
                 Варіант
                 <Button title={'Зі своїм принтом'}/>
                 </label>
-               <label>
+               <label htmlFor='ammount'>
                 Кількість
                 <AmmountInput 
                 ammount={ammount}

@@ -2,12 +2,14 @@
 import s from './cart.module.scss';
 import { useCart } from '@/contexts/cartContext';
 import CartItem from './CartItem';
+import { useLocale } from 'next-intl';
 
 const Cart = ()=> {
 const {cart}=useCart();
 
 if(cart.length === 0 ) {return (<div className={s.empty}>Cart is empty</div>)};
 
+const locale = useLocale();
 const total = cart.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0);
 
 
@@ -20,7 +22,7 @@ return (
             ammount={ammount} 
             id={id} 
             image={image} 
-            title={title} 
+            title={title[locale]} 
             price={price}/>
    })}
     </ul>

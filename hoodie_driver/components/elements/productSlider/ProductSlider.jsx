@@ -12,7 +12,12 @@ const ProductSlider = ({image, title, images_set})=> {
         thumbnail: img,
         thumbnailClass: s.thumbnail,
         originalClass: s.original,
-        originalAlt: title,}
+        originalAlt: title,
+        originalHeight: 533,
+        originalWidth: 400,
+        thumbnailHeight:107,
+      thumbnailWidth: 80}
+        
       },)
 
       

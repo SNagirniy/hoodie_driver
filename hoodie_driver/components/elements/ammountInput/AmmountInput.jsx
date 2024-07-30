@@ -20,7 +20,9 @@ const AmmountInput =({ammount, handleChange})=> {
         type="number" 
         min={1} 
         max={100} 
-        step={1}/>
+        step={1}
+        id='ammount'/>
+        
 
         <button 
         onClick={handleChange} 

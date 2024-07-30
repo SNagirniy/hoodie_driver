@@ -18,18 +18,24 @@ const ProductSearch = ()=> {
         setSearchValue(value.trim())
     };
 
+    const removeAllParams = (params)=> {
+    for (const [key,value] of params) {
+      params.delete(key)};
+        return params
+      };
+   
 
 
     const submit = (searchValue) => {
        
         const params = new URLSearchParams(searchParams);
        
-        if (searchValue.length >= 3) {
-         
-          params.set('query', searchValue);
+        if (searchValue.length >= 5) {
+          removeAllParams(params)
+          params.set('code', searchValue.toUpperCase());
           params.set('page', 1)
         } else {
-          params.delete('query');
+          params.delete('code');
         }
         router.replace(`${pathname}?${params.toString()}`, {scroll: false});
         
@@ -38,16 +44,22 @@ const ProductSearch = ()=> {
       const debaunced = useDebouncedCallback(submit, 1000);
       useEffect(()=> debaunced(searchValue), [searchValue]);
 
+      const reset = (params)=> {
+      const isExist = params.get('code');
+       if(!isExist) {setSearchValue('')}
+      };
+      useEffect(()=> reset(searchParams), [searchParams])
+
     return (
 <div className={s.input_box} role='search'>
 <input onChange={handleChange} 
 value={searchValue} 
 className={s.input} 
 autoComplete='false' 
-min={3} 
+min={5} 
 required 
 type="text"
-placeholder={'Шукай...'}/>
+placeholder={'Шукай за кодом товару...'}/>
 <Search className={s.search_icon}/>
 </div>
 

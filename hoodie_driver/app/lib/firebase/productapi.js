@@ -15,29 +15,36 @@ const sortObjectByField = (obj, field) => {
   };
 
 
-const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending, query_string})=>{
+const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending, code})=>{
     const slug = catalogue === 'all'? null : catalogue;
-    const sort_val = sort_by? sort_by : 'priority';
+    const sort_val = sort_by? sort_by : 'raiting';
     const sort_type = ascending? ascending : 'desc';
 
     const constraints = [];
-
-          if(slug){constraints.push(where('category','==',slug))};
-          if(color){constraints.push(where("color", "array-contains", color))};
-          constraints.push(orderBy(sort_val, sort_type));
+    if(code){
+        if(code){constraints.push(where("code", '==', code))}
+          constraints.push(orderBy('raiting', 'desc'));
           if(isLimit){ constraints.push(limit(prodPerPage))};
           if(cursor){ constraints.push(startAt(cursor))};
+    } else {
+        if(slug){constraints.push(where('category','==',slug))};
+        if(color){constraints.push(where("color", "array-contains", color))};
+        constraints.push(orderBy(sort_val, sort_type));
+        if(isLimit){ constraints.push(limit(prodPerPage))};
+        if(cursor){ constraints.push(startAt(cursor))};
+    }
+
           return constraints;
 
 }
 
-export const getCursors = async(slug, color, sort_by, ascending, query_string)=>{
+export const getCursors = async(slug, color, sort_by, ascending, code)=>{
 
     const cursors = [];
     const offset = (page)=>(page - 1) * prodPerPage;
     try {
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending, query_string: query_string});
+        const constr = constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending, code: code});
 
         const q = query(ref,...constr);
        
@@ -82,12 +89,12 @@ export const getBestselers = async ()=> {
 };
 
 
-export const getProducts = async(catalogue,color, cursor, sort_by, ascending, query_string)=>{
+export const getProducts = async(catalogue,color, cursor, sort_by, ascending, code)=>{
 
     try {
    
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending, query_string: query_string})
+        const constr = constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending, code: code})
         const q=query(ref,...constr)
         
          

@@ -4,6 +4,8 @@ import Search from '../../../public/search.svg';
 import { useState, useEffect } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import isId from '@/utils/productIdCheck';
+
 
 
 const ProductSearch = ()=> {
@@ -29,13 +31,17 @@ const ProductSearch = ()=> {
     const submit = (searchValue) => {
        
         const params = new URLSearchParams(searchParams);
-       
-        if (searchValue.length >= 5) {
+
+        const isProductId = isId(searchValue.toUpperCase());
+        if (searchValue.length >= 3 && isProductId) {
           removeAllParams(params)
-          params.set('code', searchValue.toUpperCase());
+          params.set('q', searchValue.toUpperCase());
           params.set('page', 1)
-        } else {
-          params.delete('code');
+        } else if(searchValue.length >= 3 && !isProductId){
+          params.set('q', searchValue.toLowerCase());
+          params.set('page', 1)
+        }else{
+          params.delete('q')
         }
         router.replace(`${pathname}?${params.toString()}`, {scroll: false});
         
@@ -45,7 +51,7 @@ const ProductSearch = ()=> {
       useEffect(()=> debaunced(searchValue), [searchValue]);
 
       const reset = (params)=> {
-      const isExist = params.get('code');
+      const isExist = params.get('q');
        if(!isExist) {setSearchValue('')}
       };
       useEffect(()=> reset(searchParams), [searchParams])
@@ -56,10 +62,11 @@ const ProductSearch = ()=> {
 value={searchValue} 
 className={s.input} 
 autoComplete='false' 
-min={5} 
+min={3}
+max={20}
 required 
 type="text"
-placeholder={'Шукай за кодом товару...'}/>
+placeholder={'Шукай...'}/>
 <Search className={s.search_icon}/>
 </div>
 

@@ -1,8 +1,12 @@
+'use server'
 import { db } from "./firebase";
-import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp,getDoc} from "firebase/firestore";
-import getImageRef from "./imageapi";
+import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp,getDoc, updateDoc} from "firebase/firestore";
+import { getLocale } from "next-intl/server";
+import isId from "@/utils/productIdCheck";
+import capitalizeFirstLetters from "@/utils/capitalazeFirstLetter";
 
 const prodPerPage = 3;
+
 
 
 const sortObjectByField = (obj, field) => {
@@ -14,37 +18,54 @@ const sortObjectByField = (obj, field) => {
     return Object.fromEntries(sortedArray);
   };
 
+  const formatToString = (dateStamp, title)=> {
+    
+    const date = new Date(dateStamp * 1000).toLocaleString();
+    for (const [key, value] of Object.entries(title)) {
+        const text = value.join(' ');
+        title[key]= capitalizeFirstLetters(text)
+      }
+   return {date, title}
 
-const constraintsMaker =({catalogue, color, cursor, isLimit,sort_by, ascending, code})=>{
+  };
+
+
+const constraintsMaker = async({catalogue, color, cursor, isLimit,sort_by, ascending, q})=>{
     const slug = catalogue === 'all'? null : catalogue;
     const sort_val = sort_by? sort_by : 'raiting';
     const sort_type = ascending? ascending : 'desc';
 
     const constraints = [];
-    if(code){
-        if(code){constraints.push(where("code", '==', code))}
+    if(q && isId(q)){
+        if(q){constraints.push(where("code", '==', q))}
           constraints.push(orderBy('raiting', 'desc'));
           if(isLimit){ constraints.push(limit(prodPerPage))};
           if(cursor){ constraints.push(startAt(cursor))};
-    } else {
+    } else if (q && !isId(q)){
+        const locale = await getLocale();
+        if(q){constraints.push(where(`title.${locale}`, 'array-contains', q))
+        }
+        if(slug){constraints.push(where('category','==',slug))};
+        constraints.push(orderBy(sort_val, sort_type));
+        if(isLimit){ constraints.push(limit(prodPerPage))};
+        if(cursor){ constraints.push(startAt(cursor))};
+    }
+    else{
         if(slug){constraints.push(where('category','==',slug))};
         if(color){constraints.push(where("color", "array-contains", color))};
         constraints.push(orderBy(sort_val, sort_type));
         if(isLimit){ constraints.push(limit(prodPerPage))};
         if(cursor){ constraints.push(startAt(cursor))};
     }
-
           return constraints;
-
 }
 
-export const getCursors = async(slug, color, sort_by, ascending, code)=>{
-
+export const getCursors = async(slug, color, sort_by, ascending, queryStr)=>{
     const cursors = [];
     const offset = (page)=>(page - 1) * prodPerPage;
     try {
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending, code: code});
+        const constr = await constraintsMaker({catalogue:slug, color:color, isLimit: false, sort_by: sort_by, ascending: ascending, q: queryStr});
 
         const q = query(ref,...constr);
        
@@ -62,7 +83,6 @@ export const getCursors = async(slug, color, sort_by, ascending, code)=>{
     } catch (error) {
         console.log(error)
     }
-
 }
 
 
@@ -76,25 +96,24 @@ export const getBestselers = async ()=> {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         const data = doc.data()
-        const date = new Date(data.date * 1000).toLocaleString();
+       const {date, title} = formatToString(data.date, data.title);
      const product = { id: doc.id,
-    ...doc.data(), date};
+    ...doc.data(), date, title};
     products.push(product)
     });
     return products
     } catch (e) {
         console.log(e)
     }
-   
 };
 
 
-export const getProducts = async(catalogue,color, cursor, sort_by, ascending, code)=>{
+export const getProducts = async(catalogue,color, cursor, sort_by, ascending, queryStr)=>{
 
     try {
    
         const ref = collection(db, "categories", 'catalogue_list', 'products');
-        const constr = constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending, code: code})
+        const constr = await constraintsMaker({catalogue: catalogue,color: color, cursor: cursor,isLimit: true,sort_by: sort_by, ascending: ascending, q: queryStr})
         const q=query(ref,...constr)
         
          
@@ -102,9 +121,9 @@ export const getProducts = async(catalogue,color, cursor, sort_by, ascending, co
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             const data = doc.data()
-            const date = new Date(data.date * 1000).toLocaleString();
+            const {date, title} = formatToString(data.date, data.title);
          const product = { id: doc.id,
-        ...doc.data(), date};
+        ...doc.data(), date, title};
         products.push(product)
         });
         return products
@@ -154,14 +173,12 @@ export const getColors = async()=>{
     const docRef = doc(db, "categories", 'catalogue_list', 'products',slug);
     const docSnap = await getDoc(docRef);
     const data = docSnap.data();
-    const date = new Date(data.date * 1000).toLocaleString();
-    const product = {...data,id: docSnap.id, date};
+    const {date, title} = formatToString(data.date, data.title);
+    const product = {...data,id: docSnap.id, date, title};
     return product;
         } catch (e) {
             console.log(e) 
         }
-
-
     }
 
 
@@ -174,21 +191,15 @@ export const getColors = async()=>{
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             const data = doc.data()
-            const date = new Date(data.date * 1000).toLocaleString();
+            const {date, title} = formatToString(data.date, data.title);
          const product = { id: doc.id,
-        ...doc.data(), date};
+        ...doc.data(), date,title};
         products.push(product)
         });
         return products
         } catch (e) {
             console.log(e)
-        }
-       
-
-    }
-
-
-
+        }}
 
 
 export const addManyProducts = (products)=>{
@@ -202,7 +213,16 @@ export const addManyProducts = (products)=>{
           console.error('Помилка при додаванні товару:', error);
         }
       });
+}
 
+export const updateProducts=async(fieldsToUpdateArr)=> {
+
+    fieldsToUpdateArr?.map(async({id, data})=> {
+
+        const docRef = doc(db,  "categories", 'catalogue_list', 'products', id);
+        await updateDoc(docRef, {title: data?.title});
+        console.log(`doc ${id} is updated`)
+    })
 
 }
 

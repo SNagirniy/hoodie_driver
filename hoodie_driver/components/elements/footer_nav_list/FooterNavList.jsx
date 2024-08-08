@@ -7,7 +7,7 @@ import { useRouter } from '@/navigation';
 
 
 
-const FooterNavList = ({links, title})=> {
+const FooterNavList = ({links, title,closeMenuFunc})=> {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -17,10 +17,12 @@ const FooterNavList = ({links, title})=> {
         const params = new URLSearchParams(searchParams);
         if (id) {
           params.set('category', id);
+          params.set('page', '1')
         } else {
           params.delete('category');
         }
         router.replace(`/store/catalogue?${params.toString()}`);
+       closeMenuFunc && closeMenuFunc();
       }
     return (
         <div className={s.container} >

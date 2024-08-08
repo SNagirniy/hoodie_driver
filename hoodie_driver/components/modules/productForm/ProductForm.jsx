@@ -7,6 +7,7 @@ import Button from '@/components/elements/mainButton/Button';
 import { useState } from 'react';
 import { useCart } from '@/contexts/cartContext';
 import AmmountInput from '@/components/elements/ammountInput/AmmountInput';
+import ProductVariantDropdown from '@/components/elements/productVariantDropdown/ProductVariantDropdown';
 import clsx from 'clsx';
 
 const ProductForm =({colors, product})=>{
@@ -16,6 +17,7 @@ const ProductForm =({colors, product})=>{
         else{ return []}});
     const [message, setMessage]= useState('');
     const [ammount, setAmmount]=useState(1);
+    const [isCustomizationOpen, setIsCustomizationOpen]=useState(false)
 
 
     const available_colors = product?.available_colors?.map((color) => { const {value, icon}= colors[color]; return {title: color,value,icon}});
@@ -30,6 +32,8 @@ const ProductForm =({colors, product})=>{
     const value = e.currentTarget?.value;
     setMessage(value)
    }
+
+   const toggleCustomization =(value)=>{setIsCustomizationOpen(value)}
 
    const changeAmmount =(e)=>{
     const name = e.currentTarget.name;
@@ -77,7 +81,9 @@ const ProductForm =({colors, product})=>{
             <div className={s.option_btn_container}>
                 <label>
                 Варіант
-                <Button title={'Зі своїм принтом'}/>
+                <ProductVariantDropdown 
+                isCustomizationOpen={isCustomizationOpen} 
+                toggleCustomization={toggleCustomization}/>
                 </label>
                <label htmlFor='ammount'>
                 Кількість
@@ -88,8 +94,8 @@ const ProductForm =({colors, product})=>{
                </label>
 
             </div>
-
-            <div className={s.msg_box}>
+            <div className={clsx(s.msg_box_wrapper, {[s.hiden] : !isCustomizationOpen})}>
+            <div className={clsx(s.msg_box, {[s.hiden]: !isCustomizationOpen})}>
                     <label htmlFor="message">Потрібно змінити колір, додати інше лого, картинку або напис, розробити індивідуальний дизайн худі, тощо?  Просто опиши тут свої побажання, і ми зробимо саме те худі 👌</label>
                     <textarea
                         name='message'
@@ -99,9 +105,11 @@ const ProductForm =({colors, product})=>{
                         type="text"
                         placeholder='Пишіть тут...' />
             </div>
+            </div>
             <div className={s.divider}></div>
             <div className={s.button_box}>
                 <Button type={'submit'} title={'купити'}/>
+                <button onClick={()=> setIsCustomizationOpen(!isCustomizationOpen)} className={s.custom_button} type="button">Кастомізувати</button>
             </div>
            
 

@@ -17,7 +17,7 @@ import s from './index.module.scss';
 import { useState, useEffect } from "react";
 
 
-const Header =()=> {
+const Header =({categories})=> {
     const {width}= useWindowSize();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] =useState(false);
@@ -25,7 +25,7 @@ const Header =()=> {
     const toggleModal = ()=> {setIsModalOpen(!isModalOpen)}
 
     const handleToggleMenu = ()=> {
-        setIsMenuOpen(!isModalOpen)
+        setIsMenuOpen(!isMenuOpen)
     };
 
     const onCloseMenu = ()=> {
@@ -49,14 +49,14 @@ const Header =()=> {
                     <Logo/>
             
                     <div className={s.nav_box}>
-                       {width >= device.desktop && (<Navigation/>)} 
+                       {width >= device.desktop && (<Navigation onCloseMenu={onCloseMenu} categories={categories}/>)} 
                         <BtnSet toggleModal={toggleModal}/>
                         {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isMenuOpen}/>)} 
                         
                     </div>
                     {width < device.desktop && 
                     <MobileMenu isOpen={isMenuOpen}>
-                        <Navigation onCloseMenu={onCloseMenu}/>
+                        <Navigation categories={categories} onCloseMenu={onCloseMenu}/>
                         <Social/>
                         {width >= device.tablet &&  <Newsletter/>}
                         <Credits/>

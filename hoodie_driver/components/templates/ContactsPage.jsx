@@ -4,8 +4,8 @@ const ContactsPage = ()=>{
 
     return(
         <>
-        <ContactsArticle/>
         <ContactsForm/>
+        <ContactsArticle/>
         </>
     )
 };

@@ -41,6 +41,7 @@
    &.checked{
     box-shadow: 0px 0px 1px 2px $primary-text-color;
     scale: 1.1;
+    border: 1px solid $bglightblue;
    }
 };
 
@@ -63,12 +64,30 @@
     }
 };
 
+.msg_box_wrapper{
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr;
+    transition: height $cubic;
+
+    &.hiden{
+    height: 0;
+    overflow: hidden;}
+  
+}
+
 .msg_box{
+   
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 1.5rem;
-   
+    transform: translateY(0);
+    transition: translate $cubic, height $cubic;
+   &.hiden{
+    transform: translateY(-100%);
+    visibility: hidden;
+    overflow: hidden;
+   }
 
     &>textarea{
         display: block;
@@ -101,4 +120,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1rem;
+};
+
+.custom_button{
+padding: 12px 24px;
+border-radius: 3rem;
+border: 1px solid $accent-text-color;
+background-color: $bglightblue;
+color: $accent-text-color;
+cursor: pointer;
 }

@@ -1,26 +1,20 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
-.menu_box{
-  display: flex;
-  width: 100%;
-align-items: center;
-justify-content: space-between;
-}
 
 .container{
     display: flex;
     flex-direction: column;
     position: relative;
     align-items: center;
-    
   }
 
   .dropdown{
       position: absolute;
       top: 0;
       display: flex;
+      width: 100%;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       z-index: 100;
       opacity: 0;
       gap: 10px;
@@ -35,38 +29,42 @@ justify-content: space-between;
 
 
       &.open{
-        top: 240%;
+        top: 140%;
         opacity: 1;
         visibility: visible;
         @include for-size(tablet){
-          top: 220%;
+          top: 120%;
           }
       }
   }
   
 
-.title{
-  display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0.55rem 1rem;
-gap:12px;
-font-weight: 400;
-font-size: 16px;
-gap:0.5rem;
-line-height: 1.5;
-text-align: center;
-text-transform: capitalize;
-color: $accent-text-color;
-cursor: pointer;
-&.disabled{
-  opacity: 0.3;
-  cursor: none;
- }
+  .button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+   justify-content: space-between;
+    width: 18.5rem;
+    color: $primary-text-color;
+    background-color: $accent-text-color;
+    border: 1px solid $accent-text-color;
+    border-radius: 48px;
+    padding: 12px;
+    gap:12px;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+    & > span{ &::first-letter{
+      text-transform: capitalize;
+    }}
+   
+   
+    };
 
-}
+
 .indicator_icon{
-  fill: $accent-text-color;
+  fill: $primary-text-color;
   width: 24px;
   height: 24px;
   transform: rotate(90deg);
@@ -78,30 +76,14 @@ cursor: pointer;
 }
 
 .item{
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-
+display: block;
   background-color: transparent;
   border: none;
-  text-transform: capitalize;
   color: $bglightblue;
   cursor: pointer;  
+  &::first-letter{
+    text-transform: capitalize;
+  }
 
 }
-
-.icon{
-  width: 24px;
-  height: 24px;
-  fill: $bglightblue;
-}
-
-
-.current_filter_box{
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 1rem;
-}
-
 

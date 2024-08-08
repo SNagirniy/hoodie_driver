@@ -7,22 +7,16 @@ import Logo from "@/components/elements/logo/Logo";
 import FooterNavList from "@/components/elements/footer_nav_list/FooterNavList";
 import s from './footer.module.scss';
 import { getLocale } from "next-intl/server";
-import { getCategories } from "@/app/lib/firebase/productapi";
 import { getTranslations } from "next-intl/server";
-import Navigation from "@/components/elements/navigation/Navigation";
 
 
 
 
-const Footer = async ()=> {
+
+const Footer = async({categories})=> {
     const t = await getTranslations("Home");
     const locale = await getLocale();
-    const data = await getCategories();
-
-    const categories = data?.map(({id, title})=> {return {id: id, url: `/store/catalogue`, title: title[locale]}});
-    categories?.unshift({id: 'all' ,title: 'Усі',
-    url: '/store/catalogue'
-    });
+   
 
     const info =[
         {title: t('Navigation.about'),

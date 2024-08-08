@@ -25,7 +25,7 @@ const Custom = async()=>{
 const t = useTranslations("Home");
  const customImagesSet = await getCustomImages();
  const slides_list = customImagesSet.map((src)=> {return {url: src, alt: 'custom hoodie'}});
- const renderedList = customImagesSet.length < 6? [...slides_list,...slides_list,...slides_list] : slides_list;
+ const renderedList = customImagesSet.length < 8? [...slides_list, ...slides_list, ...slides_list,...slides_list] : slides_list;
 
 return (
 <section className={s.container}>

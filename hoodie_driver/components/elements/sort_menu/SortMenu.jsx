@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import s from './sort_menu.module.scss';
 import { v4 } from 'uuid';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import isId from '@/utils/productIdCheck';
 import CurrentFilterValueButton from '../currentFilterValueButton/CurrentFilterValueButton';
 import IndicatorIcon from  '../../../public/indicator_icon.svg';
 
@@ -50,13 +51,13 @@ const SortMenu = ()=> {
     const [currentFilters, setCurrentFilters]=useState([])
 
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = () => { if(isQID()){return}; setIsOpen(!isOpen)};
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-
+  const isQID = ()=> {const q = searchParams.get('q'); return isId(q)}
 
   const filterSearchParams = (searchPrms)=> { 
     const params = []
@@ -92,6 +93,8 @@ const SortMenu = ()=> {
     const handleClick = e => {
       const value = e.currentTarget?.value;
       const params = new URLSearchParams(searchParams);
+
+      if(isQID()){return}
      
       if (value) {
         const [sort_by,ascending] = value.split(',')
@@ -132,7 +135,7 @@ const SortMenu = ()=> {
 
         <div onClick={toggleDropdown} className={s.container}>
         <div ref={rootRef}>
-        <p className={s.title}>Cортуй <IndicatorIcon className={clsx(s.indicator_icon, {[s.open]: isOpen}) }/></p>
+        <p className={clsx(s.title, {[s.disabled]: isQID()})}>Cортуй <IndicatorIcon className={clsx(s.indicator_icon, {[s.open]: isOpen}) }/></p>
         </div>
         {(
           <ul className={clsx(s.dropdown, {[s.open]: isOpen})}>

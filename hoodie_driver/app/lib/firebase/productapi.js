@@ -142,10 +142,12 @@ try {
     let categories = []
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-        const item = { id: doc.id ,title: doc.data().title}
+        const item = { id: doc.id ,...doc.data()}
         categories.push(item)
     });
- return categories;
+
+    const sortedCategories = categories.sort((a,b) => {return a.priority - b.priority})
+    return sortedCategories;
 } catch (e){
     console.log(e)  
 }};

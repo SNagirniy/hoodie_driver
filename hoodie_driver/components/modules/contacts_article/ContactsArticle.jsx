@@ -6,7 +6,7 @@ import ContactSocialLinks from '@/components/elements/contactSocialLinks/Contact
 
 const ContactsArticle = ()=> {
 
-    return(
+   /* return(
         <section className={s.container}>
             <MainContainer>
                 <article className={s.article}>
@@ -27,7 +27,15 @@ const ContactsArticle = ()=> {
                 <ContactSocialLinks/>
             </MainContainer>
         </section>
-    )
+    )*/
+
+        return(
+            <section className={s.container}>
+                <MainContainer>
+                    <ContactSocialLinks/>
+                </MainContainer>
+            </section>
+        )
 };
 
 

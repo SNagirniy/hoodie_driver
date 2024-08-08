@@ -51,7 +51,7 @@ const Newsletter = ()=>{
     return (
         <div className={s.newsletter}>
             <hgroup className={s.head}>
-                <h3 className={s.title}>Перші дізнаються Ви!</h3>
+                <h3 className={s.title}>Перші дізнаєтесь Ви!</h3>
                 <p className={s.description}>Не пропустіть свіжі новини та унікальні акції — підпишіться на наш newsletter зараз.</p>
             </hgroup>
             <div className={s.form_container}>

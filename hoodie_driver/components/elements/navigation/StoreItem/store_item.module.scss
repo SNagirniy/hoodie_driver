@@ -1,0 +1,75 @@
+@import '../../../../app/globalStyles/basestyles.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+ 
+  }
+  
+
+  .dropdown{
+      position: absolute;
+      bottom: -20rem;
+      border-radius: 1rem;
+      background-color: $bglightblue;
+     padding: 0.8rem;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      height: max-content;
+      transition: all $cubic;
+
+      &.open{
+        width:max-content;
+        bottom: -20rem;
+        padding: 0.8rem 2rem;
+        opacity: 1;
+        visibility: visible;
+       
+
+        @include for-size(tablet){
+          bottom: -21rem;
+          }
+          @include for-size(desktop){
+            bottom: -24rem;
+            padding: 0.8rem 5rem 0.8rem 2rem;
+            
+            }
+      }
+  };
+  
+
+.title{
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 1.25rem;
+font-weight: 600;
+line-height: 1;
+text-align: center;
+cursor: pointer;
+&.active{
+  font-weight: 600;
+  
+  &::after {
+      position: absolute;
+      bottom: -5px;
+      display: block;
+  
+      content: "";
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: $secondary-text-color;
+    }};
+
+    @include for-size(desktop){
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+}
+

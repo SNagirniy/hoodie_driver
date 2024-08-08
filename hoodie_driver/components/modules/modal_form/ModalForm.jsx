@@ -37,7 +37,7 @@ const ModalForm = ({onClose})=> {
             const result = await res.json();
         if (res.ok) {
             console.log(result.message)
-            toast.success('Дякуємо! Ваша заявка прийнята. Очікуйте звязку з менеджером.')
+            toast.success('Вжууух! Ваша заявка вже полетіла. Наш менеджер зв’яжеться з Вами найближчим часом.')
             resetFields()
             onClose()
         } else {

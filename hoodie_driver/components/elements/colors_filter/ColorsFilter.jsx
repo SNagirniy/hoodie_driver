@@ -20,6 +20,7 @@ const ColorsFilter = ({color_map})=> {
     const isQExist = ()=> {return searchParams.get('q')}
 
     const openColorFilter=()=> {
+      if(isQExist()) {setIsColorFilterOpen(false); return}
       setIsColorFilterOpen(!isColorFilterOpen)
     }
 
@@ -43,8 +44,13 @@ const ColorsFilter = ({color_map})=> {
 
     return (
         <ul className={s.list}>
-            {renderedColors?.map(({title, color, id,icon})=>{ return <li onClick={handleClick} id={id} key={id} className={clsx(s.item, {[s.disabled]: isQExist()})}>{color? <ColorItem color={color}/> : <IconItem icon={icon} icon_title={title}/>}<p className={s.title}>{title}</p></li>})}
-            <li  key ={'other'} onClick={openColorFilter} className={s.item}><IconItem icon={'/other_icon.png'} icon_title={'інші'}/>  <p className={s.title}>{isColorFilterOpen? 'менше' : "інші"}</p></li>
+            {renderedColors?.map(({title, color, id,icon})=>{ return <li onClick={handleClick} 
+            id={id} 
+            key={id} 
+            className={clsx(s.item, {[s.disabled]: isQExist()})}>
+              {color? <ColorItem color={color}/> : <IconItem icon={icon} icon_title={title}/>}<p className={s.title}>{title}</p>
+              </li>})}
+            <li  key ={'other'} onClick={openColorFilter} className={clsx(s.item, {[s.disabled]: isQExist()})}><IconItem icon={'/other_icon.png'} icon_title={'інші'}/>  <p className={s.title}>{isColorFilterOpen? 'менше' : "інші"}</p></li>
         </ul>
     )
 };

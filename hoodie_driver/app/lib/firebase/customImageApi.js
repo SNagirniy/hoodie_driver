@@ -15,3 +15,19 @@ export const getCustomImages = async()=>{
     } catch (e){
         console.log(e)  
     }};
+    
+
+    export const getReviewsImages = async()=>{
+        const ref = collection(db, "reviews");
+        const q = query(ref);
+        let images = []
+        try {
+            const querySnapshot = await getDocs(q);
+           querySnapshot?.forEach((doc) => {images =[...doc?.data()?.src]});
+          return images;
+         
+        } catch (e){
+            console.log(e)  
+        }
+
+    }

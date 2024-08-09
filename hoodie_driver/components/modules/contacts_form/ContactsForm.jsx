@@ -11,8 +11,11 @@ import { Checkbox } from '@nextui-org/checkbox';
 import { useState,useEffect } from 'react';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
 import chanels from '@/utils/contactChanels';
+import { useTranslations } from 'next-intl';
 
-
+const Msg = ({msg}) => {
+   return <div>{msg}</div>
+};
 
 
 function ContactsForm() {
@@ -23,6 +26,7 @@ function ContactsForm() {
     const [isChecked, setIsChecked] = useState(false);
     const [isDataValid,isFocus, handleFocus] = useContactDataValidator(contactData, chanels[chanell].regEx)
 
+    const t = useTranslations("Actions");
 
 
     const handleChange = (e) => {
@@ -60,7 +64,9 @@ function ContactsForm() {
         
                     const result = await res.json();
                         if (res.ok) {
-                        toast.success(`Дякуємо за Ваш відгук. Очікуйте відповіді на ваш ${chanell}`);
+                        toast.success(<Msg msg={t.rich("write_to_us", {
+                            p: (chunks) => <p>{chunks}</p>
+                          })}/>);
                         resetFields()
                         } else {
                             toast.error('Вибачте, сетвіс тимчасово недоступний. Спробуте пізніше.');

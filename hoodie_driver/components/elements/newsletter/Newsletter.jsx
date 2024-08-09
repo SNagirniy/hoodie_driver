@@ -6,6 +6,7 @@ import { Checkbox } from '@nextui-org/checkbox';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
 import chanels from '@/utils/contactChanels';
 import { toast } from 'react-toastify';
+import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 const Newsletter = ()=>{
@@ -13,6 +14,8 @@ const Newsletter = ()=>{
     const[isChecked, setIsChecked] = useState(false);
     const [isValid, isFocus, handleFocus] = useContactDataValidator(email, chanels.email.regEx);
    
+    const t = useTranslations("Actions");
+    const tF = useTranslations("Footer");
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -41,7 +44,7 @@ const Newsletter = ()=>{
                   });
                     const result = await res.json();
                 if (result.ok) {
-                    toast.success('Дякуємо! Підписка оформлена!')
+                    toast.success(t("subscribe"))
                 }} catch (error) {
                   toast.error('Вибачте, сервіс тимчасово недоступний. Спробуйте пізніше.')
                 } finally{ reset()}
@@ -51,8 +54,8 @@ const Newsletter = ()=>{
     return (
         <div className={s.newsletter}>
             <hgroup className={s.head}>
-                <h3 className={s.title}>Перші дізнаєтесь Ви!</h3>
-                <p className={s.description}>Не пропустіть свіжі новини та унікальні акції — підпишіться на наш newsletter зараз.</p>
+                <h3 className={s.title}>{tF("newsletter.title")}</h3>
+                <p className={s.description}>{tF("newsletter.descr")}</p>
             </hgroup>
             <div className={s.form_container}>
                 <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid & isFocus}, {[s.valid] : isValid})}>
@@ -85,7 +88,7 @@ const Newsletter = ()=>{
                 }
                  isSelected={isChecked} onValueChange={onHandleCheck}
                  name='privacy'>
-                    Так, я погоджуюся з Політикою приватності
+                    {tF("newsletter.privacy")}
                 </Checkbox>
                
             </div>

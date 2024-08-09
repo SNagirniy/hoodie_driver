@@ -6,7 +6,6 @@ import Credits from "@/components/elements/credits/Credits";
 import Logo from "@/components/elements/logo/Logo";
 import FooterNavList from "@/components/elements/footer_nav_list/FooterNavList";
 import s from './footer.module.scss';
-import { getLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 
 
@@ -15,7 +14,8 @@ import { getTranslations } from "next-intl/server";
 
 const Footer = async({categories})=> {
     const t = await getTranslations("Home");
-    const locale = await getLocale();
+    const tF = await getTranslations("Footer");
+   
    
 
     const info =[
@@ -39,8 +39,8 @@ const Footer = async({categories})=> {
                     <SocialLinks/>
                     <Newsletter/>
                     <div className={s.nav_list}>
-                        <FooterNavList  links={categories} title={'Наш каталог'}/>
-                        <FooterNavList links={info} title={'Інформація'}/>
+                        <FooterNavList  links={categories} title={tF("catalogue")}/>
+                        <FooterNavList links={info} title={tF("information")}/>
                     </div>
                 </div>
                 <Credits/>

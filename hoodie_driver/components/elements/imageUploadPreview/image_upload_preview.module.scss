@@ -1,0 +1,61 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+    gap: 1rem;
+    
+}
+
+.logo_label{
+    
+        padding: 12px 24px;
+        border-radius: 3rem;
+        border: 1px solid $accent-text-color;
+        background-color: $bglightblue;
+        color: $accent-text-color;
+        cursor: pointer;
+}
+
+.input{
+   @include visually_hiden()
+}
+
+.preview{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    max-width: 8rem;
+    object-fit: cover;
+
+    &>img{
+display: block;
+width: 100%;
+height: auto;
+    }
+};
+
+
+.delete_button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0.2rem;
+   
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+};
+
+.close_btn{
+fill: white;
+width: 1.5rem;
+height: 1.5rem;
+}
+
+

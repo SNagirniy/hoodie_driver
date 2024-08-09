@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import chanels from '@/utils/contactChanels';
 import useContactDataValidator from '@/hooks/useContactDataValidator';
 import { toast } from 'react-toastify';
+import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 
@@ -13,7 +14,9 @@ const ModalForm = ({onClose})=> {
 
     const [contactData, setContactData] = useState(chanels.instagram.defaultVal);
     const [chanell, setChanel] = useState(chanels.instagram.title);
-    const [isDataValid,isFocus,handleFocus] = useContactDataValidator(contactData, chanels[chanell].regEx)
+    const [isDataValid,isFocus,handleFocus] = useContactDataValidator(contactData, chanels[chanell].regEx);
+
+    const t = useTranslations("Actions");
 
     useEffect(()=> setContactData(chanels[chanell].defaultVal),[chanell]);
 
@@ -36,12 +39,10 @@ const ModalForm = ({onClose})=> {
     
             const result = await res.json();
         if (res.ok) {
-            console.log(result.message)
-            toast.success('Вжууух! Ваша заявка вже полетіла. Наш менеджер зв’яжеться з Вами найближчим часом.')
+            toast.success(t("quick_order"))
             resetFields()
             onClose()
         } else {
-         console.log(result.message);
          toast.error('Вибачте сервіс тимчасово недоступний. Спробуйте пізніше')
         }
                 

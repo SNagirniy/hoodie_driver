@@ -6,6 +6,7 @@ import { getLocale } from 'next-intl/server';
 import { getColors } from '@/app/lib/firebase/productapi';
 import ResetLink from '@/components/elements/reset_link/ResetLink';
 import ProductSearch from '@/components/elements/productSearch/ProductSearch';
+import { getTranslations } from 'next-intl/server';
 import clsx from 'clsx';
 
 
@@ -16,9 +17,12 @@ const data = await getCategories();
 const colors = await getColors();
 
 
+const t = await getTranslations("Home");
+
+
 
 const categories = data?.map(({id, title})=> {return { slug: id, title: title[locale]}});
-categories.unshift({title: 'Усі',
+categories.unshift({title: t("Categories.all"),
 slug: 'all'});
 
 const color_map = Object.keys(colors)?.map((key)=> {

@@ -2,6 +2,7 @@ import s from './revievs.module.scss';
 import MainContainer from '@/components/layouts/MainCintainer';
 import Slider from './gallery/Slider';
 import { getColors } from '@/app/lib/firebase/productapi';
+import { getReviewsImages } from '@/app/lib/firebase/customImageApi';
 
 
 
@@ -21,7 +22,7 @@ const Reviews = async ({title, description, children, fetchFunc})=>{
     if(fetchFunc) {
         list = await fetchFunc('jewerly_for_hoodie');
         color_map = await getColors()
-    } else {list = slides_list}
+    } else {list = await getReviewsImages()}
 
 
     return(

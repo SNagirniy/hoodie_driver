@@ -61,7 +61,7 @@ color: $accent-text-color;
 cursor: pointer;
 &.disabled{
   opacity: 0.3;
-  cursor: none;
+  cursor:default;
  }
 
 }

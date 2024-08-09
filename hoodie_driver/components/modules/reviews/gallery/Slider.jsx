@@ -8,6 +8,7 @@ import { usePathname } from "@/navigation";
 import ButtonGroup from "./controlers/ButtonGroup";
 import CustomDot from "./controlers/CustomDot";
 import Card from "@/components/elements/card/Card";
+import socialLinks from "@/utils/socialLinkList";
 
 const Slider = ({slides, colors})=> {
   const pathname = usePathname();
@@ -87,7 +88,11 @@ const Slider = ({slides, colors})=> {
   
   {isSlideItemCard && slides?.map((el)=> {return <Card key={el.id} color_map={colors} product={el} />})}
 
-  {!isSlideItemCard && slides?.map(({url, alt})=> {return <div className={s.thumb} key={v4()} ><img className={s.image} src={url} alt={alt} /></div>})}
+  {!isSlideItemCard && slides?.map((url)=> {return <div className={s.thumb} key={v4()}>
+      <a target="blank" href={socialLinks[0].url}>
+    <img className={s.image} src={url} alt={"custom hoodie"} />
+      </a>
+    </div>})}
     </Carousel>
     </div>
   )

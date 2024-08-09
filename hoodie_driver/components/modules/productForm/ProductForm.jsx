@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { useCart } from '@/contexts/cartContext';
 import AmmountInput from '@/components/elements/ammountInput/AmmountInput';
 import ProductVariantDropdown from '@/components/elements/productVariantDropdown/ProductVariantDropdown';
+import ImageUploadPreview from '@/components/elements/imageUploadPreview/ImageUploadPreview';
+
 import clsx from 'clsx';
 
 const ProductForm =({colors, product})=>{
@@ -95,8 +97,10 @@ const ProductForm =({colors, product})=>{
 
             </div>
             <div className={clsx(s.msg_box_wrapper, {[s.hiden] : !isCustomizationOpen})}>
+            
             <div className={clsx(s.msg_box, {[s.hiden]: !isCustomizationOpen})}>
                     <label htmlFor="message">Потрібно змінити колір, додати інше лого, картинку або напис, розробити індивідуальний дизайн худі, тощо?  Просто опиши тут свої побажання, і ми зробимо саме те худі 👌</label>
+                    <ImageUploadPreview/>
                     <textarea
                         name='message'
                         id="message"

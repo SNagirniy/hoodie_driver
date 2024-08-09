@@ -9,7 +9,7 @@ import StoreItem from "./StoreItem/StoreItem";
 
 
 
-const links = [{name:'delivery', href: '/order'},{name:'about', href: '/about'},{name:'blog', href: '/blog'},{name:'contacts', href: '/contacts'}]
+const links = [{name:'blog', href: '/blog'},{name:'delivery', href: '/order'},{name:'about', href: '/about'},{name:'contacts', href: '/contacts'}]
 
 
 const Navigation =({onCloseMenu, categories})=> {

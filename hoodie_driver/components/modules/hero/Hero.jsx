@@ -48,7 +48,7 @@ const Hero =()=> {
                 </div>
                 <div className={s.image_container}>
                     <div className={clsx(s.thumb, s.yellow)}><Image className={s.image} src={Hoodie_Yellow2x} alt="Yellow hoodie image"/></div>
-                    <div className={s.thumb}> <Image className={s.image}src={Hoodie_Dark2x} alt="Dark hoodie image"/></div>
+                    <div className={s.thumb}> <Image priority={true} className={s.image}src={Hoodie_Dark2x} alt="Dark hoodie image"/></div>
                     {width <768 && <div className={s.btn_container} ><Button action={toggleModal} title={t('Hero.btn_title')}/></div>}
                 </div>
             

@@ -4,14 +4,12 @@ import { useState } from 'react';
 import Close from '../../../public/close.svg';
 
 
-const ImageUploadPreview =()=> {
-    const [imagePreview, setImagePreview] = useState(null);
-    const [selectedFile, setSelectedFile] = useState(null);
+const ImageUploadPreview =({imagePreview, setImagePreview,selectedFile, setSelectedFile})=> {
     const [fileInputKey, setFileInputKey] = useState(Date.now());
   
     const handleImageUpload = (e) => {
       const file = e.target.files[0];
-      if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/webp')) {
+      if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/webp' || file.type === 'image/png')) {
         const reader = new FileReader();
         reader.onloadend = () => {
           setImagePreview(reader.result);
@@ -19,7 +17,7 @@ const ImageUploadPreview =()=> {
         reader.readAsDataURL(file);
         setSelectedFile(file);
       } else {
-        alert('Please upload a valid image file (JPEG, JPG, WEBP).');
+        alert('Please upload a valid image file (JPEG, JPG, WEBP,PNG).');
       }
     };
   
@@ -36,7 +34,7 @@ const ImageUploadPreview =()=> {
         className={s.input}
           key={fileInputKey} // Унікальний ключ для оновлення інпуту
           type="file"
-          accept="image/jpeg,image/jpg,image/webp"
+          accept="image/jpeg,image/jpg,image/webp,image/png"
           onChange={handleImageUpload}
           disabled={selectedFile !== null}
           placeholder='file'

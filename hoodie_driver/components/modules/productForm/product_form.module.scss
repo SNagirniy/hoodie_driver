@@ -17,6 +17,10 @@
     flex-wrap: wrap;
     gap: 0.5rem;
 
+    &.disabled{
+        opacity: 0.3;
+    }
+
    
 };
 

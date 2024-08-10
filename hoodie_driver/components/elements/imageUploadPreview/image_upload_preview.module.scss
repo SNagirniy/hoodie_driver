@@ -26,7 +26,7 @@
 .preview{
     position: relative;
     display: block;
-    overflow: hidden;
+   
     max-width: 8rem;
     object-fit: cover;
 
@@ -44,7 +44,7 @@ height: auto;
     align-items: center;
     justify-content: center;
     top: 0;
-    right: 0.2rem;
+    right: -1.5rem;
    
     padding: 0;
     background: none;

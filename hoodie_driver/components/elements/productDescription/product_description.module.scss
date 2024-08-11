@@ -12,11 +12,19 @@
 
 
 .title{
+font-weight: 900;
+font-size: 1.5rem;
+line-height: 1.1;
+&::first-letter{
+    text-transform: capitalize;
+};
+@include for-size(tablet){
+font-size: 2.5rem;
+}
+@include for-size(desktop){
 font-weight: 700;
 font-size: 3rem;
 line-height: 1.2;
-&::first-letter{
-    text-transform: capitalize;
 }
 
 };

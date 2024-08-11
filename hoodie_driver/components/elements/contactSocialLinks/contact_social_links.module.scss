@@ -1,9 +1,15 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
+.list_wrapper{
+    display: flex;
+   flex-direction: column;
+    align-items: center;
+}
 
 .list{
 display: grid;
 grid-template-columns: 1fr 1fr;
+align-self: center;
 align-items: center;
 border-radius: 1.87rem;
 gap: 2rem;
@@ -15,7 +21,6 @@ box-shadow: 0px 8px 64px 0px #E0CC1B1F,0px 4px 16px 0px #E0CC1B14;
     display: flex;
    justify-content: space-evenly;
    padding: 2.5rem;
-   margin-top: 5rem;
    width: 100%;
 }
 };
@@ -27,14 +32,21 @@ flex-direction: column;
 gap: 1rem;
 
 font-weight: 700;
-font-size: 1.5rem;
+font-size: 1rem;
 line-height: 1.4;
 text-align: center;
 color: $primary-text-color;
+
+@include for-size(tablet){
+    font-size: 1.5rem;
+}
 };
 
 .icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    @include for-size(tablet){
     width: 3rem;
-    height: 3rem;
+    height: 3rem;}
 };
 

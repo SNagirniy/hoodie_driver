@@ -5,6 +5,7 @@ import socialLinks from '@/utils/socialLinkList';
 
 const ContactSocialLinks =()=> {
     return (
+        <div className={s.list_wrapper}>
             <ul className={s.list}>
             {socialLinks?.map(({icon, alt, url})=> {return (
                 <li key={v4()}>
@@ -15,7 +16,7 @@ const ContactSocialLinks =()=> {
                 </li>
             )})}
             </ul>
-              
+        </div>
     )
 };
 

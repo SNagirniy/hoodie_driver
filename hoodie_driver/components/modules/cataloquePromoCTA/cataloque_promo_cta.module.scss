@@ -3,38 +3,58 @@
 
 .section{
    
-    padding: 112px 64px;
+    padding: 75px 24px;
     background:url('../../../public/story_image.webp'),rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode:overlay;
+
+    @include for-size(tablet){
+        padding: 75px 36px;
+    }
+    @include for-size(desktop){
+        padding: 112px 64px;
+    }
 
   
 
     & >article{
        margin: 0 auto;
         display: flex;
-        width: 60%;
+        width: 100%;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         gap:1.5rem;
+        @include for-size(desktop){
+            width: 60%;
+         }
     }
 
    
 };
 
 .title{
+
 font-weight: 700;
-font-size: 48px;
+font-size: 2rem;
 line-height: 1.2;
+text-align: center;
 color: $primary-text-color;
+
+@include for-size(tablet){
+    font-size: 3rem;
+}
 };
 
 .description{
 font-weight: 400;
-font-size: 18px;
+font-size: 1rem;
 line-height: 1.5;
 color: $primary-text-color;
+
+@include for-size(tablet){
+    font-size: 18px;
+}
 };

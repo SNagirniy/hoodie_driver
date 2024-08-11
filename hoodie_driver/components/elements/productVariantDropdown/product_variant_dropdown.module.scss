@@ -5,7 +5,11 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    align-items: center;
+  
+
+    @include for-size(tablet){
+      align-items: center;
+    }
   }
 
   .dropdown{
@@ -44,7 +48,7 @@
     flex-direction: row;
     align-items: center;
    justify-content: space-between;
-    width: 18.5rem;
+   width: 100%;
     color: $primary-text-color;
     background-color: $accent-text-color;
     border: 1px solid $accent-text-color;
@@ -59,6 +63,9 @@
       text-transform: capitalize;
     }}
    
+    @include for-size(tablet){
+      width: 18.5rem;
+    }
    
     };
 

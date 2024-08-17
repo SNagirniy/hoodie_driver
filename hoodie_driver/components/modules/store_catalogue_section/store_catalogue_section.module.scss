@@ -25,6 +25,12 @@
 
     .mobile_box{
         display: block;
+        grid-area: 2 / 1 / 3 / 3; 
+
+    @include for-size(tablet){
+       margin-left: auto;
+        width: 50%;
+    }
 
         @include for-size(desktop){
             display: none;

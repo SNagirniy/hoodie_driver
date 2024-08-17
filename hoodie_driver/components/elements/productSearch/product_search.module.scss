@@ -4,17 +4,7 @@
 .input_box{
     position: relative;
     width: 100%;
-    grid-area: 2 / 1 / 3 / 3; 
-
-    @include for-size(tablet){
-       margin-left: auto;
-        width: 50%;
-    }
-
-    @include for-size(desktop){
-        margin-left: 0;
-         width: 100%;
-     }
+    
 };
 
 .input{

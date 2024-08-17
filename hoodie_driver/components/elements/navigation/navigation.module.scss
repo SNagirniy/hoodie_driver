@@ -105,3 +105,9 @@ transition: background-color $cubic;
     }
     
 };
+.desktop_wrapper{
+    display: none;
+    @include for-size(desktop){
+        display: block;
+    }
+}

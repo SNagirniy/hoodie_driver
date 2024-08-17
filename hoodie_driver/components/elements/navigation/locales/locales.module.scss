@@ -48,8 +48,8 @@ align-items: center;
 justify-content: center;
   border: 1px solid $accent-text-color;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
 
 font-weight: 700;
 font-size: 14px;
@@ -69,8 +69,8 @@ transition: all $cubic;
 
 
 @include for-size(tablet){
-width: 40px;
-height: 40px;
+width: 42px;
+height: 42px;
 font-size: 16px;
 }
 }

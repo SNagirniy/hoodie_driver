@@ -49,18 +49,26 @@
 
 .email_input{
     display: block;
-    background-color: transparent;
     outline: none;
     width: 100%;
-    border: none;
+    border: 1px solid $accent-text-color;
+    border-radius: 3rem;
+    background: rgba(43, 150, 234, 0.1);
     padding-left: 1rem;
 
     font-weight: 400;
-font-size: 1rem;
-line-height: 1.5;
-color: $primary-text-color;
-padding: 12px;
-border-radius: 3rem 0 0 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $primary-text-color;
+    padding: 12px;
+
+    &.not_valid{
+    border: 1px solid red;
+    }
+
+    &.valid{
+    border: 1px solid rgb(41, 231, 41);
+    }
 
 &:-webkit-autofill,
 &:-webkit-autofill:hover, 
@@ -71,16 +79,16 @@ border-radius: 3rem 0 0 3rem;
   
 }
 
- @include for-size(tablet-only){
-border: 1px solid $accent-text-color;
-border-radius: 3rem;
-background: rgba(43, 150, 234, 0.1);
+ @include for-size(tablet){
+border: none;
+border-radius: 0;
+background: transparent;
 &.not_valid{
-    border: 1px solid red;
+    border: none;
 }
 
 &.valid{
-    border: 1px solid rgb(41, 231, 41);
+    border: none;
 }
 }
 };

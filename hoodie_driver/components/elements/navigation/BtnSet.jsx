@@ -13,7 +13,8 @@ const BtnSet = ({toggleModal})=> {
 
     return (
     <div className={s.btn_container}>
-        <LocalesSwitcger/>
+        <div className={s.desktop_wrapper}><LocalesSwitcger/></div>
+        
         <a className={s.button} href="https://www.instagram.com/hoodie.driver/" target="_blank"      rel="noopener noreferrer">
             <Instagram 
             className={s.icon}/>

@@ -11,6 +11,7 @@ import Credits from "@/components/elements/credits/Credits";
 import Social from "./Social";
 import Modal from "../modal/Modal";
 import Cart from "../cart/Cart";
+import LocalesSwitcher from "@/components/elements/navigation/locales/LocalesSwitcger";
 import s from './index.module.scss';
 
 
@@ -49,20 +50,27 @@ const Header =({categories})=> {
                     <Logo/>
             
                     <div className={s.nav_box}>
-                       {width >= device.desktop && (<Navigation onCloseMenu={onCloseMenu} categories={categories}/>)} 
+                       <div className={s.desktop_wrapper}>
+                            <Navigation onCloseMenu={onCloseMenu} categories={categories}/>
+                        </div>
                         <BtnSet toggleModal={toggleModal}/>
-                        {width < device.desktop && (<BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isMenuOpen}/>)} 
-                        
+                        <div className={s.except_desktop_wrapper}>
+                            <BurgerBtn onToggleMenu={handleToggleMenu} isMenuOpen= {isMenuOpen}/>
+                        </div>
                     </div>
-                    {width < device.desktop && 
+
+                  
                     <MobileMenu isOpen={isMenuOpen}>
                         <Navigation categories={categories} onCloseMenu={onCloseMenu}/>
                         <Social/>
-                        {width >= device.tablet &&  <Newsletter/>}
+                        <div className={s.tablet_wrapper}>
+                            <Newsletter/>
+                        </div>
+                        <LocalesSwitcher/>
                         <Credits/>
                         
-                    </MobileMenu>}
-                
+                    </MobileMenu>
+                    
                 </div>
            
             </MainContainer>

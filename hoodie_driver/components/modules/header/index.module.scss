@@ -65,3 +65,24 @@ gap: 0.5rem;
     height: 3rem;}
     
 };
+
+.tablet_wrapper{
+    display: none;
+    @include for-size(tablet){
+        display: block;
+    }
+};
+
+.except_desktop_wrapper{
+    display: flex;
+    @include for-size(desktop){
+        display: none;
+    }
+};
+
+.desktop_wrapper{
+    display: none;
+    @include for-size(desktop){
+        display: flex;
+    }
+}

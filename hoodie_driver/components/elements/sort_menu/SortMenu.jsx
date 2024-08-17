@@ -5,7 +5,6 @@ import s from './sort_menu.module.scss';
 import { v4 } from 'uuid';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import isId from '@/utils/productIdCheck';
-import CurrentFilterValueButton from '../currentFilterValueButton/CurrentFilterValueButton';
 import Sort from '../../../public/sort.svg';
 
 import Sort_down from '../../../public/sort_down.svg';
@@ -48,7 +47,6 @@ const SortMenu = ()=> {
 
     const [isOpen, setIsOpen] = useState(false);
     const rootRef = useRef(null);
-    const [currentFilters, setCurrentFilters]=useState([])
 
 
   const toggleDropdown = () => { if(isQID()){return}; setIsOpen(!isOpen)};
@@ -59,37 +57,7 @@ const SortMenu = ()=> {
 
   const isQID = ()=> {const q = searchParams.get('q'); return isId(q)}
 
-  const filterSearchParams = (searchPrms)=> { 
-    const params = []
-    for (const [key, value] of searchPrms) {
-    const check = ['page','ascending'].some((el)=> el === key)
-        if(!check) {
-          if(key === 'sort_by'){ params.push({key,value,sortType: searchPrms.get('ascending')})} 
-          else{params.push({key,value})}
-          
-        }
-      };
-    return params}
 
-
-    useEffect(()=> setCurrentFilters(filterSearchParams(searchParams)), [searchParams]);
-
-    const handleRemovefilter = (e)=> {
-
-      const key = e.currentTarget?.value;
-      const params = new URLSearchParams(searchParams);
-      if(key){
-        params.delete(key);
-        if(key === 'sort_by') {
-          params.delete('ascending')
-          params.set('page', 1)
-        }
-      }
-      router.replace(`${pathname}?${params.toString()}`);
-    }
-
- 
-  
     const handleClick = e => {
       const value = e.currentTarget?.value;
       const params = new URLSearchParams(searchParams);
@@ -128,10 +96,6 @@ const SortMenu = ()=> {
 
 
     return(
-      <div className={s.menu_box}>
-        <ul className={s.current_filter_box}>
-          {currentFilters?.map((el) => <li key={el.key}><CurrentFilterValueButton handleFunc={handleRemovefilter}  value={el.key} title={el.value} sortType={el?.sortType}/></li>)}
-        </ul>
 
         <div onClick={toggleDropdown} className={s.container}>
         <div ref={rootRef}>
@@ -149,7 +113,7 @@ const SortMenu = ()=> {
           </ul>
         )}
       </div>
-      </div>
+     
     )
 
 };

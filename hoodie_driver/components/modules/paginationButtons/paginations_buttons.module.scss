@@ -67,9 +67,7 @@ font-size: 1rem;
 line-height: 1.5;
 color: $accent-text-color;
 cursor: pointer;
-&::first-letter{
-    text-transform: capitalize;
-}
+
 
 &>span{
     display: none;
@@ -80,6 +78,9 @@ cursor: pointer;
     padding: 8px 20px;
     &>span{
         display: inline;
+        &::first-letter{
+            text-transform: capitalize;
+        }
     }
    }
 };

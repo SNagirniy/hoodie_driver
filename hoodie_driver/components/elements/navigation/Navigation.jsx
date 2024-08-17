@@ -20,7 +20,9 @@ const t = useTranslations("Home")
     return (
         <nav className={s.nav_container}>
             <ul className={s.nav_list}>
-            <li key={v4()}><StoreItem closeMenuFunc={onCloseMenu} categories={categories}/></li>
+            <li key={v4()}>
+                <StoreItem closeMenuFunc={onCloseMenu} categories={categories}/>
+            </li>
             {links.map(l => <li onClick={onCloseMenu} key={v4()}>
                 <Link  href={l.href} className={clsx(s.nav_item,{ [s.active]: pathname.includes(l.href) })}> 
             {t(`Navigation.${l.name}`)}</Link></li>)}</ul>

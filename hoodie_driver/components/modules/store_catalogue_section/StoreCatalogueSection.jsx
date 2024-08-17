@@ -4,7 +4,7 @@ import StoreAside from "../store_aside/StoreAside";
 import ProductSearch from "@/components/elements/productSearch/ProductSearch";
 import SortMenu from "@/components/elements/sort_menu/SortMenu";
 import FilterMenu from "@/components/elements/filterMenu/FilterMenu";
-
+import FilterReflection from "@/components/elements/filterReflection/FilterReflection";
 import { getLocale } from "next-intl/server";
 import { getCategories,getColors } from "@/app/lib/firebase/productapi";
 import { getTranslations } from "next-intl/server";
@@ -44,6 +44,7 @@ return {title: colors[key].title[locale], color: colors[key].value, id: key, ico
                
                 <div className={s.catalogue_list_container}>
                     <div className={s.menu_box}> 
+                        <FilterReflection/>
                         <SortMenu/>
                         <FilterMenu categories={categories} color_map={color_map}/>
                         <div className={s.mobile_box}>

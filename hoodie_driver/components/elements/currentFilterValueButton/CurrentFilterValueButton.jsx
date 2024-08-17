@@ -4,8 +4,8 @@ import Sort_down from '../../../public/sort_down.svg';
 import Sort_up from '../../../public/sort_up.svg';
 
 const icons = {
-    desc: <Sort_up className={s.icon}/>,
-    asc: <Sort_down className={s.icon}/>
+    desc: <Sort_up className={s.sort_icon}/>,
+    asc: <Sort_down className={s.sort_icon}/>
   }
 
 

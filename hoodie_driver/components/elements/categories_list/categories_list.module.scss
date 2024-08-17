@@ -22,7 +22,11 @@ line-height: 1.5;
     line-height: 1.5;
    
     cursor: pointer;
-    color: $primary-text-color;
+    color: $primary-bg-color;
+    @include for-size(desktop){
+        color: $primary-text-color;
+    }
+
     &::first-letter{
         text-transform: capitalize;
     };

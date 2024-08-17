@@ -3,6 +3,7 @@ import MainContainer from '@/components/layouts/MainCintainer';
 import Slider from './gallery/Slider';
 import { getColors } from '@/app/lib/firebase/productapi';
 import { getReviewsImages } from '@/app/lib/firebase/customImageApi';
+import clsx from 'clsx';
 
 
 
@@ -29,7 +30,7 @@ const Reviews = async ({title, description, children, fetchFunc})=>{
 
         <section className={s.section}>
             <MainContainer>
-                <div className={s.head_container}>
+                <div className={clsx(s.head_container, {[s.accesories]: fetchFunc})}>
                     <hgroup className={s.head}> 
                         <h2>{title}</h2>
                         <p>{description}</p>

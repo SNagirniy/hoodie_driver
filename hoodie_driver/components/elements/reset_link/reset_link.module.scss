@@ -1,12 +1,17 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .reset{
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 1rem;
     line-height: 1.3;
     color: $accent-text-color;
     text-transform: capitalize;
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+    @include for-size(desktop){
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
     }

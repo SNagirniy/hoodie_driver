@@ -1,0 +1,68 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.filter_menu_container{
+    display: block;
+    @include for-size(desktop){
+        display: none;
+    }
+};
+.open_filter_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    
+    border: 1px solid $accent-text-color;
+    border-radius: 50px;
+    
+    background-color: $accent-text-color;
+    cursor: pointer;
+};
+
+.filter_icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: $primary-text-color;
+};
+
+.filter_drop_down{
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 10%;
+
+    padding: 1.25rem 1.25rem 5rem  1.25rem ;
+    backdrop-filter: blur(8px);
+    background: rgba(32, 46, 56, 0.3);
+    border-radius: 0.5rem;
+    
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+
+    transition: all $cubic;;
+
+    &.open{
+top: 50%;
+left: 0;
+opacity: 1;
+visibility: visible;
+z-index: 10;
+    }
+};
+
+.filter_drop_down_content{
+    border-radius: 0.5rem;
+    background-color: $primary-text-color;
+    padding:20px;
+    max-width: 90%;
+
+    @include for-size(tablet){
+        max-width: 100%;
+    }
+   
+}

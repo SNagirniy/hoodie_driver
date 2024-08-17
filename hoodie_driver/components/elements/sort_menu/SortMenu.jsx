@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import isId from '@/utils/productIdCheck';
 import CurrentFilterValueButton from '../currentFilterValueButton/CurrentFilterValueButton';
-import IndicatorIcon from  '../../../public/indicator_icon.svg';
+import Sort from '../../../public/sort.svg';
 
 import Sort_down from '../../../public/sort_down.svg';
 import Sort_up from '../../../public/sort_up.svg';
@@ -135,7 +135,7 @@ const SortMenu = ()=> {
 
         <div onClick={toggleDropdown} className={s.container}>
         <div ref={rootRef}>
-        <p className={clsx(s.title, {[s.disabled]: isQID()})}>Cортуй <IndicatorIcon className={clsx(s.indicator_icon, {[s.open]: isOpen}) }/></p>
+        <p role='button' className={clsx(s.title, {[s.disabled]: isQID()})}><span>Cортуй</span> <Sort className={s.indicator_icon}/></p>
         </div>
         {(
           <ul className={clsx(s.dropdown, {[s.open]: isOpen})}>

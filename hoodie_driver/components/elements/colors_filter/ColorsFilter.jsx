@@ -10,7 +10,7 @@ import clsx from 'clsx';
 
 
 
-const ColorsFilter = ({color_map})=> {
+const ColorsFilter = ({color_map, onCloseFilterMenu})=> {
   const [isColorFilterOpen, setIsColorFilterOpen]= useState(false);
 
     const searchParams = useSearchParams();
@@ -36,6 +36,7 @@ const ColorsFilter = ({color_map})=> {
           params.delete('page');
         }
         router.replace(`${pathname}?${params.toString()}`,{scroll: false});
+        onCloseFilterMenu && onCloseFilterMenu()
       }
 
       

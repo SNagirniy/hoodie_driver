@@ -1,9 +1,23 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .aside{
+    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
+
+    @include for-size(tablet){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+
+    @include for-size(desktop){
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
 }
 
@@ -26,14 +40,40 @@
     justify-content: space-between;
     padding-top: 0;
     &>h3{
+        display: none;
         font-weight: 700;
         font-size: 32px;
         line-height: 1.3;
+        @include for-size(desktop){
+    display: block;
+        }
     }
-    &>h4{
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 1.4;
+}
+
+.search_wrapper{
+    display: none;
+    @include for-size(desktop){
+        display: flex;
+    }
+}
+
+.colors_head{
+    display: block;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.4;
+    color: $primary-bg-color;
+    @include for-size(desktop){
+        color: $primary-text-color;
+    }
+}
+.search_head{
+    display: none;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.4;
+    @include for-size(desktop){
+        display: block;
     }
 }
 

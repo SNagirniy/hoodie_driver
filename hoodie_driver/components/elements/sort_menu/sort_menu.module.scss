@@ -5,6 +5,7 @@
   width: 100%;
 align-items: center;
 justify-content: space-between;
+
 }
 
 .container{
@@ -18,6 +19,7 @@ justify-content: space-between;
   .dropdown{
       position: absolute;
       top: 0;
+      right: 10px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -31,7 +33,9 @@ justify-content: space-between;
       color: $dark;
       visibility: hidden;
       transition: all $cubic;
-
+@include for-size(desktop){
+  right: 0;
+}
 
 
       &.open{
@@ -48,32 +52,59 @@ justify-content: space-between;
 .title{
   display: flex;
 align-items: center;
-justify-content: space-between;
-padding: 0.55rem 1rem;
-gap:12px;
+justify-content: center;
+
+padding: 12px;
+width: 48px;
+height: 48px;
+
+border: 1px solid $accent-text-color;
+border-radius: 50px;
+
+background-color: $accent-text-color;
+
 font-weight: 400;
 font-size: 16px;
-gap:0.5rem;
 line-height: 1.5;
 text-align: center;
 text-transform: capitalize;
 color: $accent-text-color;
 cursor: pointer;
+
+
+
+&>span{
+  display: none;
+}
+
+@include for-size(desktop){
+  justify-content: space-between;
+  padding: 0.55rem 1rem;
+  gap:0.5rem;
+  border: none;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+
+  &>span{
+    display: block;
+  }
+}
+
 &.disabled{
   opacity: 0.3;
   cursor:default;
  }
 
 }
+
 .indicator_icon{
-  fill: $accent-text-color;
+  fill: $primary-text-color;
   width: 24px;
   height: 24px;
-  transform: rotate(90deg);
-  transition: all $cubic;
 
-  &.open{
-      transform: rotate(0deg);
+  @include for-size(desktop){
+    fill: $accent-text-color;
   }
 }
 

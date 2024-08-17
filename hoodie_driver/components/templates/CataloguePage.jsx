@@ -1,6 +1,5 @@
 import Catalogue from "../modules/catalogue/Catalogue";
 import PaginationButtons from "../modules/paginationButtons/PaginationsButtons";
-import SortMenu from "../elements/sort_menu/SortMenu";
 import { getCursors } from "@/app/lib/firebase/productapi";
 
 
@@ -19,7 +18,6 @@ const CataloguePage = async ({searchParams})=>{
 
     return(
         <>
-        <SortMenu/>
         <Catalogue q = {q} category={category} cursor={currentCursor} color={color} sort_by={sort_by} ascending={ascending}/>
         <PaginationButtons currentPage={page} totalPages={cursors?.length}/>
         </>

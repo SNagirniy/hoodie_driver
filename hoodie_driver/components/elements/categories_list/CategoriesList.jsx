@@ -6,7 +6,7 @@ import isId from '@/utils/productIdCheck';
 import clsx from 'clsx';
 import { v4 } from 'uuid';
 
-const CategoriesList = ({links})=> {
+const CategoriesList = ({links,onCloseFilterMenu})=> {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
@@ -25,6 +25,7 @@ const CategoriesList = ({links})=> {
           params.delete('page');
         }
         router.replace(`${pathname}?${params.toString()}`,{scroll: false});
+        onCloseFilterMenu && onCloseFilterMenu()
       }
 
     return (

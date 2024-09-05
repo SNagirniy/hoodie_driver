@@ -4,6 +4,7 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import ColorItem from './ColorItem';
 import IconItem from './IconItem';
 import { useState } from 'react';
+import useWindowSize from '@/hooks/useWindowSize';
 import clsx from 'clsx';
 
 
@@ -12,6 +13,7 @@ import clsx from 'clsx';
 
 const ColorsFilter = ({color_map, onCloseFilterMenu})=> {
   const [isColorFilterOpen, setIsColorFilterOpen]= useState(false);
+  const {width}= useWindowSize();
 
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -40,8 +42,8 @@ const ColorsFilter = ({color_map, onCloseFilterMenu})=> {
       }
 
       
-
-      const renderedColors = isColorFilterOpen? color_map : color_map.slice(0,11);
+      const colorItemsPerDevice = width >=1280? 11 : 6;
+      const renderedColors = isColorFilterOpen? color_map : color_map.slice(0,colorItemsPerDevice);
 
     return (
         <ul className={s.list}>

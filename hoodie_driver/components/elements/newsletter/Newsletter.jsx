@@ -58,9 +58,9 @@ const Newsletter = ()=>{
                 <p className={s.description}>{tF("newsletter.descr")}</p>
             </hgroup>
             <div className={s.form_container}>
-                <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid & isFocus}, {[s.valid] : isValid})}>
+                <form  onSubmit={handleSubmit} className={clsx(s.form, {[s.not_valid]: !isValid & isFocus & email.length > 0}, {[s.valid] : isValid})}>
                     <input
-                    className={clsx(s.email_input, {[s.not_valid]: !isValid & isFocus}, {[s.valid] : isValid}) }
+                    className={clsx(s.email_input, {[s.not_valid]: !isValid & isFocus & email.length > 0}, {[s.valid] : isValid}) }
                      placeholder='Твій email' onChange={handleChange} 
                      name='email'
                      autoComplete='false'

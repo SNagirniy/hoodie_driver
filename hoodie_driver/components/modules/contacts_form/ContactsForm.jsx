@@ -107,7 +107,7 @@ function ContactsForm() {
                                 <input minLength={2} onChange={handleChange} value={name} className={s.input} name='name' type="text" autoComplete='false' required />
                             </label>
                             <label className={s.label}>{chanell}
-                                <input onChange={handleChange} value={contactData} className={ clsx(s.input,{[s.not_valid]: !isDataValid & isFocus}, {[s.valid]: isDataValid})} name='contact_data' type={chanels[chanell].type} autoComplete='false' aria-autocomplete='false' onFocus={handleFocus} onBlur={handleFocus} required />
+                                <input onChange={handleChange} value={contactData} className={ clsx(s.input,{[s.not_valid]: !isDataValid & isFocus & contactData.length > 0}, {[s.valid]: isDataValid})} name='contact_data' type={chanels[chanell].type} autoComplete='false' aria-autocomplete='false' onFocus={handleFocus} onBlur={handleFocus} required />
                             </label>
                         </div>
                         <div className={clsx(s.box, s.radio_group)} role="radiogroup">

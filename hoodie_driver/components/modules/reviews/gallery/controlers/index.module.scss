@@ -23,6 +23,9 @@
     background: $accent-text-color;
 
     transition: all $cubic;
+    &:hover{
+        scale: 1.05;
+    }
 
     &.disable{
 

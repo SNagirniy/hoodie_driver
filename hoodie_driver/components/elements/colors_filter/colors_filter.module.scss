@@ -4,6 +4,10 @@
     max-height: 50vh;
     overflow: auto;
 
+    @include for-size(tablet){
+        height: 40vh;
+    }
+
     @include for-size(desktop){
         max-height: 70vh;
     }
@@ -19,6 +23,8 @@
     color: $primary-bg-color;
     cursor: pointer;
 
+    transition: text-decoration $cubic;
+
     @include for-size(desktop){
         color: $primary-text-color;
     }
@@ -26,6 +32,10 @@
     &.disabled{
         opacity: 0.3;
         cursor:default;
+    }
+
+    &:hover{
+        text-decoration: underline;
     }
 }
 

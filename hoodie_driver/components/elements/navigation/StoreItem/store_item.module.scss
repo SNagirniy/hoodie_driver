@@ -12,9 +12,10 @@
   .dropdown{
       position: absolute;
       bottom: -20rem;
+      width: 20rem;
       border-radius: 1rem;
       background-color: $bglightblue;
-     padding: 0.8rem;
+      padding: 0.8rem 2rem;;
       z-index: 100;
       opacity: 0;
       visibility: hidden;
@@ -22,9 +23,8 @@
       transition: all $cubic;
 
       &.open{
-        width:max-content;
+       
         bottom: -20rem;
-        padding: 0.8rem 2rem;
         opacity: 1;
         visibility: visible;
        
@@ -50,7 +50,13 @@ font-size: 1.25rem;
 font-weight: 600;
 line-height: 1;
 text-align: center;
+color: $primary-text-color;
 cursor: pointer;
+transition: color $cubic;
+&:hover{
+  color: $secondary-text-color
+}
+
 &.active{
   font-weight: 600;
   

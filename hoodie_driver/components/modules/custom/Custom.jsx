@@ -25,7 +25,13 @@ const Custom = async()=>{
 const t = useTranslations("Home");
  const customImagesSet = await getCustomImages();
  const slides_list = customImagesSet.map((src)=> {return {url: src, alt: 'custom hoodie'}});
- const renderedList = customImagesSet.length < 8? [...slides_list, ...slides_list, ...slides_list,...slides_list] : slides_list;
+
+ const ItemPerOneCarousel =Math.round(slides_list.length/2);
+
+ const TopSlidesList= slides_list.slice(0, ItemPerOneCarousel);
+ const BottomSlidesList = slides_list.slice(ItemPerOneCarousel, slides_list.length);
+
+
 
 return (
 <section className={s.container}>
@@ -54,8 +60,8 @@ return (
 
    
     <div className={s.gallery}>
-        <EmblaCarousel  slides={renderedList}/>
-        <EmblaCarousel direction={direction} slides={renderedList}/>
+        <EmblaCarousel  slides={TopSlidesList}/>
+        <EmblaCarousel direction={direction} slides={BottomSlidesList}/>
     </div>
 
 </section>

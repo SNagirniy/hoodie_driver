@@ -7,13 +7,6 @@ import clsx from 'clsx';
 
 
 
-const slide ={url: '/review_image.png', alt: 'customer review'};
-
-const slides_list = new Array(8).fill(slide);
-
-
-
-
 const Reviews = async ({title, description, children, fetchFunc})=>{
 
     let list = []
@@ -24,7 +17,6 @@ const Reviews = async ({title, description, children, fetchFunc})=>{
         list = await fetchFunc('jewerly_for_hoodie');
         color_map = await getColors()
     } else {list = await getReviewsImages()}
-
 
     return(
 

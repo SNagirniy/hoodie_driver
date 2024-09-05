@@ -13,7 +13,7 @@ const EmblaCarousel = ({slides, direction}) => {
         playOnInit: true,
         stopOnMouseEnter: true,
         stopOnInteraction: false,
-        speed: 1,
+        speed: 0.5,
       })
     ])
   

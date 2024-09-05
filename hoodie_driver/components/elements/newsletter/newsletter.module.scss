@@ -37,6 +37,7 @@
     border-radius: 3rem;
     padding: 0 0 0 0;
     background: rgba(43, 150, 234, 0.1);
+    overflow: hidden;
 
     &.not_valid{
         border: 1px solid red;

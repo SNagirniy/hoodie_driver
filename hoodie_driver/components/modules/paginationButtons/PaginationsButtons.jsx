@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 const NavBtn =({type})=>{
   if(type === "prev") {
+  
     return (
       <p className={s.navigation_btn}>
         <IndicatorIcon className={s.indicator_icon}/>
@@ -15,6 +16,7 @@ const NavBtn =({type})=>{
     )
   }
   if(type==='next'){
+  
     return (
       <p className={s.navigation_btn}>
         <span>наступна</span>
@@ -56,7 +58,7 @@ return (
   onPageChange={handleClick}
   pageRangeDisplayed={5}
   pageCount={totalPages}
-  previousLabel={<NavBtn type={'prev'}/>}
+  previousLabel={<NavBtn type={'prev'} />}
   renderOnZeroPageCount={null}
 
   containerClassName={s.btn_list}

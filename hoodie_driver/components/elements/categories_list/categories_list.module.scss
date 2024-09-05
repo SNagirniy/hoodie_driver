@@ -20,9 +20,12 @@ line-height: 1.5;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
-   
     cursor: pointer;
     color: $primary-bg-color;
+    transition: all $cubic;
+    &:hover{
+        text-decoration: underline;
+    }
     @include for-size(desktop){
         color: $primary-text-color;
     }

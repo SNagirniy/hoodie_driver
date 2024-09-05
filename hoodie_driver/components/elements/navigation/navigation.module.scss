@@ -32,6 +32,9 @@
     font-weight: 600;
     color: $primary-text-color;
     transition: all $cubic;
+    &:hover{
+        color: $secondary-text-color
+    }
 
 &.active{
     font-weight: 600;

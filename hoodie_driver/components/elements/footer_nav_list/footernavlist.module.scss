@@ -37,6 +37,11 @@ line-height: 1.5;
     line-height: 1.5;
     
     color: $primary-text-color;
+    transition: scale $cubic;
+
+    &:hover{
+        scale: 1.03;
+    }
 
     &::first-letter{
         text-transform: capitalize;

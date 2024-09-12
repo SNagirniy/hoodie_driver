@@ -65,9 +65,29 @@
     font-weight: 600;
 };
 
+.cart_footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
 .total{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     align-self: flex-end;
-    font-weight: 700;
-    font-size: 2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
     line-height: 1.2;
+};
+
+.promo{
+    height: 2rem;
+    resize: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid blue;
+   
+   
 }

@@ -9,10 +9,10 @@ const ButtonGroup = ({next, previous, goToSlide, ...rest }) => {
     
     return (
       <div className={s.btn_container}>
-        <button disabled={currentSlide === 0} onClick={() => previous()} className={clsx(s.button, {[s.disable]: currentSlide === 0}) } type="button">
+        <button  onClick={() => previous()} className={s.button } type="button">
             <Arrow className={s.arrow}/>
         </button>
-        <button disabled={currentSlide === totalItems-slidesToShow} onClick={() => next()} className={clsx(s.button, {[s.disable]: currentSlide === totalItems-slidesToShow}) } type="button">
+        <button  onClick={() => next()} className={s.button} type="button">
             <Arrow className={ clsx(s.arrow, s.right) }/>
         </button>
       </div>

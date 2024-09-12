@@ -100,7 +100,7 @@
 "Product_detail": {
   "variant_btn": {
     "custom": "со своим принтом",
-    "default": "как на фото",
+    "default": "с принтом как на фото",
     "empty": "без принта"
   }
 }

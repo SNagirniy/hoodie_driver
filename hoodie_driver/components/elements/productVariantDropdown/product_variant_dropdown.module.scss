@@ -88,8 +88,13 @@ display: block;
   border: none;
   color: $bglightblue;
   cursor: pointer;  
+  transition: filter $cubic;
   &::first-letter{
     text-transform: capitalize;
+  }
+
+  &:hover{
+    filter: drop-shadow(0 0 0.5px $primary-bg-color);
   }
 
 }

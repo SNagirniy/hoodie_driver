@@ -22,9 +22,10 @@ line-height: 1.5;
     line-height: 1.5;
     cursor: pointer;
     color: $primary-bg-color;
-    transition: all $cubic;
+    transition: color $cubic;
     &:hover{
-        text-decoration: underline;
+        color: $accent-text-color;
+        
     }
     @include for-size(desktop){
         color: $primary-text-color;

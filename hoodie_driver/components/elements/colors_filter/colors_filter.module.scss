@@ -1,7 +1,7 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .list{
-    max-height: 50vh;
+    height: 50vh;
     overflow: auto;
 
     @include for-size(tablet){
@@ -9,7 +9,7 @@
     }
 
     @include for-size(desktop){
-        max-height: 70vh;
+        height: 30rem;
     }
 }
 
@@ -23,7 +23,7 @@
     color: $primary-bg-color;
     cursor: pointer;
 
-    transition: text-decoration $cubic;
+    transition: color $cubic;
 
     @include for-size(desktop){
         color: $primary-text-color;
@@ -35,7 +35,7 @@
     }
 
     &:hover{
-        text-decoration: underline;
+        color: $accent-text-color;
     }
 }
 

@@ -20,7 +20,7 @@ const Card = ({product,color_map})=> {
 
    if(!hydrated) {return null}; 
 
-    const {title, price, available_colors, imageURL, id, color} = product;
+    const {title, price,available_colors, imageURL, id, color, category} = product;
     const renderColors =(arr)=> {
         const maxEl =3;
         if(arr.length <= maxEl) {return {colorMap: arr}};
@@ -31,7 +31,7 @@ const Card = ({product,color_map})=> {
     };
 
     const handleClick = ()=> {
-        const data = {title: title.uk, price, image: imageURL, id, ammount: 1, color}
+        const data = {title: title.uk, price, image: imageURL, id, ammount: 1, color, variant: 'default', category}
         addToCart(data)
        
     }

@@ -40,7 +40,7 @@ const Slider = ({slides, colors})=> {
   dotListClass={s.dot_list}
   draggable
   focusOnSelect={false}
-  infinite={false}
+  infinite={true}
   itemClass={s.item}
   keyBoardControl
   minimumTouchDrag={80}
@@ -75,7 +75,7 @@ const Slider = ({slides, colors})=> {
       partialVisibilityGutter: 10
     }
   }}
-  rewind={false}
+  rewind={true}
   rewindWithAnimation={false}
   rtl={false}
   shouldResetAutoplay

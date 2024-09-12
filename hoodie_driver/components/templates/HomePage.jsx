@@ -19,7 +19,7 @@ const HomePage =()=> {
         <Bestselers/>
         <Custom/>
         <Reviews description={t('Reviews.descr')} title={t('Reviews.title')}>
-            <MainButton target={'_blank'} title={`200+ в ${t('Reviews.btn_title')}`} 
+            <MainButton target={'_blank'} title={`500+ в ${t('Reviews.btn_title')}`} 
             path={'https://www.instagram.com/hoodie.driver/'}>
                         <InstagramIcon width={24} height={24} fill={'white'}/>
             </MainButton>

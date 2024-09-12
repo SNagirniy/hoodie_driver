@@ -9,6 +9,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [hydrated, setHydrated] = useState(false);
+  const [promocode, setPromocode] = useState(null);
   const [cart, setCart] = useState(() => {
   
     if(typeof window !== 'undefined'){
@@ -59,8 +60,12 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  const addPromocode = async(promocode)=> {
+   setPromocode(promocode)
+  };
+
   return (
-    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart,changeCartItem, hydrated }}>
+    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart,changeCartItem, hydrated, promocode, addPromocode}}>
       {children}
     </CartContext.Provider>
   );

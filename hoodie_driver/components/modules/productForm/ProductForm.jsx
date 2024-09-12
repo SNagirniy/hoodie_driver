@@ -70,14 +70,16 @@ const ProductForm =({colors, product})=>{
     e.preventDefault();
 
     const productData = {
+        id: product?.id, 
         title: product?.title, 
         price: product?.price, 
         image: product?.imageURL, 
-        id: product?.id, 
         ammount: ammount, 
         color: selectedColor,
+        variant: variant,
         message: variant === Variants?.custom?message : '',
-        custom_logo: variant === Variants?.custom?customImagePreview : null
+        custom_logo: variant === Variants?.custom?customImagePreview : null,
+        category: product?.category
     };
 
         addToCart(productData),
@@ -103,7 +105,7 @@ const ProductForm =({colors, product})=>{
         {available_colors?.length >0 &&
         <>
             <p className={s.radio_capture} id="colors">Доступні кольори для худі:</p>
-            <div className={clsx(s.radiogroup, {[s.disabled]: defaultVariant})} role="radiogroup" aria-labelledby="colors" >
+            <div className={s.radiogroup} role="radiogroup" aria-labelledby="colors" >
                 {available_colors?.map((color) => { return(
                     <label className={clsx(s.radio_label, {[s.checked] : isChecked(color.title)})} 
                     key={color.title}>
@@ -111,8 +113,7 @@ const ProductForm =({colors, product})=>{
                     onChange={handleSelectColor} 
                     type="radio" 
                     name="color" 
-                    value={color.title}
-                    disabled={defaultVariant}/>
+                    value={color.title}/>
                 {color.value? <ColorItem color={color.value}/> : <IconItem icon={color.icon} title={color.title}/>}
                 </label>)})}
             </div>

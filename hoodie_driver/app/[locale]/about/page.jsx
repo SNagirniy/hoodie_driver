@@ -1,8 +1,7 @@
-import Link from "next/link";
-export default function About() {
+import AboutPage from "@/components/templates/AboutPage";
+
+export default async function About() {
     return (
-       <><h1>About</h1>
-        <Link href={'/'}>Home</Link></> 
-    
+       <AboutPage/> 
     );
-  }
+  };

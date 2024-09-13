@@ -7,17 +7,28 @@ import { useState, useEffect } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
 import usePromotion from '@/hooks/usePromotion';
+import Button from '@/components/elements/mainButton/Button';
+import {useRouter } from '@/navigation';
 
 
-const Cart = ()=> {
-const {cart, promocode, addPromocode}=useCart();
+
+const Cart = ({closeModal})=> {
+const {cart, promocode, addPromocode, changeDiscountValue}=useCart();
 const [promoValue, setPromoValue]= useState(promocode?.code || '');
 const {totalValue, totalDiscount}= usePromotion(promocode, cart);
 const locale = useLocale();
 
+const router =useRouter();
 
 const total = cart.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0);
 
+
+const relocateToCheckout=()=>{
+
+  router.replace(`/checkout`);
+  closeModal();
+
+}
 
 const handleChangePromo = async(e)=> {
 const value = e.currentTarget?.value;
@@ -50,6 +61,7 @@ const checkPromotion = async(promo)=>{
 const debaunced = useDebouncedCallback(checkPromotion, 1000)
 
 useEffect(()=>{debaunced(promoValue)},[promoValue]);
+useEffect(()=> changeDiscountValue(totalDiscount), [totalDiscount]);
 
 if(cart.length === 0 ) {return (<div className={s.empty}>Cart is empty</div>)};
 
@@ -66,17 +78,26 @@ return (
             price={price}/>
    })}
     </ul>
+
     <div className={s.cart_footer}>
         
-    <label className={s.total}>Promocode:
+   <div className={s.footer_box}>
+   
+   <label className={s.total}>Promocode:
         <input 
         onChange={handleChangePromo}
         value={promoValue} 
         className={s.promo} 
         type='text'/>
     </label>
-    <p className={s.total}>Total: {total-totalDiscount}грн</p>
+    <p>{promocode?.description}</p>
+   </div>
+    <div className={s.footer_box}>
+      {totalDiscount> 0 && <p className={s.total}>Discount: {totalDiscount}грн</p>}
+       <p className={s.total}>Total: {total-totalDiscount}грн</p>
     </div>
+    </div>
+        <Button action={relocateToCheckout} title={'Перейти до оформлення'}/>
     </div>
 )
 };

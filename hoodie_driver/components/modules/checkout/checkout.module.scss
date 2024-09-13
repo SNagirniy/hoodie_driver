@@ -1,0 +1,12 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.conatiner{
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 0;
+    gap: 60px;
+    @include for-size(tablet){
+        padding: 7rem 0;
+        gap: 80px;
+    }
+}

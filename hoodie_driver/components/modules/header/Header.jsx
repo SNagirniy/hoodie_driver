@@ -29,6 +29,10 @@ const Header =({categories})=> {
         setIsMenuOpen(!isMenuOpen)
     };
 
+    const handleCloseModal =()=> {
+        setIsModalOpen(false)
+    }
+
     const onCloseMenu = ()=> {
         setIsMenuOpen(false)
     };
@@ -76,7 +80,7 @@ const Header =({categories})=> {
             </MainContainer>
             { isModalOpen && 
             <Modal onClose={toggleModal}>
-                <Cart/>
+                <Cart closeModal={handleCloseModal}/>
             </Modal>}
         </header>
     )

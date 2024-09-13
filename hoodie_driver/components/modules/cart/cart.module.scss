@@ -72,6 +72,13 @@
     gap: 3rem;
 }
 
+.footer_box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
 .total{
     display: flex;
     align-items: center;

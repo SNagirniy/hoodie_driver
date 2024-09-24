@@ -13,14 +13,14 @@
   }
 
   .dropdown{
+    align-self: center;
       position: absolute;
       top: 0;
       display: flex;
-      width: 100%;
+      width: 90%;
       flex-direction: column;
       justify-content: flex-start;
-      z-index: 100;
-      opacity: 0;
+      
       gap: 10px;
       background-color: $primary-text-color;
       border: 1px solid $accent-text-color;
@@ -28,21 +28,26 @@
       padding: 20px;
       color: $dark;
       visibility: hidden;
+      max-height: 0;
+      z-index: -1;
       transition: all $cubic;
 
 
 
       &.open{
         top: 140%;
-        opacity: 1;
+        max-height: max-content;
         visibility: visible;
+        z-index: 1;
         @include for-size(tablet){
           top: 120%;
           }
       }
   }
   
-
+.btn_box{
+  z-index: 10;
+}
   .button {
     display: inline-flex;
     flex-direction: row;

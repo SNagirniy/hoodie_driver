@@ -33,7 +33,7 @@ const Newsletter = ()=>{
 
       const handleSubmit = async(e)=>{
         e.preventDefault();
-
+          if(email === '') {return}
             try {
                 const res = await fetch('/lib/sendpulse', {
                     method: 'POST',

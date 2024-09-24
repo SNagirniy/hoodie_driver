@@ -50,7 +50,6 @@ const handleClick = (e)=>{
   }
 
 
-
 return (
   <ReactPaginate
   breakLabel="..."
@@ -67,6 +66,7 @@ return (
   activeLinkClassName={s.active}
   previousClassName={s.navigation_item}
   nextClassName={clsx(s.navigation_item, s.next)}
+  disabledClassName={s.disabled}
 />
 )
 };

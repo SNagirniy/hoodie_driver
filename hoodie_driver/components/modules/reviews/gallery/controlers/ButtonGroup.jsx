@@ -5,7 +5,6 @@ import clsx from 'clsx';
 
 
 const ButtonGroup = ({next, previous, goToSlide, ...rest }) => {
-    const {carouselState: { currentSlide, slidesToShow, totalItems} } = rest;
     
     return (
       <div className={s.btn_container}>

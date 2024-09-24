@@ -75,6 +75,7 @@ line-height: 1.4;
         justify-content: space-between;
         row-gap: 1rem;
         width: 100%;
+        z-index: 10;
         @include for-size (tablet){
             grid-template-columns: 1fr 1fr 3rem 3rem;
         }

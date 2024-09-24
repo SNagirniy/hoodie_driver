@@ -4,6 +4,10 @@
 .input_box{
     position: relative;
     width: 100%;
+    z-index: 5;
+    @include for-size(tablet){
+        z-index: 10;
+    }
     
 };
 

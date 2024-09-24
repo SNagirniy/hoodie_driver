@@ -56,8 +56,8 @@ const Hero =()=> {
             </div>
             <div className={s.decor}></div>
             </MainContainer>
-           {isModalOpen && <Modal onClose={closeModal}>
-                <ModalForm onClose={closeModal}/>
+           {isModalOpen && <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <ModalForm  onClose={closeModal}/>
             </Modal>}
         </section>
     )

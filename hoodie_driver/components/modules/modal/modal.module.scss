@@ -11,6 +11,7 @@
     align-items: center;
     backdrop-filter: blur(8px);
     background: rgba(32, 46, 56, 0.3);
+    scroll-behavior: none;
     z-index: 1000;
    
   }
@@ -21,16 +22,33 @@
     align-items: center;
     justify-content: center;
     background-color: $primary-text-color;
-    padding: 40px 20px;
+    padding: 60px 20px 40px 20px;
     border-radius: 2rem;
     max-width: 90%;
     @include for-size(tablet){
-        padding: 40px;
+        padding: 60px 40px 40px 40px;
         max-width: 100%;
     }
 
     @include for-size(desktop){
         border-radius: 2rem;
+    }
+};
+
+
+.close_btn{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+    fill: $primary-bg-color;
+    cursor: pointer;
+
+    transition: scale $cubic;
+
+    &:hover{
+        scale: 1.1;
     }
 }
   

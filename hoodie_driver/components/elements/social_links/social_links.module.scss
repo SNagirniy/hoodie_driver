@@ -36,5 +36,9 @@ color: $primary-text-color;
 .icon{
     width: 3rem;
     height: 3rem;
+    transition: scale $cubic;
+    &:hover{
+        scale: 1.15;
+    }
 };
 

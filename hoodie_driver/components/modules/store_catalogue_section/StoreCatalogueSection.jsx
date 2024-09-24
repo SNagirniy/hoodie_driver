@@ -44,7 +44,7 @@ return {title: colors[key].title[locale], color: colors[key].value, id: key, ico
                
                 <div className={s.catalogue_list_container}>
                     <div className={s.menu_box}> 
-                        <FilterReflection/>
+                        <FilterReflection color_map={color_map} categories={categories}/>
                         <SortMenu/>
                         <FilterMenu categories={categories} color_map={color_map}/>
                         <div className={s.mobile_box}>

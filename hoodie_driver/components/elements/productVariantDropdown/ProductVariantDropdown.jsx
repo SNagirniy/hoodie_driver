@@ -57,7 +57,8 @@ const ProductVariantDropdown =({variant, setVariant})=> {
               aria-haspopup="listbox"
               tabIndex="0"
               aria-expanded="false" 
-              ref={rootRef}>
+              ref={rootRef}
+              className={s.btn_box}>
           <p className={s.button}><span>{t(`variant_btn.${[variant]}`)}</span><IndicatorIcon className={clsx(s.indicator_icon, {[s.open]: isOpen}) }/></p>
           </div>
             <ul 

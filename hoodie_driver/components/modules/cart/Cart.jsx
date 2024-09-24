@@ -2,12 +2,14 @@
 import s from './cart.module.scss';
 import { useCart } from '@/contexts/cartContext';
 import CartItem from './CartItem';
+import CartFooter from './CartFooter';
 import { useLocale } from 'next-intl';
 import { useState, useEffect } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
 import usePromotion from '@/hooks/usePromotion';
 import Button from '@/components/elements/mainButton/Button';
+import EmptyCart from '../empty_cart/EmptyCart';
 import {useRouter } from '@/navigation';
 
 
@@ -23,9 +25,9 @@ const router =useRouter();
 const total = cart.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0);
 
 
-const relocateToCheckout=()=>{
+const relocateTo=(path)=>{
 
-  router.replace(`/checkout`);
+  router.replace(path);
   closeModal();
 
 }
@@ -63,7 +65,7 @@ const debaunced = useDebouncedCallback(checkPromotion, 1000)
 useEffect(()=>{debaunced(promoValue)},[promoValue]);
 useEffect(()=> changeDiscountValue(totalDiscount), [totalDiscount]);
 
-if(cart.length === 0 ) {return (<div className={s.empty}>Cart is empty</div>)};
+if(cart.length === 0 ) {return <EmptyCart relocate={()=>relocateTo('/store')}/>};
 
 return (
     <div className={s.container}>
@@ -74,32 +76,22 @@ return (
             ammount={ammount} 
             id={id} 
             image={image} 
-            title={title[locale]} 
+            title={title} 
             price={price}/>
    })}
     </ul>
 
-    <div className={s.cart_footer}>
-        
-   <div className={s.footer_box}>
-   
-   <label className={s.total}>Promocode:
-        <input 
-        onChange={handleChangePromo}
-        value={promoValue} 
-        className={s.promo} 
-        type='text'/>
-    </label>
-    <p>{promocode?.description}</p>
-   </div>
-    <div className={s.footer_box}>
-      {totalDiscount> 0 && <p className={s.total}>Discount: {totalDiscount}грн</p>}
-       <p className={s.total}>Total: {total-totalDiscount}грн</p>
-    </div>
-    </div>
-        <Button action={relocateToCheckout} title={'Перейти до оформлення'}/>
+   <CartFooter
+   total={total}
+   promoValue={promoValue}
+   totalDiscount={totalDiscount}
+   handleChangePromo={handleChangePromo}
+   />
+    <p className={s.footer_title}>Подарункове пакування до кожного замовлення</p>
+    <Button action={()=>relocateTo(`/checkout`)} title={'Оформити замовлення'}/>
     </div>
 )
 };
 
 export default Cart;
+

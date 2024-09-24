@@ -98,7 +98,7 @@ const SortMenu = ()=> {
     return(
 
         <div onClick={toggleDropdown} className={s.container}>
-        <div ref={rootRef}>
+        <div className={s.title_box} ref={rootRef}>
         <p role='button' className={clsx(s.title, {[s.disabled]: isQID()})}><span>Cортуй</span> <Sort className={s.indicator_icon}/></p>
         </div>
         {(

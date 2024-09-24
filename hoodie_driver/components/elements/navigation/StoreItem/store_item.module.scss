@@ -10,30 +10,33 @@
   
 
   .dropdown{
+ 
       position: absolute;
-      bottom: -20rem;
+      top: 100%;
       width: 20rem;
       border-radius: 1rem;
       background-color: $bglightblue;
-      padding: 0.8rem 2rem;;
-      z-index: 100;
-      opacity: 0;
+      padding: 1rem 2rem;;
+     
+      z-index: -1;
+      max-height: 0;
       visibility: hidden;
-      height: max-content;
-      transition: all $cubic;
+      overflow: hidden;
+      transition: visibility $cubic,top $cubic,max-height $cubic;
 
       &.open{
-       
-        bottom: -20rem;
-        opacity: 1;
         visibility: visible;
+        top:calc(100% + 2rem);
+        z-index: 100;
+        max-height: max-content;
        
 
         @include for-size(tablet){
-          bottom: -21rem;
+         
+          padding: 2rem 2rem 1rem 2rem;
           }
           @include for-size(desktop){
-            bottom: -24rem;
+           
             padding: 0.8rem 5rem 0.8rem 2rem;
             
             }

@@ -5,12 +5,14 @@ import { useState,useEffect } from 'react';
 import { useSearchParams,usePathname,useRouter } from 'next/navigation';
 import CurrentFilterValueButton from '../currentFilterValueButton/CurrentFilterValueButton';
 
-const FilterReflection=()=>{
+const FilterReflection=({color_map, categories})=>{
     const [currentFilters, setCurrentFilters]=useState([]);
     
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
+
+
 
     const handleRemovefilter = (e)=> {
 
@@ -36,7 +38,17 @@ const FilterReflection=()=>{
               
             }
           };
-        return params}
+        return params};
+
+        const getLocaleVersionTitle=(key, value)=>{
+          if(key === 'color'){
+            const currentItem = color_map?.filter((el)=>{return el?.id === value});
+            return currentItem[0]?.title
+          } else if(key === 'category'){
+            const curentItem = categories?.filter((el)=> el?.slug === value);
+            return curentItem[0]?.title
+          } else{return value}
+        };
   
     useEffect(()=> setCurrentFilters(filterSearchParams(searchParams)), [searchParams]);
 
@@ -46,7 +58,7 @@ const FilterReflection=()=>{
         <CurrentFilterValueButton 
         handleFunc={handleRemovefilter} 
         value={el.key} 
-        title={el.value} 
+        title={getLocaleVersionTitle(el.key, el.value)} 
         sortType={el?.sortType}/>
         </li>)}
   </ul>)

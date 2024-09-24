@@ -28,10 +28,15 @@
 .image{
     width: 2rem;
     height: 2rem;
+    transition: scale $cubic;
     @include for-size(tablet){
         width: 3rem;
         height: 3rem;
     };
+
+    &:hover{
+        scale: 1.05;
+    }
 
     &.footer{
        width: 93px;

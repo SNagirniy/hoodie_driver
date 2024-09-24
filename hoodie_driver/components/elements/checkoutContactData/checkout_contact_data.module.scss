@@ -1,0 +1,85 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.block_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+};
+
+.block_title{
+ font-weight: 700;
+font-size: 18px;
+line-height: 1.4;
+};
+
+.hidden_container{
+    height: 0;
+    overflow: hidden;
+    transition: height $cubic;
+    &.open{
+        height: 100%;
+    }
+}
+
+.input_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+   transform: translateY(-100%);
+   transition: transform $cubic;
+
+ 
+    
+    @include for-size(tablet){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1.4rem;
+    }
+
+    &.open{
+       transform: translateY(0);
+     
+    }
+    }
+    
+    .label{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    
+    &:nth-child(3){
+        grid-area: 2/1/2/3;
+    }
+    
+    &.radio_label{
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    };
+    
+    .input{
+        outline: none;
+        padding:12px;
+        border: 1px solid $accent-text-color;
+        border-radius: 2rem;
+    };
+
+    .base{
+        display: flex;
+        gap:12px;
+        align-items: center;
+        cursor: pointer;
+    };
+    
+    .icon{
+    width: 18px;
+    height: 18px;
+    border: 1px solid $accent-text-color;
+    border-radius: 4px;
+    padding: 2px;
+    };

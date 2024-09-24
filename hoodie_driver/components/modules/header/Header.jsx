@@ -48,7 +48,7 @@ const Header =({categories})=> {
    
 
     return (
-        <header >
+        <header className={s.root_header}>
             <MainContainer> 
                 <div className={s.header}>
                     <Logo/>
@@ -79,7 +79,7 @@ const Header =({categories})=> {
            
             </MainContainer>
             { isModalOpen && 
-            <Modal onClose={toggleModal}>
+            <Modal isOpen={isModalOpen} onClose={toggleModal}>
                 <Cart closeModal={handleCloseModal}/>
             </Modal>}
         </header>

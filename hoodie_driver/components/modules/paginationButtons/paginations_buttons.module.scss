@@ -45,7 +45,7 @@
  margin-right: auto;
 
     &.next{
-        margin-right: 0;
+     margin-right: 0;
      margin-left: auto;
     }
 }
@@ -94,4 +94,8 @@ cursor: pointer;
     &.next{
         transform: rotate(-90deg);
     }
+};
+
+.disabled{
+    visibility: hidden;
 }

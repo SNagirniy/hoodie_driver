@@ -4,23 +4,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $accent-text-color;
     border-radius: 3rem;
-    background-color: $accent-text-color;
-
+    background-color: $bglightblue;
+    width: max-content;
 
     & >input{
         display: flex;
         border: none;
         outline: none;
-        padding: 12px 0;
-       
-        background-color: transparent;
+        
+       width: 50px;
+       height: 50px;
+        background-color: $accent-text-color;
         color: $primary-text-color;
         font-weight: 600;
         font-size: 1rem;
         line-height: 1.5;
         text-align: center;
+        
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
@@ -33,22 +34,36 @@
 
 .ammount_button{
     outline: none;
-    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    background-color: $accent-text-color;
     border: none;
     color: $primary-text-color;
     font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.5;
-    padding: 0 1.5rem;
-    transition: text-shadow $cubic;
-    &:hover{text-shadow: 0px 0px 3px $primary-text-color;}
+   
+    cursor: pointer;
+    transition: transform $cubic;
+
+    &:active{
+        transform: scale(0.96);
+    }
+
+   
     
 }
 
 .decrement_btn{
-   border-radius: 0.75rem 0 0 0.75rem;
+   border-radius: 2rem 0 0 2rem;
+   &:hover{
+    border-right: 0.7px solid $bglightblue;
+   }
 };
 
 .increment_btn{
-    border-radius: 0 0.75rem 0.75rem 0;
+    border-radius: 0 2rem 2rem 0;
+    &:hover{
+        border-left: 0.7px solid $bglightblue;
+       }
  }

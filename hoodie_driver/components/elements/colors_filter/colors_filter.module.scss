@@ -1,12 +1,8 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
 .list{
-    height: 50vh;
+    height: 30vh;
     overflow: auto;
-
-    @include for-size(tablet){
-        height: 40vh;
-    }
 
     @include for-size(desktop){
         height: 30rem;

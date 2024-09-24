@@ -1,4 +1,11 @@
 @import './../../app/globalStyles/basestyles.scss';
+
+.main{
+  padding-top: 6rem;
+  @include for-size(tablet){
+    padding-top: unset;
+  }
+}
 .main_container{
     width: 100%;
     padding: 0 24px;

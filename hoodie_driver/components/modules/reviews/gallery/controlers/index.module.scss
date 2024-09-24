@@ -21,20 +21,15 @@
     border-radius: 50%;
     border: 1px solid $accent-text-color;
     background: $accent-text-color;
-
-    transition: all $cubic;
+    cursor: pointer;
+    transition: transform $cubic;
     &:hover{
-        scale: 1.05;
+        transform: scale(1.05);
     }
 
-    &.disable{
-
-        background-color: transparent;
-        & .arrow{
-            fill: $accent-text-color;
-        }
-      
-    }
+  &:active{
+    transform: scale(0.95)
+  }
 
 };
 

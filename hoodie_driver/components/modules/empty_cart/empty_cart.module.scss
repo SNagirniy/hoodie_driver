@@ -1,0 +1,24 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:1.5rem;
+    padding: 0 2rem;
+   
+};
+
+.title{
+font-weight: 700;
+font-size: 1.25rem;
+line-height: 1.4;
+color: $primary-bg-color;
+}
+
+
+.icon{
+    width: 64px;
+    height: 62px;
+}

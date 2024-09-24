@@ -1,3 +1,4 @@
+import s from './index.module.scss';
 import Header from "../modules/header/Header";
 import Footer from "../modules/footer/Footer";
 import { getLocale } from "next-intl/server";
@@ -17,7 +18,7 @@ const PageLayout = async({children})=> {
     return (
 <>
 <Header categories = {categories}/>
-<main>{children}</main>
+<main className={s.main}>{children}</main>
 <Footer categories = {categories}/>
 </>
 

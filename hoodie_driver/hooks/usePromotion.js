@@ -1,37 +1,6 @@
 'use client'
 import { useState, useEffect} from "react";
 
-const promoExample ={
-    "code": "BUY2GET1",
-    "description": "Buy 2, get 1 free",
-    "valid_from": "2024-06-01",
-    "valid_to": "2024-09-30",
-    "min_order_amount": '',
-    "applicable_categories": ["electronics"],
-    "discount": {
-      "type": "free_item", 
-      "required_items_count": 2,
-      "gift_count": 1,
-      "gift_options": ["item1_id", "item2_id"] 
-    },
-    "gift_included": false,
-    "seasonal": false
-  };
-/*
-
-  const productData = {
-    id: "product?.id", 
-    title: "product?.title", 
-    price: "product?.price", 
-    image: "product?.imageURL", 
-    ammount: "ammount", 
-    color: "selectedColor",
-    variant: "variant",
-    message: "variant === Variants?.custom?message" : '',
-    custom_logo: variant === Variants?.custom?customImagePreview : null,
-    category: ''
-};*/
-
 
   const discountTypes={
     free_item: "free_item",

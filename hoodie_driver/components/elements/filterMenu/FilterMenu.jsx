@@ -30,8 +30,9 @@ const FilterMenu =({categories,color_map})=>{
             <Filter className={s.filter_icon}/>
         </button>
 
-        {isMenuOpen && <Modal onClose={closeMenu}>
-        <div className={s.filter_drop_down_content}>
+        {isMenuOpen && <Modal isOpen={isMenuOpen} onClose={closeMenu}>
+        <div className={s.filter_content}>
+            <h3 className={s.title}>Фільтри</h3>
            <StoreAside categories={categories} color_map={color_map} onCloseFilterMenu={closeMenu}/>
           </div>
         </Modal>}

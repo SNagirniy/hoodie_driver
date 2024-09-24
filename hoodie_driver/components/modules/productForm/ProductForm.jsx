@@ -160,7 +160,7 @@ const ProductForm =({colors, product})=>{
             <div className={s.divider}></div>
             <div className={s.button_box}>
                 <Button type={'submit'} title={'купити'}/>
-                <button onClick={()=> setIsCustomizationOpen(!isCustomizationOpen)} 
+                <button onClick={()=> setIsCustomizationOpen(true)} 
                 className={s.custom_button} 
                 type="button">
                     Кастомізувати

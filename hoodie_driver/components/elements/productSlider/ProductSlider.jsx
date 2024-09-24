@@ -32,7 +32,7 @@ const ProductSlider = ({image, title, images_set})=> {
            lazyLoad={true}
            showFullscreenButton={false}
            showPlayButton={false}
-           thumbnailPosition={thumbNailPosition}
+           thumbnailPosition={"bottom"}
            additionalClass={s.gallery}
            
           />

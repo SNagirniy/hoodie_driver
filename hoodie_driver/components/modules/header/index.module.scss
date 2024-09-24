@@ -1,5 +1,15 @@
 @import '../../../app/globalStyles/basestyles.scss';
 
+.root_header{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    @include for-size(tablet){
+        position: static;
+    }
+}
+
+
 .header{
     display: flex;
     position: relative;

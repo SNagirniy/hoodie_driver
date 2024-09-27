@@ -31,7 +31,7 @@ const Card = ({product,color_map})=> {
     };
 
     const handleClick = ()=> {
-        const data = {title: title.uk, price, image: imageURL, id, ammount: 1, color, variant: 'default', category}
+        const data = {title: title, price, image: imageURL, id, ammount: 1, color, variant: 'default', category}
         addToCart(data)
        
     }

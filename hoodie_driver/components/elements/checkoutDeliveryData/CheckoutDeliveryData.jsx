@@ -3,24 +3,29 @@
 
 import Select from 'react-select';
 import s from './checkout_delivery_data.module.scss';
-import { useState,useEffect } from 'react';
+import { useState,useEffect} from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 
 
-const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
+const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress, cityRef, setCityRef, deliveryAbroad, setDeliveryAbroad})=> {
     const [city, setCity]= useState('');
     const [cities, setCities] = useState([]);
-    const [cityRef, setCityRef] = useState(null);
     const [warehouses, setWarehouses]=useState([]);
-    const warehousesOptions =warehouses?.map((w) => {return {value: w?.Description, label: w?.Description}});
+   
 
-    const changeCity =(e)=> {
-        setCityRef(e)
-        
+
+    const changeCity = async(e)=> {
+      setDeliveryAdress(null);
+      setCityRef(e)   
     };
 
+    const handleChangeDeliveryAbroad = (e)=> {
+      const msg = e?.currentTarget?.value;
+      setDeliveryAbroad(msg)
+    }
+
     const getCities = async(city)=>{
-        if( city === ''){setWarehouses([]), setDeliveryAdress(null); return};
+        if( city === ''){setDeliveryAdress(null); return};
 
         try {
           const res = await fetch('/lib/getNovaPostCities', {
@@ -35,7 +40,7 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
           if (result) {
             setDeliveryAdress(null)
             const optionsCities = result?.cities?.map(({description, ref})=> {return {value: ref, label: description}});
-          setCities(optionsCities)
+            setCities(optionsCities)
 
           }} catch (error) {
            console.log(error)
@@ -45,22 +50,22 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
 
 
 
-    const getWarehouses = async(cityRef)=>{
-
+    const getWarehouses = async(ref)=>{
+     
         try {
           const res = await fetch('/lib/getNovaPostWarehouses', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ref: cityRef?.value}),
+              body: JSON.stringify({ref: ref?.value}),
             });
             const result = await res?.json();
-          if(result?.divisions?.length === 0) { setWarehouses([]), setDeliveryAdress(null);return}
+          if(result?.divisions?.length === 0) {setWarehouses([]);return}
           if (result) {
-            setDeliveryAdress(null)
             const flatResult=result?.divisions.flat();
-           setWarehouses(flatResult)
+            const warehousesOptions = flatResult?.map(w => ({ value: w?.Description, label: w?.Description }));
+           setWarehouses(warehousesOptions)
       
           }} catch (error) {
            console.log(error)
@@ -69,9 +74,8 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
 
       const debaunced = useDebouncedCallback(getCities, 1000);
 
-      useEffect(()=>{debaunced(city)}, [city]);
-      useEffect(()=> { if(!cityRef){return} getWarehouses(cityRef)}, [cityRef]);
-    
+    useEffect(()=>{debaunced(city)}, [city]);
+    useEffect(()=> { if(!cityRef){return}; getWarehouses(cityRef)}, [cityRef]);
 
     return(
         <>
@@ -85,7 +89,6 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
                                classNames={{
                                 control: ()=>s.input,
                                }}
-                                defaultValue={''}
                                 onInputChange={(e)=> {setCity(e)}}
                                 options={cities}
                                 onChange={changeCity}
@@ -96,14 +99,13 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
                                 <label className={s.label}>
                                 Відділення
                                 <Select
+                                required
                                  classNames={{
                                   control: ()=>s.input,
                                  }}
-                                defaultValue={''}
                                 value={deliveryAdress}
                                 onChange={setDeliveryAdress}
-                                options={warehousesOptions}
-                                noOptionsMessage={()=> 'За вашим запитом відділень не знайдено'}
+                                options={warehouses}
                                 placeholder={''}
                                />
                                 </label>
@@ -117,6 +119,8 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress})=> {
                             <label className={s.label}>
                             Напиши всі необхідні дані латиницею
                                 <textarea
+                                value={deliveryAbroad}
+                                onChange={handleChangeDeliveryAbroad}
                                 className={s.msg_area}
                                 name="message" 
                                 id="message"

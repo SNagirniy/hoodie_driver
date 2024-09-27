@@ -9,6 +9,11 @@
   
   --slide-size: 15rem;
 }
+
+@include for-size(tablet){
+  
+  --slide-size: 18vw;
+}
    
   };
   .embla__viewport {

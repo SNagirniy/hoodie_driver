@@ -2,35 +2,46 @@
 import s from './checkout_payment.module.scss';
 import clsx from 'clsx';
 import { useState } from 'react';
+import Check from '../../../public/check_icon.svg';
 
 
-const CheckoutPayment = ()=> {
+const paymentTypes =[{
+    type: 'postpaid',
+    label: 'Оплата на пошті після отримання (предплата 100-200грн). Не працює при відправці за кордон!'
+},
+{
+    type: 'full_payment',
+    label: 'Повна оплата'
+},
+{
+    type: 'card_payment',
+    label: 'Оплата картою'
+}]
+
+const CheckoutPayment = ({setPaymentType, paymentType})=> {
 const [isOpen, setIsOpen]=useState(false);
 
 const toggleCardPayment = (e)=> {
 const value = e.currentTarget.value;
-console.log(value)
 setIsOpen(false)
+setPaymentType(value);
 
-if(value === 'карта'){setIsOpen(true)}
+if(value === 'card_payment'){setIsOpen(true)}
     
 }
 
     return(
   <>
         <div role='radiogroup' className={s.block_wrapper}>
-        <label className={clsx(s.label, s.radio_label)}>
-        Оплата на пошті після отримання (предплата 100-200грн) Не працює при відправці за кордон!
-            <input onChange={toggleCardPayment} value={'післяплата'} className={s.radio_input} type="radio" name='payment'/>
-        </label>
-        <label className={clsx(s.label, s.radio_label)}>
-        Повна оплата
-            <input onChange={toggleCardPayment} value={'повна оплата'} className={s.radio_input} type="radio" name='payment'/>
-        </label>
-        <label className={clsx(s.label, s.radio_label)}>
-        Оплата картою
-            <input value={'карта'} onChange={toggleCardPayment} className={s.radio_input} type="radio" name='payment'/>
-        </label>
+
+            {paymentTypes.map(({type, label})=> {
+                return(
+                    <label key={type} className={clsx(s.label, s.radio_label)}>{label}
+                        <input checked={type === paymentType} onChange={toggleCardPayment} value={type} className={s.radio_input} type="radio" name='payment'/>
+                        <span><Check className={s.icon} /></span>
+                    </label>
+                )
+            })}
         </div>
         <div className={clsx(s.hidden_container, {[s.open]: isOpen})}>
             <div className={clsx(s.input_wrapper, {[s.open]: isOpen})}>

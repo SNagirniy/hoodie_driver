@@ -59,6 +59,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCart([]);
+    setPromocode(null)
   };
 
   const addPromocode = async(promocode)=> {

@@ -25,7 +25,23 @@
         flex-direction: row-reverse;
         align-items: center;
         justify-content: flex-end;
+        text-wrap: balance;
+        cursor: pointer;
+        &>span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border: 1px solid $accent-text-color;
+            border-radius: 50%;
+            padding: 2px;
+    
+            transition: background-color $cubic;
+        }
     }
+
+ 
     };
 
     .hidden_container{
@@ -64,6 +80,8 @@
             &:disabled{
                 background-color: transparent;
             }
+
+
         };
 
         .message{
@@ -74,3 +92,29 @@
             color: rgba(250, 141, 116, 1);
 
         }
+
+
+        .radio_input{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            -webkit-clip-path: inset(100%);
+                    clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+            &:checked ~ span{
+                background-color: $accent-text-color;
+                & .icon{
+                    visibility: visible;
+                }
+            }
+        }
+
+        .icon{
+            visibility: none;
+            fill: $primary-text-color;
+        };

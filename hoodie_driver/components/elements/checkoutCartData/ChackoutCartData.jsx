@@ -6,9 +6,11 @@ import CartFooter from '@/components/modules/cart/CartFooter';
 import Button from '../mainButton/Button';
 import EmptyCart from '@/components/modules/empty_cart/EmptyCart';
 import { useRouter } from '@/navigation';
+import { useLocale } from 'next-intl';
 
-const CheckoutCartData = ({cart,total, promoValue, totalDiscount, handleChangePromo, handleButtonClick})=> {
+const CheckoutCartData = ({cart,total, promocode, totalDiscount, addPromocode, handleButtonClick})=> {
     
+    const locale = useLocale();
     const router =useRouter();
     const relocateTo=(path)=>{ router.replace(path);}
 
@@ -23,16 +25,16 @@ return(
             ammount={ammount} 
             id={id} 
             image={image} 
-            title={title} 
+            title={title[locale]} 
             price={price}/>
    })}
     </ul>
 
    <CartFooter
    total={total}
-   promoValue={promoValue}
+    promocode={promocode}
    totalDiscount={totalDiscount}
-   handleChangePromo={handleChangePromo}
+   addPromocode={addPromocode}
    />
    <p className={s.footer_title}>Подарункове пакування до кожного замовлення</p>
    <Button type='button' action={handleButtonClick} title={'Оформити замовлення'}/>

@@ -1,24 +1,23 @@
 'use client'
 import s from './cart.module.scss';
+import PromoButton from '@/components/elements/promoButton/PromoButton';
 
-const CartFooter=({total, promoValue, handleChangePromo, totalDiscount})=> {
+const CartFooter=({total,promocode, addPromocode, totalDiscount})=> {
     return(
         <div className={s.cart_footer}>
 
         <p className={s.total}>Сума:</p> 
         <span className={s.value}>{total}грн</span>
-  
-        <label className={s.total}>Promocode:
-          <input 
-          onChange={handleChangePromo}
-          value={promoValue} 
-          className={s.promo} 
-          type='text'/>
-         </label> 
-         <span className={s.value}>-{totalDiscount}грн</span>
+
+        <PromoButton 
+        promocode={promocode}
+        addPromocode={addPromocode}
+        />
+         <span className={s.value}>{totalDiscount>0?  `-${totalDiscount}грн` : null}</span>
   
          <p className={s.total}>Сума до сплати:</p> 
         <span className={s.value}>{total-totalDiscount}грн</span>
+        
       </div>
     )
 };

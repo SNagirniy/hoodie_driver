@@ -14,15 +14,15 @@ const CheckoutClientData=({setClientData, clientData})=>{
         <div className={s.input_wrapper}>
             <label className={s.label}>
                 Імʼя
-                <input onChange={changeClientData} value={clientData.firstname} name='firstname' className={s.input} type="text" />
+                <input required onChange={changeClientData} value={clientData.firstname} name='firstname' className={s.input} type="text" />
             </label>
             <label className={s.label}>
                 Прізвище
-                <input onChange={changeClientData} value={clientData.secondname} name='secondname' className={s.input} type="text" />
+                <input required onChange={changeClientData} value={clientData.secondname} name='secondname' className={s.input} type="text" />
             </label>
             <label className={s.label}>
                 Телефон
-                <input onChange={changeClientData} value={clientData.phone} name='phone' className={s.input} type="tel" />
+                <input required onChange={changeClientData} value={clientData.phone} name='phone' className={s.input} type="tel" />
             </label>
         </div>
            

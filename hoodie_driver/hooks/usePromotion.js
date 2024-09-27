@@ -107,12 +107,12 @@ const usePromotion = (promotion, cart)=> {
 
     const promotionControler =(promotion, cart)=> {
       if(!promotion) {
-        return totalDiscount};
+        return 0};
 
         const now = new Date();
 
       if(promotion.seasonal && (now < new Date(promotion.valid_from) || now > new Date(promotion.valid_to))) {
-        return totalDiscount};
+        return 0};
        
 
         const total =cart?.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0)

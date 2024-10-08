@@ -14,14 +14,13 @@ import CheckoutDeliveryData from '@/components/elements/checkoutDeliveryData/Che
 import CheckoutPayment from '@/components/elements/checkoutPayment/CheckoutPayment';
 import CheckoutMessage from '@/components/elements/checkoutMesage/CheckoutMessage';
 import CheckoutCartData from '@/components/elements/checkoutCartData/ChackoutCartData';
-
-
+import { toast } from 'react-toastify';
 
 
 const initialClient = {firstname: '', secondname: '', phone: ''}
 
 const Checkout =()=> {
-    const {cart, promocode, addPromocode, hydrated, clearCart}=useCart();
+    const {cart, promocode, addPromocode, hydrated, clearCart, gift, addGift}=useCart();
    
     const [clientData, setClientData]=useState(initialClient);
 
@@ -54,7 +53,7 @@ const Checkout =()=> {
         clearCart()
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if(cart?.lenngth === 0) {return};
@@ -71,19 +70,40 @@ const Checkout =()=> {
             },
             payment:{
                 paymentType,
-                promocode,
+                promocode: promocode?.code,
+                promotion: promocode?.description,
                 sum: total,
-                totalDiscount,
-                total: total - totalDiscount
+                totalDiscount: totalDiscount?.discount,
+                total: total - totalDiscount?.discount
             },
             message,
             cart,
+            gift: {...gift, description: gift?.description?.uk,
+            title: gift?.title?.uk }};
 
-           
-        }
+            console.log(order)
+            try {
+                const res = await fetch('/lib/setOrder', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({order}),
+                  });
+                  const result = await res.json();
 
-        console.log(order)
-        resetFields()
+                if(!result.ok) { toast.error(result?.message);return}
+                if (result.ok) {
+      
+                  toast.success(`Замовлення прийнято! № ${result.id}`)
+                  resetFields()
+            
+                }} catch (error) {
+                 console.log(error)
+                } 
+
+
+        
       };
     
       const handleButtonClick = (e) => {
@@ -91,6 +111,7 @@ const Checkout =()=> {
           formRef.current.requestSubmit(); 
         }
       };
+
 return(
     <section className={s.container}>
         <MainContainer>
@@ -137,6 +158,8 @@ return(
                     totalDiscount={totalDiscount}
                     addPromocode={addPromocode}
                     handleButtonClick={handleButtonClick}
+                    gift={gift}
+                    addGift={addGift}
                     />
                 </div>
                 

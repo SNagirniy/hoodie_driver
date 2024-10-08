@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import sendEmail from '../emailservice/emailservice';
-import createMessage from '@/utils/createMessage';
+import { createMessage } from '@/utils/createMessage';
 
 
 export async function POST(req) {

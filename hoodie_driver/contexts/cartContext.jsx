@@ -11,6 +11,7 @@ export const CartProvider = ({ children }) => {
   const [hydrated, setHydrated] = useState(false);
   const [promocode, setPromocode] = useState(null);
   const [discountValue, setDiscountValue] = useState(0)
+  const [gift, setGift] = useState({});
   const [cart, setCart] = useState(() => {
   
     if(typeof window !== 'undefined'){
@@ -59,7 +60,8 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCart([]);
-    setPromocode(null)
+    setPromocode(null);
+    setGift({})
   };
 
   const addPromocode = async(promocode)=> {
@@ -70,8 +72,12 @@ export const CartProvider = ({ children }) => {
     setDiscountValue(discountVal)
   }
 
+  const addGift = (item)=> {
+    setGift(item)
+  }
+
   return (
-    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart,changeCartItem, hydrated, promocode, addPromocode, discountValue,changeDiscountValue}}>
+    <CartContext.Provider value={{ cart,isExist, addToCart, removeFromCart, clearCart,changeCartItem, hydrated, promocode, addPromocode, discountValue,changeDiscountValue, gift, addGift}}>
       {children}
     </CartContext.Provider>
   );

@@ -23,9 +23,8 @@ const removePromotion = ()=> {
 
 const handleChangePromo =(e)=> {
     const value = e.currentTarget?.value;
-    if(value !==''){
         setPromoValue(value)
-       }};
+       };
 
        const onCheckPromotion = async()=> {
         await checkPromotion(promoValue)
@@ -44,7 +43,8 @@ const handleChangePromo =(e)=> {
             const result = await res.json();
           if(!result.ok) { toast.info(result?.message);return}
           if (result.ok) {
-            addPromocode(result?.promotion[0])
+
+            addPromocode(result?.promotion)
             toast.success('Промокод активовано')
       
           }} catch (error) {

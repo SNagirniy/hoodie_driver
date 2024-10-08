@@ -4,16 +4,17 @@ import { useCart } from '@/contexts/cartContext';
 import CartItem from './CartItem';
 import CartFooter from './CartFooter';
 import { useLocale } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import usePromotion from '@/hooks/usePromotion';
 import Button from '@/components/elements/mainButton/Button';
 import EmptyCart from '../empty_cart/EmptyCart';
+import Gifts from '../gifts/Gifts';
 import {useRouter } from '@/navigation';
 
 
 
 const Cart = ({closeModal})=> {
-const {cart, promocode, addPromocode, changeDiscountValue}=useCart();
+const {cart, promocode, addPromocode, changeDiscountValue, gift, addGift}=useCart();
 const {totalDiscount}= usePromotion(promocode, cart);
 const locale = useLocale();
 
@@ -25,9 +26,7 @@ const relocateTo=(path)=>{
   router.replace(path);
   closeModal();}
 
-  useEffect(()=> changeDiscountValue(totalDiscount), [totalDiscount]);
-
-
+  useEffect(()=> changeDiscountValue(totalDiscount?.discount), [totalDiscount]);
 
 if(cart.length === 0 ) {return <EmptyCart relocate={()=>relocateTo('/store')}/>};
 
@@ -47,11 +46,17 @@ return (
 
    <CartFooter
    total={total}
-   totalDiscount={totalDiscount}
+   totalDiscount={totalDiscount?.discount}
    promocode={promocode}
    addPromocode={addPromocode}
-  
    />
+
+    <Gifts
+    gifts_options={totalDiscount?.gifts}
+    gift={gift}
+    addGift={addGift}
+    />
+
     <p className={s.footer_title}>Подарункове пакування до кожного замовлення</p>
     <Button action={()=>relocateTo(`/checkout`)} title={'Оформити замовлення'}/>
     </div>

@@ -25,6 +25,7 @@ export default async function RootLayout({ children, params:{locale} }) {
 const messages = await getMessages();
 
 
+
  
   return (
     <html lang={locale}>

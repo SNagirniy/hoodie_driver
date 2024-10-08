@@ -2,6 +2,7 @@
 import s from './cart.module.scss';
 import PromoButton from '@/components/elements/promoButton/PromoButton';
 
+
 const CartFooter=({total,promocode, addPromocode, totalDiscount})=> {
     return(
         <div className={s.cart_footer}>

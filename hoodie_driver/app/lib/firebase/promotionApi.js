@@ -3,20 +3,21 @@ import { db } from "./firebase";
 import { collection, getDocs, addDoc , query, orderBy, limit, where, setDoc, doc,startAt, Timestamp,getDoc, updateDoc} from "firebase/firestore";
 
 const promoExample ={
-    code: "FIXED2024",
-    description: "Fixed discount",
+    code: "SORRY",
+    description: "Sorry discount",
     valid_from: "2024-09-01",
     valid_to: "2024-09-30",
-    min_order_amount: 1000,
-    applicable_categories: ["keychains", 'hoodie'],
+    min_order_amount: 0,
+    applicable_categories: [],
     discount: {
-      type: "fixed", 
+      gift_options: ['one', 'two', 'three'],
+      type: "gift", 
       required_items_count: 0,
       gift_count: 0,
-      value: 300
+      value: 0
     },
     status: 'active',
-    seasonal: true
+    seasonal: false
   };
 
 export const addPromotion = async()=>{
@@ -39,6 +40,28 @@ try {
     console.log(e)  
 }}
 
+
+const getGifts =async(idList)=> {
+    const gifts = [];
+
+    for (const id of idList) {
+        const docRef = doc(db, 'gifts', id);
+        try {
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                gifts.push({ id: docSnap.id, ...docSnap.data() });
+            } else {
+                console.log(`Документ з ID ${id} не знайдено.`);
+            }
+        } catch (error) {
+            console.error(`Помилка при отриманні документа з ID ${id}:`, error);
+        }
+    }
+
+    return gifts;
+}
+
 export const checkPromotion = async(promocode)=> {
     const ref = collection(db, "promotions");
     const q = query(ref, where("code", "==", promocode));
@@ -53,7 +76,13 @@ try {
         return {message: 'Такого промокоду не існує'}
       };
 
-    return promotions;
+    if (promotions[0]?.discount?.type === 'gift') {
+         const gift_options = await getGifts(promotions[0]?.discount?.gift_options);
+         const discount={...promotions[0]?.discount, gift_options}
+         return {...promotions[0], discount}
+    }
+
+    return promotions[0];
 } catch (e){
     console.log(e)  
-}}
+}};

@@ -7,8 +7,9 @@ import Button from '../mainButton/Button';
 import EmptyCart from '@/components/modules/empty_cart/EmptyCart';
 import { useRouter } from '@/navigation';
 import { useLocale } from 'next-intl';
+import Gifts from '@/components/modules/gifts/Gifts';
 
-const CheckoutCartData = ({cart,total, promocode, totalDiscount, addPromocode, handleButtonClick})=> {
+const CheckoutCartData = ({cart,total, promocode, totalDiscount, addPromocode, handleButtonClick, gift, addGift})=> {
     
     const locale = useLocale();
     const router =useRouter();
@@ -33,8 +34,13 @@ return(
    <CartFooter
    total={total}
     promocode={promocode}
-   totalDiscount={totalDiscount}
+   totalDiscount={totalDiscount?.discount}
    addPromocode={addPromocode}
+   />
+   <Gifts
+   gift={gift}
+   addGift={addGift}
+   gifts_options={totalDiscount?.gifts}
    />
    <p className={s.footer_title}>Подарункове пакування до кожного замовлення</p>
    <Button type='button' action={handleButtonClick} title={'Оформити замовлення'}/>

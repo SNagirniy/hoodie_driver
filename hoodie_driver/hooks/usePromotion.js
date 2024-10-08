@@ -5,9 +5,35 @@ import { useState, useEffect} from "react";
   const discountTypes={
     free_item: "free_item",
     persentage: 'persentage',
-    fixed: "fixed"
+    fixed: "fixed",
+    gift: 'gift'
   };
 
+const defaultDiscount = {discount: 0, gifts: []};
+
+
+  const calculateGiftDiscount = (promotion, cart)=> {
+
+    if(promotion?.applicable_categories?.length === 0) {
+      return {discount: 0, gifts: promotion?.discount?.gift_options};}
+
+      const categorizedItems = promotion?.applicable_categories?.reduce((acc, category) => {
+        acc[category] = cart.filter((item) => item.category === category);
+        return acc;
+      }, {});
+
+      const values = Object.values(categorizedItems);
+      
+      if(values.length === 0){return defaultDiscount};
+
+      const totalItems=(arr)=> arr?.reduce((count,item)=> count + item.ammount, 0);
+
+      const isRequiredItems = values?.some((el) => {return totalItems(el) >= promotion?.discount?.required_items_count});
+
+      if(!isRequiredItems){return defaultDiscount}
+
+     return {discount: 0, gifts: promotion?.discount?.gift_options}
+  };
 
   const calculateFixedDiscount = (promotion, cart)=>{
     let discount = 0;
@@ -17,7 +43,7 @@ import { useState, useEffect} from "react";
         acc.push(...availableCategory);
         return acc;
       }, []);
-      if(promotionalCategories?.length <= 0) {return 0};
+      if(promotionalCategories?.length <= 0) {return defaultDiscount};
 
       const fixedDiscount = promotion?.discount?.value;
 
@@ -31,7 +57,7 @@ import { useState, useEffect} from "react";
         discount= fixedDiscount;
       }
      
-      return discount
+      return {discount: discount, gifts:[]}
   }
 
   const calculatePersentageDiscount = (promotion, cart)=>{
@@ -41,7 +67,7 @@ import { useState, useEffect} from "react";
         acc.push(...availableCategory);
         return acc;
       }, []);
-      if(promotionalCategories?.length <= 0) {return 0};
+      if(promotionalCategories?.length <= 0) {return defaultDiscount};
 
       const persentage = promotion?.discount?.value;
 
@@ -51,7 +77,7 @@ import { useState, useEffect} from "react";
         discount+=(categoryValue * persentage)/100;
       });
      
-      return discount
+      return {discount: discount, gifts:[]}
   }
 
   const calculateFreeItemDiscount = (promotion, cart)=>{
@@ -96,32 +122,31 @@ import { useState, useEffect} from "react";
   
          
         
-      }}); return discount}
+      }}); return {discount: discount, gifts:[]}}
 
 
 
 const usePromotion = (promotion, cart)=> {
-    const [totalValue, setTotalValue]= useState(()=> cart?.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0));
-    const [totalDiscount, setTotalDiscount] = useState(0);
+    const [totalDiscount, setTotalDiscount] = useState(defaultDiscount);
 
 
     const promotionControler =(promotion, cart)=> {
       if(!promotion) {
-        return 0};
+        return defaultDiscount};
 
         const now = new Date();
 
       if(promotion.seasonal && (now < new Date(promotion.valid_from) || now > new Date(promotion.valid_to))) {
-        return 0};
+        return defaultDiscount};
        
 
         const total =cart?.reduce((acc, el)=>{ const cost = el.price * el.ammount; return acc+cost}, 0)
        
-      if(promotion?.min_order_amount > total) {return 0};
+      if(promotion?.min_order_amount > total) {return defaultDiscount};
 
         const totalItems = cart?.reduce((count,item)=> count + item.ammount, 0);
 
-      if(totalItems <= promotion?.discount?.required_items_count) {return 0};
+      if(totalItems < promotion?.discount?.required_items_count) {return defaultDiscount};
 
       if(promotion?.discount?.type === discountTypes.free_item){
       const discount = calculateFreeItemDiscount(promotion, cart)
@@ -135,12 +160,17 @@ const usePromotion = (promotion, cart)=> {
         const discount = calculateFixedDiscount(promotion, cart)
         return discount;
       }
+      if(promotion?.discount.type === discountTypes.gift) {
+        const discount = calculateGiftDiscount(promotion, cart)
+        return discount
+      }
     };
 
     useEffect(()=> {const discount = promotionControler(promotion, cart); setTotalDiscount(discount)}, [promotion,cart]);
+  
 
 
-return {totalValue, totalDiscount}
+return {totalDiscount}
 };
 
 

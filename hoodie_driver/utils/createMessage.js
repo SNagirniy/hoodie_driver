@@ -4,7 +4,7 @@ const MSG_TYPES = {
     QUESTION: 'question'
  }
 
-const createMessage = (req)=>{
+export const createMessage = (req)=>{
 const {type, msg} = req;
 
 
@@ -21,4 +21,24 @@ const {type, msg} = req;
 
 };
 
-export default createMessage;
+
+
+export const orderMessage = (data) => {
+    const {client, delivery, payment,message} = data;
+
+    const formattedString = [...Object.entries(client),...Object.entries(delivery),...Object.entries(payment), ['message', message]]
+  .map(([key, value]) => {if(!value || value === '') {return}; return`<b>${key}:</b> ${value}`})
+  .join('\n');
+      
+  const resultMessage = '<b>НОВЕ ЗАМОВЛЕННЯ!!!</b>\n'.concat('', formattedString)
+  return resultMessage;
+};
+
+export const productMessage = (item)=> {
+    const {title, id, color, variant, ammount} = item;
+
+    const colorsString = color.join(',')
+const itemDetails = `<b>Назва:</b> ${title.uk}\n<b>Код товару:</b> ${id}\n<b>Варіант:</b> ${variant}\n<b>Колір:</b> ${colorsString}\n<b>Кількість:</b>${ammount}`;
+
+return itemDetails;
+}

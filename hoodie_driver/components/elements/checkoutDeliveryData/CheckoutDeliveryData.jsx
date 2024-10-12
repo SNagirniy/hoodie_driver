@@ -123,7 +123,7 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress, cityRef, setCity
                                 onChange={handleChangeDeliveryAbroad}
                                 className={s.msg_area}
                                 name="message" 
-                                id="message"
+                                id="delivery_message"
                                 placeholder='Пишіть тут...'/>
                             </label>
                     </div>

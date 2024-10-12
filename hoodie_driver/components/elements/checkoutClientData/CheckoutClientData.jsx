@@ -18,7 +18,7 @@ const CheckoutClientData=({setClientData, clientData})=>{
             </label>
             <label className={s.label}>
                 Прізвище
-                <input required onChange={changeClientData} value={clientData.secondname} name='secondname' className={s.input} type="text" />
+                <input required onChange={changeClientData} value={clientData.lastname} name='lastname' className={s.input} type="text" />
             </label>
             <label className={s.label}>
                 Телефон

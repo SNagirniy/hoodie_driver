@@ -17,7 +17,7 @@ import CheckoutCartData from '@/components/elements/checkoutCartData/ChackoutCar
 import { toast } from 'react-toastify';
 
 
-const initialClient = {firstname: '', secondname: '', phone: ''}
+const initialClient = {firstname: '', lastname: '', phone: ''}
 
 const Checkout =()=> {
     const {cart, promocode, addPromocode, hydrated, clearCart, gift, addGift}=useCart();
@@ -46,7 +46,7 @@ const Checkout =()=> {
         setChanel(chanels.instagram.title),
         setContactData(''),
         setCityRef(null),
-        setDeliveryAdress(''),
+        setDeliveryAdress(null),
         setDeliveryAbroad(''),
         setPaymentType('postpaid'),
         setMessage(''),
@@ -81,7 +81,6 @@ const Checkout =()=> {
             gift: {...gift, description: gift?.description?.uk,
             title: gift?.title?.uk }};
 
-            console.log(order)
             try {
                 const res = await fetch('/lib/setOrder', {
                     method: 'POST',

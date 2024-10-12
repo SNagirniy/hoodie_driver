@@ -31,8 +31,8 @@ const ProductForm =({colors, product})=>{
 
     const t = useTranslations("Actions")
 
-    function defaultProductColor(){if(product?.color){return product?.color?.map((color)=> colors[color])}
-    else{ return []}}
+   function defaultProductColor(){if(product?.color){return product?.color}
+   else{ return []}}
 
     const reset = ()=>{
         setMessage(''),
@@ -46,8 +46,7 @@ const ProductForm =({colors, product})=>{
 
     const handleSelectColor =(e)=>{
         const value = e.currentTarget?.value;
-        const currentColor = colors[value];
-        setSelectedColor([currentColor]);
+        setSelectedColor([value]);
     };
 
    const handleChangeMessage = (e)=> {
@@ -88,7 +87,7 @@ const ProductForm =({colors, product})=>{
 
   };
 
-  const isChecked = (color)=> selectedColor[0]?.title?.uk === color;
+  const isChecked = (color)=> selectedColor[0] === color;
 
 
     useEffect(()=> {if(isCustomizationOpen ) {setVariant(Variants?.custom)}}, [isCustomizationOpen]);

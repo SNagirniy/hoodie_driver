@@ -23,14 +23,14 @@ const {type, msg} = req;
 
 
 
-export const orderMessage = (data) => {
+export const orderMessage = (data, id) => {
     const {client, delivery, payment,message} = data;
 
     const formattedString = [...Object.entries(client),...Object.entries(delivery),...Object.entries(payment), ['message', message]]
   .map(([key, value]) => {if(!value || value === '') {return}; return`<b>${key}:</b> ${value}`})
   .join('\n');
       
-  const resultMessage = '<b>НОВЕ ЗАМОВЛЕННЯ!!!</b>\n'.concat('', formattedString)
+  const resultMessage = `<b>НОВЕ ЗАМОВЛЕННЯ!!!</b>\n<b>Номер: ${id}</b>\n`.concat('', formattedString)
   return resultMessage;
 };
 
@@ -39,6 +39,15 @@ export const productMessage = (item)=> {
 
     const colorsString = color.join(',')
 const itemDetails = `<b>Назва:</b> ${title.uk}\n<b>Код товару:</b> ${id}\n<b>Варіант:</b> ${variant}\n<b>Колір:</b> ${colorsString}\n<b>Кількість:</b>${ammount}`;
+
+return itemDetails;
+};
+
+
+export const giftMessage = (item)=> {
+  const {title, code, description} = item;
+
+const itemDetails = `<b>ПОДАРУНОК</b>\n<b>Назва:</b> ${title}\n<b>Код подарунку:</b> ${code}\n<b>Опис:</b> ${description}`;
 
 return itemDetails;
 }

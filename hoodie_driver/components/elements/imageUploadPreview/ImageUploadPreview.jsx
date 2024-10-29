@@ -4,23 +4,27 @@ import { useState } from 'react';
 import Close from '../../../public/close.svg';
 
 
-const ImageUploadPreview =({imagePreview, setImagePreview,selectedFile, setSelectedFile})=> {
+const ImageUploadPreview =({imagePreview, setImagePreview,selectedFile, setSelectedFile, setImageName})=> {
     const [fileInputKey, setFileInputKey] = useState(Date.now());
   
     const handleImageUpload = (e) => {
       const file = e.target.files[0];
       if (file && (file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/webp' || file.type === 'image/png')) {
+        
+        setImageName(file?.name);
+
         const reader = new FileReader();
         reader.onloadend = () => {
           setImagePreview(reader.result);
         };
         reader.readAsDataURL(file);
-        setSelectedFile(file);
+        reader.onload = () =>  setSelectedFile(reader.result.split(',')[1]);
+       
       } else {
         alert('Please upload a valid image file (JPEG, JPG, WEBP,PNG).');
       }
     };
-  
+
     const handleRemoveImage = () => {
       setImagePreview(null);
       setSelectedFile(null);

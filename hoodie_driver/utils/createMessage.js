@@ -35,10 +35,10 @@ export const orderMessage = (data, id) => {
 };
 
 export const productMessage = (item)=> {
-    const {title, id, color, variant, ammount} = item;
+    const {title, id, color, variant, ammount,message} = item;
 
     const colorsString = color.join(',')
-const itemDetails = `<b>Назва:</b> ${title.uk}\n<b>Код товару:</b> ${id}\n<b>Варіант:</b> ${variant}\n<b>Колір:</b> ${colorsString}\n<b>Кількість:</b>${ammount}`;
+const itemDetails = `<b>Назва:</b> ${title.uk}\n<b>Код товару:</b> ${id}\n<b>Варіант:</b> ${variant}\n<b>Колір:</b> ${colorsString}\n<b>Кількість:</b>${ammount}\n<b>Побажання</b>${message}`;
 
 return itemDetails;
 };

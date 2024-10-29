@@ -28,6 +28,7 @@ const ProductForm =({colors, product})=>{
     const [variant, setVariant]=useState(Variants?.default);
     const [customImagePreview, setCustomImagePreview] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFileName, setSelectedFileName]= useState(null);
 
     const t = useTranslations("Actions")
 
@@ -39,7 +40,8 @@ const ProductForm =({colors, product})=>{
         setAmmount(1),
         setVariant(Variants?.default),
         setSelectedFile(null),
-        setCustomImagePreview(null)
+        setCustomImagePreview(null),
+        setSelectedFileName(null)
     }
 
     const available_colors = product?.available_colors?.map((color) => { const {value, icon}= colors[color]; return {title: color,value,icon}});
@@ -63,7 +65,12 @@ const ProductForm =({colors, product})=>{
     } else if( name === 'increment' & ammount < 100) {
         setAmmount( prev => prev + 1)
     }
-}
+};
+
+
+
+
+
 
   const handleSubmit = (e)=> {
     e.preventDefault();
@@ -77,7 +84,8 @@ const ProductForm =({colors, product})=>{
         color: selectedColor,
         variant: variant,
         message: variant === Variants?.custom?message : '',
-        custom_logo: variant === Variants?.custom?customImagePreview : null,
+        custom_logo: variant === Variants?.custom?selectedFile : null,
+        custom_logo_name: variant === Variants?.custom? selectedFileName : null,
         category: product?.category
     };
 
@@ -146,6 +154,7 @@ const ProductForm =({colors, product})=>{
                     setImagePreview={setCustomImagePreview}
                     selectedFile={selectedFile}
                     setSelectedFile={setSelectedFile}
+                    setImageName={setSelectedFileName}
                     />
                     <textarea
                         name='message'

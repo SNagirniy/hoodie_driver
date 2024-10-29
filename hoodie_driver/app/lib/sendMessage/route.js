@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import sendEmail from '../emailservice/emailservice';
+import { sendEmail } from '../emailservice/emailservice';
 import { createMessage } from '@/utils/createMessage';
 
 

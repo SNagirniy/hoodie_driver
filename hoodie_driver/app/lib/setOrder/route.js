@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import addNewOrder from "../firebase/orderApi";
 import { orderMessage, productMessage, giftMessage } from "@/utils/createMessage";
 import { sendTextMessage, sendPhotoMessage } from "../telegram/telegramAPI";
+import { sendOrderEmail } from "../emailservice/emailservice";
 
 export async function POST(req) {
     const data = await req.json();
@@ -11,32 +12,31 @@ export async function POST(req) {
   
      const response = await addNewOrder(data);
 
+
       if (response.ok) {
         
         const id = response?.id;
         const text = orderMessage(data.order, id);
-        const cart = data?.order?.cart;
-        const gift = data?.order?.gift;
+        const cart = response?.data?.cart;
+        const gift = response?.data?.gift;
         
         const message = await sendTextMessage(text);
-
-       
+          if(message?.ok) {
 
         for (const item of cart) {
+         
            const caption = productMessage(item);
            await sendPhotoMessage(item?.image, caption)
+
+           if(item?.custom_logo) { await sendPhotoMessage(item?.custom_logo, 'custom logo')}
         };
 
         if(Object.keys(gift).length !== 0){
           const gift_caption = giftMessage(gift);
           await sendPhotoMessage(gift?.imageURL, gift_caption )
+        }} else{
+          await sendOrderEmail(response, text)
         }
-
-        if(!message?.ok) {
-          //відправити на email
-        }
-
-
 
         return NextResponse.json({ok: true, id: response.id }, { status: 201 });
       } else {

@@ -1,8 +1,9 @@
 import { storage } from "./firebase";
-import { ref, getDownloadURL } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytesResumable, uploadString } from "firebase/storage";
+import { v4 } from "uuid";
 
 
-const getImageRef = async ()=> {
+export const getImageRef = async ()=> {
     let path
     const spaceRef = ref(storage);
   const imageRef = ref(spaceRef, 'hoodie/hoodie.jpg');
@@ -21,4 +22,16 @@ const getImageRef = async ()=> {
 
 }
 
-export default getImageRef;
+
+export const uploadCustomLogo = async(file, filename)=> {
+
+const id = v4();
+const uniqueFileName = `${id}-${filename}`;
+const storageRef = ref(storage, `userlogo/${uniqueFileName}`);
+const uploadTask = await uploadBytesResumable(storageRef, Buffer.from(file, 'base64'));
+
+const downloadURL = await getDownloadURL(uploadTask?.ref);
+
+return downloadURL;
+}
+

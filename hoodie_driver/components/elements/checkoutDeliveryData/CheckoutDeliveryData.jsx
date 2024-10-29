@@ -88,11 +88,14 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress, cityRef, setCity
                                 <Select
                                classNames={{
                                 control: ()=>s.input,
+                                menu: ()=>s.menu,
+                                option: ()=> s.option,
                                }}
                                 onInputChange={(e)=> {setCity(e)}}
                                 options={cities}
                                 onChange={changeCity}
                                 placeholder={''}
+                                
                                
                                /></label>
 
@@ -102,6 +105,8 @@ const CheckoutDeliveryData =({deliveryAdress,setDeliveryAdress, cityRef, setCity
                                 required
                                  classNames={{
                                   control: ()=>s.input,
+                                  menu: ()=>s.menu,
+                                  option: ()=> s.option,
                                  }}
                                 value={deliveryAdress}
                                 onChange={setDeliveryAdress}

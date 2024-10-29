@@ -5,6 +5,7 @@ import MainContainer from '@/components/layouts/MainCintainer';
 import { useCart } from '@/contexts/cartContext';
 
 import { useState, useRef } from 'react';
+import { useRouter } from '@/navigation';
 import usePromotion from '@/hooks/usePromotion';
 import chanels from '@/utils/contactChanels';
 
@@ -34,6 +35,8 @@ const Checkout =()=> {
     const[paymentType, setPaymentType]= useState('postpaid')
    
     const [message, setMessage]= useState('');
+
+    const router = useRouter();
 
     const formRef = useRef(null);
     const {totalDiscount}= usePromotion(promocode, cart);
@@ -93,9 +96,8 @@ const Checkout =()=> {
 
                 if(!result.ok) { toast.error(result?.message);return}
                 if (result.ok) {
-      
-                  toast.success(`Замовлення прийнято! № ${result.id}`)
-                  resetFields()
+                resetFields();
+                router.replace(`/checkout/${result.id}`);
             
                 }} catch (error) {
                  console.log(error)

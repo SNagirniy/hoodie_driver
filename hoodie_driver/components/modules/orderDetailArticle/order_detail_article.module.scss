@@ -1,0 +1,36 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.section{
+    display: flex;
+    flex-direction: column;
+    padding: 3.5rem 0;
+    gap: 60px;
+    @include for-size(tablet){
+        padding: 7rem 0;
+        gap: 80px;
+    }
+   
+};
+
+.article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding:7rem 5rem;
+    color: $dark;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    border-radius: 30px;
+
+    background-color: $primary-text-color;
+    box-shadow: 0 8px 64px 0 rgba(224, 204, 27, 0.12), 0 4px 16px 0 rgba(224, 204, 27, 0.08);
+}
+
+
+.order_id{
+    color: $accent-text-color;
+}

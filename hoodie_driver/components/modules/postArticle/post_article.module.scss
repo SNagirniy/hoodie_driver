@@ -1,0 +1,41 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.article{
+    padding: 60px 0;
+    @include for-size(tablet){
+        padding: 75px 0;
+    }
+};
+
+.btn_wrapper{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.date{
+    margin-bottom: 2rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+
+};
+
+
+.thumb{
+    display: flex;
+   width: 100%;
+   margin: 0 0 1rem 0;
+
+    @include for-size(tablet){
+        max-width: 30%;
+        overflow: hidden;
+        float: left;
+        margin: 0 1rem 1rem 0;
+    }
+
+    &>img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}

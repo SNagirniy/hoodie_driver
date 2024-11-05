@@ -30,6 +30,7 @@ line-height: 1.5;
 
 
 .link{
+    position: relative;
     display: block;
     padding: 8px 0px;
     font-weight: 400;
@@ -39,13 +40,18 @@ line-height: 1.5;
     color: $primary-text-color;
     transition: all $cubic;
 
-    &:hover{
-        font-weight: 500;
-        filter: $filter;
-    }
-
     &::first-letter{
         text-transform: capitalize;
+    }
+
+  
+
+    &:hover{
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px; 
+        
     }
 
 }

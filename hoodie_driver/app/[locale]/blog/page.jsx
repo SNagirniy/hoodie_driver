@@ -1,9 +1,10 @@
-import Link from "next/link";
+
+import BlogPage from "@/components/templates/BlogPage";
 export default async function Blog() {
 
     return (
-       <><h1>Blog</h1>
-        <Link href={'/'}>Home</Link>
+       <>
+       <BlogPage/>
         </> 
     );
   }

@@ -41,7 +41,8 @@ const handleChangePromo =(e)=> {
               body: JSON.stringify({promocode: promo}),
             });
             const result = await res.json();
-          if(!result.ok) { toast.info(result?.message);return}
+          if(!result.ok) { toast.info(result?.message),addPromocode(null);
+            setPromoValue('');return}
           if (result.ok) {
 
             addPromocode(result?.promotion)

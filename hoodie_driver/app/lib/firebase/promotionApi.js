@@ -76,7 +76,14 @@ try {
         return {message: 'Такого промокоду не існує'}
       };
 
-    if (promotions[0]?.discount?.type === 'gift') {
+      const now = new Date();
+      const promotion = promotions[0];
+      
+      if(promotion?.seasonal && (now < new Date(promotion.valid_from) || now > new Date(promotion.valid_to))){
+        return {message: 'Дата дії промокоду не дійсна'}
+      }
+
+    if (promotion?.discount?.type === 'gift') {
          const gift_options = await getGifts(promotions[0]?.discount?.gift_options);
          const discount={...promotions[0]?.discount, gift_options}
          return {...promotions[0], discount}

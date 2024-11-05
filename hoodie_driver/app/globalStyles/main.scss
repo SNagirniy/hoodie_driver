@@ -1,7 +1,7 @@
 
 @import 'normalize.css';
 @import './basestyles.scss';
-  
+ 
   
 * {
   box-sizing: border-box;
@@ -46,6 +46,10 @@ a {
 img {
   display: block;
   width: 100%;
+}
+
+.ck-placeholder{
+  min-height: 30vh;
 }
   
   

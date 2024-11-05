@@ -1,0 +1,15 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.section{
+    padding: 60px 0;
+        @include for-size(tablet){
+            padding: 75px 0;
+        }
+    };
+
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    }

@@ -1,0 +1,59 @@
+@import '../../../app/globalStyles/basestyles.scss';
+
+.card{
+   display: flex;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1), 0 2px 8px 0 rgba(255, 255, 255, 0.172);
+    height: 80%;
+
+    transition: border $cubic;
+&:hover,
+&:focus{
+    border: 1px solid $primary-text-color;
+};
+}
+
+
+.link{
+    display: grid;
+    width: 100%;
+    grid-template-rows: 1fr 1fr;
+    color: $bglightblue;
+    background-color: $primary-text-color;
+    
+}
+
+.thumb{
+   display: flex;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    &>img{
+        object-fit: cover;
+        object-position: top;
+       
+    }
+
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1rem;
+  
+
+    &>h3{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    &>p{
+        font-size: 1rem;
+    }
+
+}

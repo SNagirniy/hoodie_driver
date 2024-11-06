@@ -12,9 +12,9 @@ const BlogCard = async({item})=> {
    return (
     <article className={s.card}>
     <Link href={`/blog/${id}`} className={s.link}>
-    {imageURL && <div className={s.thumb}>
-        <img src={imageURL} alt={title[locale]} />
-    </div>}
+     <div className={s.thumb}>
+       {imageURL && <img src={imageURL} alt={title[locale]} />}
+    </div>
     <div className={s.info}>
     <h3>{title[locale]}</h3>
     <p>{date}</p>

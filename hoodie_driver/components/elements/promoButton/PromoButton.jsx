@@ -32,13 +32,14 @@ const handleChangePromo =(e)=> {
 
        const checkPromotion = async(promo)=>{
         if( promo.length === 0){return}
+        const code = promo.toLowerCase();
         try {
           const res = await fetch('/lib/getPromocode', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({promocode: promo}),
+              body: JSON.stringify({promocode: code}),
             });
             const result = await res.json();
           if(!result.ok) { toast.info(result?.message),addPromocode(null);

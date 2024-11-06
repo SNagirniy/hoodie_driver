@@ -9,7 +9,18 @@
 
 
 .list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include for-size(tablet){
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;}
+
+    @include for-size(desktop){
+        display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+    }
     }

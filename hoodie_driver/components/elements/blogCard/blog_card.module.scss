@@ -6,7 +6,7 @@
     overflow: hidden;
     border: 1px solid transparent;
     box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1), 0 2px 8px 0 rgba(255, 255, 255, 0.172);
-    height: 80%;
+   height: 100%;
 
     transition: border $cubic;
 &:hover,
@@ -19,7 +19,7 @@
 .link{
     display: grid;
     width: 100%;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 250px 1fr;
     color: $bglightblue;
     background-color: $primary-text-color;
     
@@ -28,11 +28,14 @@
 .thumb{
    display: flex;
     overflow: hidden;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    background-color: $dark;
 
     &>img{
-        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         object-position: top;
        
     }
@@ -48,12 +51,12 @@
   
 
     &>h3{
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 600;
     }
 
     &>p{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
 }
